@@ -44,5 +44,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="python\compute\detect.py" />
+    <None Include="python\compute\__init__.py" />
+    <None Include="python\compute\__pycache__\detect.cpython-37.pyc" />
+    <None Include="python\compute\__pycache__\__init__.cpython-37.pyc" />
+    <None Include="python\setup.py" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
