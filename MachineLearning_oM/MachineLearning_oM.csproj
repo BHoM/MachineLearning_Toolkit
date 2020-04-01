@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}</ProjectGuid>
+    <ProjectGuid>{C3F87EBB-3F93-4069-A17F-D55868056ED2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BH.Engine.MachineLearning</RootNamespace>
-    <AssemblyName>MachineLearning_Engine</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>BH.oM.MachineLearning</RootNamespace>
+    <AssemblyName>MachineLearning_oM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,19 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DeepLearning_oM">
-      <HintPath>..\..\BHoM\Build\DeepLearning_oM.dll</HintPath>
+    <Reference Include="BHoM">
+      <HintPath>..\..\BHoM\Build\BHoM.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Numpy">
-      <HintPath>..\..\Numpy_Toolkit\Build\Numpy.dll</HintPath>
-    </Reference>
-    <Reference Include="Python.Runtime">
-      <HintPath>..\..\Python_Toolkit\Build\Python.Runtime.dll</HintPath>
+    <Reference Include="Common_oM">
+      <HintPath>..\..\BHoM\Build\Common_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Python_Engine">
-      <HintPath>..\..\Python_Toolkit\Build\Python_Engine.dll</HintPath>
+    <Reference Include="Geometry_oM">
+      <HintPath>..\..\BHoM\Build\Geometry_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,24 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compute\DetectObjects.cs" />
-    <Compile Include="Compute\Invoke.cs" />
+    <Compile Include="DetectionResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MachineLearning_oM\MachineLearning_oM.csproj">
-      <Project>{C3F87EBB-3F93-4069-A17F-D55868056ED2}</Project>
-      <Name>MachineLearning_oM</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Compute\DetectObjects.py" />
-    <None Include="Compute\__init__.py" />
-    <None Include="__init__.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Convert\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
