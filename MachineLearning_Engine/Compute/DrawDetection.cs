@@ -20,8 +20,9 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.DeepLearning.Models;
+using BH.oM.Vision;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace BH.Engine.Vision
 {
@@ -31,15 +32,15 @@ namespace BH.Engine.Vision
         /**** Public Methods              ****/
         /*************************************/
 
-        public static object DetectObjects(string imagePath, Graph model = null, bool gpu = false)
+        public static object DrawDetection(Bitmap image, DetectionResults detection, double minAccuracy=0.8)
         {
             Dictionary<string, object> kwargs = new Dictionary<string, object>
             {
-                { "image_path", imagePath },
-                //{ "model", model.ToPython() },
-                { "gpu", gpu }
+                { "image", image },
+                { "detection", detection },
+                { "min_accracy", minAccuracy }
             };
-            return BH.Engine.MachineLearning.Compute.Invoke("detect_objects", kwargs);
+            return BH.Engine.MachineLearning.Compute.Invoke("draw_detection", kwargs);
         }
 
         /*************************************/
