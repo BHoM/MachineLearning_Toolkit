@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+ * This file is part of the Buildings and Habitats object Model (BHoM)
+ * Copyright (c) 2015 - 2020, the respective contributors. All rights reserved.
+ *
+ * Each contributor holds copyright over their respective contributions.
+ * The project versioning (Git) records all such contribution source information.
+ *                                           
+ *                                                                              
+ * The BHoM is free software: you can redistribute it and/or modify         
+ * it under the terms of the GNU Lesser General Public License as published by  
+ * the Free Software Foundation, either version 3.0 of the License, or          
+ * (at your option) any later version.                                          
+ *                                                                              
+ * The BHoM is distributed in the hope that it will be useful,              
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of               
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the                 
+ * GNU Lesser General Public License for more details.                          
+ *                                                                            
+ * You should have received a copy of the GNU Lesser General Public License     
+ * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
+ */
+
+using System;
 using BH.Engine.Python;
 
 namespace BH.PostBuild.MachineLearning
@@ -54,9 +76,9 @@ namespace BH.PostBuild.MachineLearning
             Compute.PipInstall("torch", version: "1.4.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
             Compute.PipInstall("torchvision", version: "0.5.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
 
-            // install python bhom package
+            // install pyBHoM
             Console.WriteLine("Installing pyBHoM...");
-            Compute.RunCommand("cd ../../../python && pip install -e .");
+            Compute.PipInstall("-e ../");  // Note: The PostBuilds are run from the Build folder
         }
     }
 }
