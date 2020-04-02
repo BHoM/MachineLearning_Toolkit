@@ -2,7 +2,7 @@
 
 namespace BH.oM.MachineLearning
 {
-    public class Tensor<T> where T : struct
+    public class Tensor<T>
     {
         /***************************************************/
         /**** Properties                                ****/
