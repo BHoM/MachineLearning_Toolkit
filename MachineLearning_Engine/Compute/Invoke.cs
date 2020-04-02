@@ -24,6 +24,7 @@ using BH.oM.Vision;
 using BH.oM.DeepLearning.Models;
 using Python.Runtime;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BH.Engine.MachineLearning
 {
@@ -33,32 +34,17 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods              ****/
         /*************************************/
 
-        public static dynamic Invoke(string method, Dictionary<string, object> args)
+        public static PyObject Invoke(string method, Dictionary<string, object> args)
         {
-            return BH.Engine.Python.Compute.Invoke(pyBHoM, method, args);
-        }
-
-
-        /***************************************************/
-        /**** Public Properties                         ****/
-        /***************************************************/
-
-        public static PyObject pyBHoM
-        {
-            get
-            {
-                if (m_pyBHoM == null)
-                    m_pyBHoM = BH.Engine.Python.Query.Import("MachineLearning_Engine.Compute");
-
-                return m_pyBHoM;
-            }
+            return BH.Engine.Python.Compute.Invoke(Query.pyCompute, method, args);
         }
 
         /***************************************************/
-        /**** Private Fields                            ****/
-        /***************************************************/
 
-        private static PyObject m_pyBHoM = null;
+        public static PyObject InvokeNumpy(string method, IEnumerable<object> args = null, Dictionary<string, object> kwargs = null)
+        {
+            return BH.Engine.Python.Compute.Invoke(Query.numpy, method, args, kwargs);
+        }
 
         /***************************************************/
     }
