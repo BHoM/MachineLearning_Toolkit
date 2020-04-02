@@ -31,12 +31,11 @@ namespace BH.Engine.Vision
         /**** Public Methods              ****/
         /*************************************/
 
-        public static object DetectObjects(string imagePath, Graph model = null, bool gpu = false)
+        public static object DetectObjects(string imagePath, bool gpu = false)
         {
             Dictionary<string, object> kwargs = new Dictionary<string, object>
             {
                 { "image_path", imagePath },
-                //{ "model", model.ToPython() },
                 { "gpu", gpu }
             };
             return BH.Engine.MachineLearning.Compute.Invoke("detect_objects", kwargs);

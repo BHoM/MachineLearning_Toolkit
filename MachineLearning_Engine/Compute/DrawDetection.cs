@@ -32,7 +32,7 @@ namespace BH.Engine.Vision
         /**** Public Methods              ****/
         /*************************************/
 
-        public static object DrawDetection(Bitmap image, DetectionResults detection, double minAccuracy=0.8)
+        public static object DrawDetection(Image image, DetectionResults detection, double minAccuracy=0.8)
         {
             Dictionary<string, object> kwargs = new Dictionary<string, object>
             {
