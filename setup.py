@@ -23,7 +23,7 @@
 from distutils.core import setup
 
 setup(
-    name='pyBHoM',
+    name='MachineLearning_Engine',
     description='A Machine Learning Framework for the Buildings and Habitats object Model',
     author='Eduardo Pignatelli',
     author_email='info@bhom.xyz',
