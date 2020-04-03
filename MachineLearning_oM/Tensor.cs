@@ -35,7 +35,7 @@ namespace BH.oM.MachineLearning
 
 
         /***************************************************/
-        /**** Properties                                ****/
+        /**** Constructor                               ****/
         /***************************************************/
         
         public Tensor(IntPtr handle)
