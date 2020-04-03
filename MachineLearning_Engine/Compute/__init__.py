@@ -20,4 +20,5 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
-from .DetectObjects import detect_objects, draw_detection
+from .DetectObjects import detect_objects
+from .DrawDetection import draw_detection
