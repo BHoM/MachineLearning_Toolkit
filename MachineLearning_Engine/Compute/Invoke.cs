@@ -47,5 +47,12 @@ namespace BH.Engine.MachineLearning
         }
 
         /***************************************************/
+
+        public static PyObject InvokeNumpy(string method, params object[] args)
+        {
+            return BH.Engine.Python.Compute.Invoke(Query.numpy, method, args, null);
+        }
+
+        /***************************************************/
     }
 }
