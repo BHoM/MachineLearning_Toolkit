@@ -29,7 +29,7 @@ import torchvision
 model: torch.nn.Module = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True, pretrained_backbone=True)
 model.eval()
 
-def detect_objects(image_path: str, gpu=False):
+def detect_objects(image_path: str, gpu: bool=False):
     if not (os.path.isfile(image_path)):
         raise FileNotFoundError(image_path)
 
