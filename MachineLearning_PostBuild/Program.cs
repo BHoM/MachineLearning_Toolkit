@@ -77,7 +77,7 @@ namespace BH.PostBuild.MachineLearning
             Compute.PipInstall("torchvision", version: "0.5.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
 
             // install pyBHoM
-            Console.WriteLine("Installing pyBHoM...");
+            Console.WriteLine("Installing MachineLearning_Engine...");
             Compute.PipInstall("-e ../");  // Note: The PostBuilds are run from the Build folder
         }
     }
