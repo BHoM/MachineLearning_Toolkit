@@ -20,7 +20,9 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using BH.oM.MachineLearning;
 using Python.Runtime;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,120 +34,38 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static PyObject ToNumpy<T>(this IEnumerable<T> list)
+        public static PyObject ToNumpy(this Tensor tensor)
         {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", Query.DType(typeof(T)) }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
+            return tensor.NumpyArray;
         }
 
         /***************************************************/
 
-        public static PyObject ToNumpy<T>(this IEnumerable<IEnumerable<T>> list)
+        public static PyObject ToNumpy(this IEnumerable<object> list, Type dtype = null)
         {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", Query.DType(typeof(T)) }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, null);
+            return ToNumpyArray(list, dtype);
         }
 
         /***************************************************/
 
-        public static PyObject ToNumpy<T>(this T[,] list)
+        public static PyObject ToNumpy(this IEnumerable<IEnumerable<object>> listOfLists, Type dtype = null)
         {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", Query.DType(typeof(T)) }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, null);
+            return ToNumpyArray(listOfLists, dtype);
         }
 
+        
+        /***************************************************/
+        /**** Private Methods                           ****/
         /***************************************************/
 
-        public static PyObject ToNumpy<T>(this T[][] list)
+        private static PyObject ToNumpyArray(this object collection, Type dtype)
         {
-            List<object> args = new List<object> { list };
+            if (dtype == null)
+                dtype = typeof(double);
+            List<object> args = new List<object> { collection };
             Dictionary<string, object> kwargs = new Dictionary<string, object>
             {
-                { "dtype", Query.DType(typeof(T)) }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, null);
-        }
-
-        /***************************************************/
-
-        public static PyObject ToNumpy<T>(this IEnumerable<float> list)
-        {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", "float32" }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
-        }
-
-        /***************************************************/
-
-        public static PyObject ToNumpy<T>(this IEnumerable<double> list)
-        {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", "float64" }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
-        }
-
-        /***************************************************/
-
-        public static PyObject ToNumpy<T>(this IEnumerable<decimal> list)
-        {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", "float64" }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
-        }
-
-        /***************************************************/
-
-        public static PyObject ToNumpy<T>(this IEnumerable<short> list)
-        {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", "int16" }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
-        }
-
-        /***************************************************/
-
-        public static PyObject ToNumpy<T>(this IEnumerable<int> list)
-        {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", "int32" }
-            };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
-        }
-
-        /***************************************************/
-
-        public static PyObject ToNumpy<T>(this IEnumerable<long> list)
-        {
-            List<object> args = new List<object> { list };
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "dtype", "int64" }
+                { "dtype", dtype.ToDType() }
             };
             return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
         }

@@ -3,13 +3,13 @@ using System;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Query
+    public static partial class Convert
     {
         /*************************************/
         /**** Public Fields              ****/
         /*************************************/
 
-        public static string DType(this Type type)
+        public static string ToDType(this Type type)
         {
             switch (type.ToString())
             {

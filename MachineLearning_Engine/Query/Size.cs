@@ -10,9 +10,9 @@ namespace BH.Engine.MachineLearning
         /**** Public Fields              ****/
         /*************************************/
 
-        public static int Size<T>(this Tensor<T> tensor)
+        public static int Size(this Tensor tensor)
         {
-            return (Compute.InvokeNumpy("size", tensor) as PyInt).FromPython();
+            return (int)(Compute.InvokeNumpy("size", tensor.ToNumpy())).As<int>();
         }
 
         /*************************************/

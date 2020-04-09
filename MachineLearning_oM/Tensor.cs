@@ -21,26 +21,40 @@
  */
 
 using BH.oM.Base;
+using Python.Runtime;
 using System;
 
 namespace BH.oM.MachineLearning
 {
-    public class Tensor<T> : BHoMObject, IImmutable
+    public class Tensor : BHoMObject, IImmutable
     {
         /***************************************************/
         /**** Properties                                ****/
         /***************************************************/
 
-        public IntPtr Handle { get; } = new IntPtr();
+        public PyObject NumpyArray { get; } = null;
+
+        public Type DType { get; } = typeof(float);
 
 
         /***************************************************/
         /**** Constructor                               ****/
         /***************************************************/
         
-        public Tensor(IntPtr handle)
+        public Tensor(PyObject handle, Type dtype)
         {
-            Handle = handle;
+            NumpyArray = handle;
+            DType = dtype;
+        }
+
+
+        /***************************************************/
+        /**** Constructor                               ****/
+        /***************************************************/
+
+        public override string ToString()
+        {
+            return NumpyArray.ToString();
         }
 
         /***************************************************/
