@@ -26,20 +26,20 @@ import torch
 import torchvision
 
 
-model: torch.nn.Module = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True, pretrained_backbone=True)
-model.eval()
-
 def detect_objects(image_path: str, gpu: bool=False):
-    if not (os.path.isfile(image_path)):
-        raise FileNotFoundError(image_path)
+	if not (os.path.isfile(image_path)):
+		raise FileNotFoundError(image_path)
 
-    pil_image: PIL.Image.Image = PIL.Image.open(image_path)
-    tensor_image: torch.Tensor = torchvision.transforms.functional.to_tensor(pil_image)
+	model: torch.nn.Module = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True, pretrained_backbone=True)
+	model.eval()
 
-    if gpu:
-        tensor_image = tensor_image.cuda()
-        model = model.cuda()
+	pil_image: PIL.Image.Image = PIL.Image.open(image_path)
+	tensor_image: torch.Tensor = torchvision.transforms.functional.to_tensor(pil_image)
 
-    with torch.no_grad():
-        detection: List[Dict[str, torch.Tensor]] = model(tensor_image.unsqueeze(0))
-    return detection
+	if gpu:
+		tensor_image = tensor_image.cuda()
+		model = model.cuda()
+
+	with torch.no_grad():
+		detection: List[Dict[str, torch.Tensor]] = model(tensor_image.unsqueeze(0))
+	return detection
