@@ -67,7 +67,7 @@
     <Compile Include="Convert\ToNumpy.cs" />
     <Compile Include="Create\Tensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query\Data.cs" />
+    <Compile Include="Convert\ToCollection.cs" />
     <Compile Include="Query\DType.cs" />
     <Compile Include="Query\pyCompute.cs" />
     <Compile Include="Query\numpy.cs" />

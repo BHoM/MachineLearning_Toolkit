@@ -28,67 +28,18 @@ using System.Runtime.InteropServices;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Query
+    public static partial class Convert
     {
         /***************************************************/
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static List<short> Data(this Tensor<short> tensor)
+        public static List<double> ToCollection(this Tensor tensor)
         {
-            IntPtr ptr = tensor.Handle;
-            int size = tensor.Size();
-
-            short[] array = new short[size];
-            Marshal.Copy(ptr, array, 0, array.Length);
-
-            return array.ToList();
-        }
-
-        /***************************************************/
-
-        public static List<int> Data(this Tensor<int> tensor)
-        {
-            IntPtr ptr = tensor.Handle;
-            int size = tensor.Size();
-
-            int[] array = new int[size];
-            Marshal.Copy(ptr, array, 0, array.Length);
-
-            return array.ToList();
-        }
-
-        /***************************************************/
-
-        public static List<long> Data(this Tensor<long> tensor)
-        {
-            IntPtr ptr = tensor.Handle;
-            int size = tensor.Size();
-
-            long[] array = new long[size];
-            Marshal.Copy(ptr, array, 0, array.Length);
-
-            return array.ToList();
-        }
-
-        /***************************************************/
-
-        public static List<float> Data(this Tensor<float> tensor)
-        {
-            IntPtr ptr = tensor.Handle;
-            int size = tensor.Size();
-
-            float[] array = new float[size];
-            Marshal.Copy(ptr, array, 0, array.Length);
-
-            return array.ToList();
-        }
-
-        /***************************************************/
-
-        public static List<double> Data(this Tensor<double> tensor)
-        {
-            IntPtr ptr = tensor.Handle;
+            // TODO: For the moment we only provide data as double back to C#
+            // It would be good to find a way to return different types
+            // The obstacle is that Marshal.Copy does not work on generic types
+            IntPtr ptr = tensor.NumpyArray.Handle;
             int size = tensor.Size();
 
             double[] array = new double[size];
