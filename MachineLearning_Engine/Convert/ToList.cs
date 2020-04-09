@@ -34,7 +34,7 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static List<double> ToCollection(this Tensor tensor)
+        public static List<double> ToList(this Tensor tensor)
         {
             // TODO: For the moment we only provide data as double back to C#
             // It would be good to find a way to return different types
