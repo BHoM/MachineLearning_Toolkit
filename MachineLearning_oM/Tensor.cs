@@ -34,17 +34,14 @@ namespace BH.oM.MachineLearning
 
         public PyObject NumpyArray { get; } = null;
 
-        public Type DType { get; } = typeof(float);
-
 
         /***************************************************/
         /**** Constructor                               ****/
         /***************************************************/
         
-        public Tensor(PyObject handle, Type dtype)
+        public Tensor(PyObject handle)
         {
             NumpyArray = handle;
-            DType = dtype;
         }
 
 

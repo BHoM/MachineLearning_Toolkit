@@ -64,12 +64,14 @@
     <Compile Include="Compute\DetectObjects.cs" />
     <Compile Include="Compute\DrawDetection.cs" />
     <Compile Include="Compute\Invoke.cs" />
+    <Compile Include="Convert\FromDType.cs" />
     <Compile Include="Modify\AsType.cs" />
+    <Compile Include="Query\DType.cs" />
     <Compile Include="Convert\ToPython.cs" />
     <Compile Include="Create\Tensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query\DType.cs" />
     <Compile Include="Convert\ToList.cs" />
+    <Compile Include="Convert\ToDType.cs" />
     <Compile Include="Query\pyCompute.cs" />
     <Compile Include="Query\numpy.cs" />
     <Compile Include="Query\Size.cs" />
