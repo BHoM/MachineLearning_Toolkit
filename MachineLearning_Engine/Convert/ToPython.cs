@@ -34,21 +34,21 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static PyObject ToNumpy(this Tensor tensor)
+        public static PyObject ToPython(this Tensor tensor)
         {
             return tensor.NumpyArray;
         }
 
         /***************************************************/
 
-        public static PyObject ToNumpy(this IEnumerable<object> list, Type dtype = null)
+        public static PyObject ToPython(this IEnumerable<object> list, Type dtype = null)
         {
             return ToNumpyArray(list, dtype);
         }
 
         /***************************************************/
 
-        public static PyObject ToNumpy(this IEnumerable<IEnumerable<object>> listOfLists, Type dtype = null)
+        public static PyObject ToPython(this IEnumerable<IEnumerable<object>> listOfLists, Type dtype = null)
         {
             return ToNumpyArray(listOfLists, dtype);
         }

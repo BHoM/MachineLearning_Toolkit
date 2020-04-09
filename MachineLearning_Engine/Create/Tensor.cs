@@ -35,14 +35,14 @@ namespace BH.Engine.MachineLearning
 
         public static Tensor Tensor(IEnumerable<object> collection, Type dtype = null)
         {
-            return new Tensor(collection.ToNumpy(), dtype);
+            return new Tensor(collection.ToPython(dtype));
         }
 
         /*************************************/
 
         public static Tensor Tensor(IEnumerable<IEnumerable<object>> collection, Type dtype = null)
         {
-            return new Tensor(collection.ToNumpy(), dtype);
+            return new Tensor(collection.ToPython(dtype));
         }
 
         /*************************************/
