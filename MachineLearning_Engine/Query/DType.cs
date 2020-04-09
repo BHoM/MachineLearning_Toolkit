@@ -1,33 +1,20 @@
-﻿using Python.Runtime;
+﻿using BH.Engine.Python;
+using BH.oM.MachineLearning;
+using Python.Runtime;
 using System;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Convert
+    public static partial class Query
     {
         /*************************************/
         /**** Public Fields              ****/
         /*************************************/
 
-        public static string ToDType(this Type type)
+        public static Type DType(this Tensor tensor)
         {
-            switch (type.ToString())
-            {
-                case "System.Int16":
-                    return "int16";
-                case "System.Int32":
-                    return "int32";
-                case "System.Int64":
-                    return "int64";
-                case "System.Single":
-                    return "float16";
-                case "System.Double":
-                    return "float32";
-                case "System.Decimal":
-                    return "float128";
-                default:
-                    return "float32";
-            }
+            string dtype = tensor.NumpyArray?.GetAttr("dtype")?.GetAttr("name")?.FromPython<string>();
+            return dtype?.FromDType();
         }
 
         /*************************************/
