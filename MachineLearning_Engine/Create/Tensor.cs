@@ -22,6 +22,7 @@
 
 
 using BH.oM.MachineLearning;
+using System;
 using System.Collections.Generic;
 
 namespace BH.Engine.MachineLearning
@@ -32,44 +33,16 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods              ****/
         /*************************************/
 
-        public static Tensor<T> Tensor<T>(T[] array)
+        public static Tensor Tensor(IEnumerable<object> collection, Type dtype = null)
         {
-            return new Tensor<T>(array.ToNumpy().Handle);
+            return new Tensor(collection.ToNumpy(), dtype);
         }
 
         /*************************************/
 
-        public static Tensor<T> Tensor<T>(List<T> list1D)
+        public static Tensor Tensor(IEnumerable<IEnumerable<object>> collection, Type dtype = null)
         {
-            return new Tensor<T>(list1D.ToNumpy().Handle);
-        }
-
-        /*************************************/
-
-        public static Tensor<T> Tensor<T>(IEnumerable<T> list1D)
-        {
-            return new Tensor<T>(list1D.ToNumpy().Handle);
-        }
-
-        /*************************************/
-
-        public static Tensor<T> Tensor<T>(IEnumerable<IEnumerable<T>> list2D)
-        {
-            return new Tensor<T>(list2D.ToNumpy().Handle);
-        }
-
-        /*************************************/
-
-        public static Tensor<T> Tensor<T>(T[,] array2D)
-        {
-            return new Tensor<T>(array2D.ToNumpy().Handle);
-        }
-
-        /*************************************/
-
-        public static Tensor<T> Tensor<T>(T[][] arrayJagged)
-        {
-            return new Tensor<T>(arrayJagged.ToNumpy().Handle);
+            return new Tensor(collection.ToNumpy(), dtype);
         }
 
         /*************************************/
