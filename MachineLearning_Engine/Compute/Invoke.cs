@@ -36,23 +36,32 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject Invoke(string method, Dictionary<string, object> args)
         {
-            return BH.Engine.Python.Compute.Invoke(Query.pyCompute, method, args);
+            return BH.Engine.Python.Compute.Invoke(m_PyCompute, method, args);
         }
 
         /***************************************************/
 
         public static PyObject InvokeNumpy(string method, IEnumerable<object> args = null, Dictionary<string, object> kwargs = null)
         {
-            return BH.Engine.Python.Compute.Invoke(Query.numpy, method, args, kwargs);
+            return BH.Engine.Python.Compute.Invoke(m_Numpy, method, args, kwargs);
         }
 
         /***************************************************/
 
         public static PyObject InvokeNumpy(string method, params object[] args)
         {
-            return BH.Engine.Python.Compute.Invoke(Query.numpy, method, args, null);
+            return BH.Engine.Python.Compute.Invoke(m_Numpy, method, args, null);
         }
 
-        /***************************************************/
+
+        /*************************************/
+        /**** Private Fields              ****/
+        /*************************************/
+
+        private static PyObject m_PyCompute = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
+
+        public static PyObject m_Numpy = Engine.Python.Query.Import("numpy");
+
+        /*************************************/
     }
 }
