@@ -39,9 +39,6 @@
       <HintPath>..\..\BHoM\Build\DeepLearning_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Numpy">
-      <HintPath>..\..\Numpy_Toolkit\Build\Numpy.dll</HintPath>
-    </Reference>
     <Reference Include="Python.Runtime">
       <HintPath>..\..\Python_Toolkit\Build\Python.Runtime.dll</HintPath>
       <Private>False</Private>
