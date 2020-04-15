@@ -78,7 +78,7 @@ namespace BH.PostBuild.MachineLearning
 
             // install pyBHoM
             Console.WriteLine("Installing MachineLearning_Engine...");
-            Compute.PipInstall("-e ../");  // Note: The PostBuilds are run from the Build folder
+            Compute.PipInstall("-e ../../");  // Note: The PostBuilds are run from the bin/Debug folder
         }
     }
 }
