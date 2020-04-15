@@ -32,7 +32,7 @@ namespace BH.oM.MachineLearning
         /**** Properties                                ****/
         /***************************************************/
 
-        public PyObject NumpyArray { get; } = null;
+        public virtual PyObject NumpyArray { get; } = null;
 
 
         /***************************************************/

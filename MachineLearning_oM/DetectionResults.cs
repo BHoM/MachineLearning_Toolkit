@@ -31,11 +31,11 @@ namespace BH.oM.Vision
         /**** Properties                                ****/
         /***************************************************/
 
-        public List<Polyline> Boxes { get; set; } = new List<Polyline>();
+        public virtual List<Polyline> Boxes { get; set; } = new List<Polyline>();
 
-        public List<int> Categories { get; set; } = new List<int>();
+        public virtual List<int> Categories { get; set; } = new List<int>();
 
-        public List<double> Scores { get; set; } = new List<double>();
+        public virtual List<double> Scores { get; set; } = new List<double>();
 
         /***************************************************/
     }
