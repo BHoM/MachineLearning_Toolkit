@@ -38,7 +38,7 @@ namespace BH.Engine.Vision
                 { "image_path", imagePath },
                 { "gpu", gpu }
             };
-            return BH.Engine.MachineLearning.Compute.Invoke("detect_objects", kwargs);
+            return BH.Engine.MachineLearning.Compute.Invoke("DetectObjects.detect_objects", kwargs);
         }
 
         /*************************************/

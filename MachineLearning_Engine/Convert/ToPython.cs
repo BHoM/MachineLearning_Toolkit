@@ -34,6 +34,13 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods                            ****/
         /***************************************************/
 
+        public static PyObject IToPython(this object obj)
+        {
+            return ToPython(obj as dynamic);
+        }
+
+        /***************************************************/
+
         public static PyObject ToPython(this Tensor tensor)
         {
             return tensor.NumpyArray;
@@ -53,7 +60,14 @@ namespace BH.Engine.MachineLearning
             return ToNumpyArray(listOfLists, dtype);
         }
 
-        
+        /***************************************************/
+
+        public static PyObject ToPython(this LinearRegression model)
+        {
+            return model.SkLearnModel;
+        }
+
+
         /***************************************************/
         /**** Private Methods                           ****/
         /***************************************************/
@@ -68,6 +82,13 @@ namespace BH.Engine.MachineLearning
                 { "dtype", dtype.ToDType() }
             };
             return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
+        }
+
+        /***************************************************/
+
+        private static PyObject ToPython(this object obj)
+        {
+            return Engine.Python.Convert.IToPython(obj);
         }
 
         /***************************************************/

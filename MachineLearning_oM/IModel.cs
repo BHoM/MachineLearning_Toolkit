@@ -20,29 +20,7 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.Vision;
-using System.Collections.Generic;
-using System.Drawing;
-
-namespace BH.Engine.Vision
+namespace BH.oM.MachineLearning
 {
-    public static partial class Compute
-    {
-        /*************************************/
-        /**** Public Methods              ****/
-        /*************************************/
-
-        public static object DrawDetection(Image image, DetectionResults detection, double minAccuracy=0.8)
-        {
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "image", image },
-                { "detection", detection },
-                { "min_accracy", minAccuracy }
-            };
-            return BH.Engine.MachineLearning.Compute.Invoke("DrawDetection.draw_detection", kwargs);
-        }
-
-        /*************************************/
-    }
+    public interface IModel { }
 }

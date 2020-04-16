@@ -19,6 +19,31 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
-from . import DetectObjects
-from . import DrawDetection
-from . import LinearRegression 
+
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+
+def fit(x: np.ndarray, y: np.ndarray):
+	assert x.shape == y.shape, "Input data and target data have different shape {} and {}".format(
+								x.shape, y.shape)
+	
+	# instantiace linear regression model
+	model = LinearRegression()
+	
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	if y.ndim == 1:
+		y = y.reshape(-1, 1)
+
+	# fit the training data
+	model.fit(x, y)
+	return model
+
+
+def infer(model: LinearRegression, x: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	return model.predict(x)

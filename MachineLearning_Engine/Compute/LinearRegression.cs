@@ -20,11 +20,12 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.Vision;
-using BH.oM.DeepLearning.Models;
+using BH.Engine.MachineLearning;
+using BH.oM.MachineLearning;
+using BH.oM.Reflection.Attributes;
 using Python.Runtime;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
@@ -34,44 +35,26 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods              ****/
         /*************************************/
 
-        public static PyObject Invoke(string method, params object[] args)
+        [Description("Finds the slope and the intercept of a linear function that best fits the given set of bidimensional data.")]
+        [Input("x", "Training data as a list of 2-elements list")]
+        [Input("y", "Target values as a list of 2-elements list")]
+        [Output("")]
+        public static LinearRegression LinearRegression(Tensor x, Tensor y)
         {
-            PyObject[] pyargs = new PyObject[args.Length];
-            for (int i = 0; i < args.Length; i++)
-                pyargs[i] = Engine.MachineLearning.Convert.IToPython(args[i]);
-
-            return Python.Compute.Invoke(m_PyCompute, method, pyargs, null);
+            PyObject model = BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.fit", x, y);
+            return new LinearRegression(model);
         }
 
         /*************************************/
 
-        public static PyObject Invoke(string method, Dictionary<string, object> kwargs)
+        [Description("Projects the given input using a linear regression model")]
+        [Input("model", "The linear regressor model used for inference")]
+        [Input("x", "Data to project on")]
+        [Output("")]
+        public static Tensor Infer(LinearRegression model, Tensor x)
         {
-            return BH.Engine.Python.Compute.Invoke(m_PyCompute, method, null, kwargs);
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.infer", model, x));
         }
-
-        /***************************************************/
-
-        public static PyObject InvokeNumpy(string method, IEnumerable<object> args = null, Dictionary<string, object> kwargs = null)
-        {
-            return BH.Engine.Python.Compute.Invoke(m_Numpy, method, args, kwargs);
-        }
-
-        /***************************************************/
-
-        public static PyObject InvokeNumpy(string method, params object[] args)
-        {
-            return BH.Engine.Python.Compute.Invoke(m_Numpy, method, args, null);
-        }
-
-
-        /*************************************/
-        /**** Private Fields              ****/
-        /*************************************/
-
-        private static PyObject m_PyCompute = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
-
-        public static PyObject m_Numpy = Engine.Python.Query.Import("numpy");
 
         /*************************************/
     }
