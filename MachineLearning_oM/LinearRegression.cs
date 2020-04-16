@@ -20,29 +20,30 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.Vision;
-using System.Collections.Generic;
-using System.Drawing;
+using BH.oM.Base;
+using Python.Runtime;
 
-namespace BH.Engine.Vision
+namespace BH.oM.MachineLearning
 {
-    public static partial class Compute
+    public class LinearRegression : BHoMObject, IModel, IImmutable
     {
-        /*************************************/
-        /**** Public Methods              ****/
-        /*************************************/
+        /***************************************************/
+        /**** Properties                                ****/
+        /***************************************************/
 
-        public static object DrawDetection(Image image, DetectionResults detection, double minAccuracy=0.8)
+        public virtual PyObject SkLearnModel { get; } = null;
+
+
+        /***************************************************/
+        /**** Constructors                              ****/
+        /***************************************************/
+
+        public LinearRegression(PyObject model)
         {
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "image", image },
-                { "detection", detection },
-                { "min_accracy", minAccuracy }
-            };
-            return BH.Engine.MachineLearning.Compute.Invoke("DrawDetection.draw_detection", kwargs);
+            SkLearnModel = model;
         }
 
-        /*************************************/
+
+        /***************************************************/
     }
 }
