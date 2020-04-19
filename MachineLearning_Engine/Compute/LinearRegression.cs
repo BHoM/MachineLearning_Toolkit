@@ -22,8 +22,11 @@
 
 using BH.Engine.MachineLearning;
 using BH.oM.MachineLearning;
+using BH.oM.Reflection;
 using BH.oM.Reflection.Attributes;
 using Python.Runtime;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -54,6 +57,22 @@ namespace BH.Engine.MachineLearning
         public static Tensor Infer(LinearRegression model, Tensor x)
         {
             return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.infer", model, x));
+        }
+
+        /*************************************/
+
+        [Description("Projects the given input using a linear regression model")]
+        [Input("model", "The linear regressor model used for inference")]
+        [Output("")]
+        public static Output<List<double>, double> Coefs(LinearRegression model)
+        {
+            PyObject coefs = BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.coefs", model);
+            Output<List<double>, double> output = new Output<List<double>, double>
+            {
+                Item1 = coefs.GetItem(0).ToString().Trim(new Char[] { '[', ']' }).Split(' ').Where(s => !string.IsNullOrEmpty(s)).Select(x => double.Parse(x, System.Globalization.NumberStyles.Float)).ToList(),
+                Item2 = double.Parse(coefs.GetItem(1).ToString().Trim(new Char[] { '[', ']' })),
+            };
+            return output;
         }
 
         /*************************************/

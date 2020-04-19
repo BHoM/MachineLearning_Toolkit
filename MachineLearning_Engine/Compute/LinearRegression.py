@@ -25,8 +25,8 @@ import numpy as np
 
 
 def fit(x: np.ndarray, y: np.ndarray):
-	assert x.shape == y.shape, "Input data and target data have different shape {} and {}".format(
-								x.shape, y.shape)
+	assert x.shape[0] == y.shape[0], "Input data and target data have different shape {} and {}".format(
+								x.shape[0], y.shape[0])
 	
 	# instantiace linear regression model
 	model = LinearRegression()
@@ -41,6 +41,8 @@ def fit(x: np.ndarray, y: np.ndarray):
 	model.fit(x, y)
 	return model
 
+def coefs(model: LinearRegression):
+	return [model.coef_, model.intercept_]
 
 def infer(model: LinearRegression, x: np.ndarray):
 	# make sure the input is at least bidimensinal
