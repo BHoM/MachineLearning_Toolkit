@@ -20,11 +20,10 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.Engine.MachineLearning;
 using BH.oM.MachineLearning;
 using BH.oM.Reflection;
 using BH.oM.Reflection.Attributes;
-using Python.Runtime;
+using BH.Engine.MachineLearning;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -32,31 +31,22 @@ using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Compute
+    public static partial class Query
     {
         /*************************************/
-        /**** Public Methods              ****/
-        /*************************************/
-
-        [Description("Finds the slope and the intercept of a linear function that best fits the given set of bidimensional data.")]
-        [Input("x", "Training data as a list of 2-elements list")]
-        [Input("y", "Target values as a list of 2-elements list")]
-        [Output("")]
-        public static LinearRegression LinearRegression(Tensor x, Tensor y)
-        {
-            PyObject model = BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.fit", x, y);
-            return new LinearRegression(model);
-        }
-
+        /**** Public Fields              ****/
         /*************************************/
 
         [Description("Projects the given input using a linear regression model")]
         [Input("model", "The linear regressor model used for inference")]
-        [Input("x", "Data to project on")]
         [Output("")]
-        public static Tensor Infer(LinearRegression model, Tensor x)
+        public static Output<List<double>, double> Coefficients(LinearRegression model)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.infer", model, x));
+            BH.Engine.Reflection.Compute.RecordNote(model.SkLearnModel.GetAttr("coef_").ToString());
+            BH.Engine.Reflection.Compute.RecordNote(model.SkLearnModel.GetAttr("intercept_").ToString());
+            List<double> coef = model.SkLearnModel.GetAttr("coef_").ToString().Trim(new Char[] { '[', ']' }).Split(' ').Where(s => !string.IsNullOrEmpty(s)).Select(x => double.Parse(x, System.Globalization.NumberStyles.Float)).ToList();
+            double intercept = double.Parse(model.SkLearnModel.GetAttr("intercept_").ToString().Trim(new Char[] { '[', ']' }));
+            return new Output<List<double>, double> { Item1 = coef, Item2 = intercept };
         }
 
         /*************************************/
