@@ -37,7 +37,7 @@ namespace BH.Engine.MachineLearning
         /**** Public Fields              ****/
         /*************************************/
 
-        [Description("Projects the given input using a linear regression model")]
+        [Description("Expose the variables for the given regression model.")]
         [Input("model", "The linear regressor model used for inference")]
         [Output("")]
         public static Output<List<double>, double> Coefficients(LinearRegression model)
