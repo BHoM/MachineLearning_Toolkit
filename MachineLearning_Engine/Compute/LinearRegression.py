@@ -41,9 +41,6 @@ def fit(x: np.ndarray, y: np.ndarray):
 	model.fit(x, y)
 	return model
 
-def coefs(model: LinearRegression):
-	return [model.coef_, model.intercept_]
-
 def infer(model: LinearRegression, x: np.ndarray):
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
