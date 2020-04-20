@@ -25,8 +25,8 @@ import numpy as np
 
 
 def fit(x: np.ndarray, y: np.ndarray):
-	assert x.shape[0] == y.shape[0], "Input data and target data have different shape {} and {}".format(
-								x.shape[0], y.shape[0])
+	assert len(x) == len(y), "Input data and target data have different shape {} and {}".format(
+								len(x), len(y))
 	
 	# instantiace linear regression model
 	model = LinearRegression()
