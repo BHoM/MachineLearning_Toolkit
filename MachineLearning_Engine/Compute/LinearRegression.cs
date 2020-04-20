@@ -41,7 +41,7 @@ namespace BH.Engine.MachineLearning
         [Description("Finds the slope and the intercept of a linear function that best fits the given set of bidimensional data.")]
         [Input("x", "Training data as a list of 2-elements list")]
         [Input("y", "Target values as a list of 2-elements list")]
-        [Output("")]
+        [Output("model", "The ordinary least squares linear regression with the given data.")]
         public static LinearRegression LinearRegression(Tensor x, Tensor y)
         {
             PyObject model = BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.fit", x, y);
@@ -53,7 +53,7 @@ namespace BH.Engine.MachineLearning
         [Description("Projects the given input using a linear regression model")]
         [Input("model", "The linear regressor model used for inference")]
         [Input("x", "Data to project on")]
-        [Output("")]
+        [Output("y", "The projected output for the given data using the linear model.")]
         public static Tensor Infer(LinearRegression model, Tensor x)
         {
             return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.infer", model, x));

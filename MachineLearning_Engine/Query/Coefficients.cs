@@ -41,13 +41,11 @@ namespace BH.Engine.MachineLearning
         [Input("model", "The linear regressor model used for inference")]
         [MultiOutput(0, "coefficients", "Estimated coefficients for the linear regression model. This is a 1D array of double.")]
         [MultiOutput(1, "intercept", "The independent term in the linear model.")]
-        public static Output<List<double>, double> Coefficients(LinearRegression model)
+        public static Output<Tensor, Tensor> Coefficients(LinearRegression model)
         {
-            BH.Engine.Reflection.Compute.RecordNote(model.SkLearnModel.GetAttr("coef_").ToString());
-            BH.Engine.Reflection.Compute.RecordNote(model.SkLearnModel.GetAttr("intercept_").ToString());
-            List<double> coefficients = model.SkLearnModel.GetAttr("coef_").ToString().Trim(new Char[] { '[', ']' }).Split(' ').Where(s => !string.IsNullOrEmpty(s)).Select(x => double.Parse(x, System.Globalization.NumberStyles.Float)).ToList();
-            double intercept = double.Parse(model.SkLearnModel.GetAttr("intercept_").ToString().Trim(new Char[] { '[', ']' }));
-            return new Output<List<double>, double> { Item1 = coefficients, Item2 = intercept };
+            Tensor coefficients = new Tensor(model.SkLearnModel.GetAttr("coef_"));
+            Tensor intercept = new Tensor(model.SkLearnModel.GetAttr("intercept_")); 
+            return new Output<Tensor, Tensor> { Item1 = coefficients, Item2 = intercept };
         }
 
         /*************************************/
