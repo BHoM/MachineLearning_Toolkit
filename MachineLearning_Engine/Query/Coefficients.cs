@@ -37,16 +37,17 @@ namespace BH.Engine.MachineLearning
         /**** Public Fields              ****/
         /*************************************/
 
-        [Description("Expose the variables for the given regression model.")]
+        [Description("Expose the attributes for the given regression model.")]
         [Input("model", "The linear regressor model used for inference")]
-        [Output("")]
+        [MultiOutput(0, "coefficients", "Estimated coefficients for the linear regression model. This is a 1D array of double.")]
+        [MultiOutput(1, "intercept", "The independent term in the linear model.")]
         public static Output<List<double>, double> Coefficients(LinearRegression model)
         {
             BH.Engine.Reflection.Compute.RecordNote(model.SkLearnModel.GetAttr("coef_").ToString());
             BH.Engine.Reflection.Compute.RecordNote(model.SkLearnModel.GetAttr("intercept_").ToString());
-            List<double> coef = model.SkLearnModel.GetAttr("coef_").ToString().Trim(new Char[] { '[', ']' }).Split(' ').Where(s => !string.IsNullOrEmpty(s)).Select(x => double.Parse(x, System.Globalization.NumberStyles.Float)).ToList();
+            List<double> coefficients = model.SkLearnModel.GetAttr("coef_").ToString().Trim(new Char[] { '[', ']' }).Split(' ').Where(s => !string.IsNullOrEmpty(s)).Select(x => double.Parse(x, System.Globalization.NumberStyles.Float)).ToList();
             double intercept = double.Parse(model.SkLearnModel.GetAttr("intercept_").ToString().Trim(new Char[] { '[', ']' }));
-            return new Output<List<double>, double> { Item1 = coef, Item2 = intercept };
+            return new Output<List<double>, double> { Item1 = coefficients, Item2 = intercept };
         }
 
         /*************************************/
