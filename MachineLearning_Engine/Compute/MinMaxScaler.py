@@ -19,8 +19,28 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
-from . import DetectObjects
-from . import DrawDetection
-from . import LinearRegression 
-from . import MinMaxScaler 
-from . import StandardScaler
+
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+
+
+def fit(x: np.ndarray):
+	# instantiace a min-max scaler
+	scaler = MinMaxScaler()
+
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	return scaler.fit(x)
+
+def scale(scaler: MinMaxScaler, x: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	return scaler.transform(x)
+
+def inverse(scaler: MinMaxScaler, x: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	return scaler.inverse_transform(x)
