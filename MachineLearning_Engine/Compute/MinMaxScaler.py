@@ -33,13 +33,13 @@ def fit(x: np.ndarray):
 		x = x.reshape(-1, 1)
 	return scaler.fit(x)
 
-def scale(scaler: MinMaxScaler, x: np.ndarray):
+def infer(scaler: MinMaxScaler, x: np.ndarray):
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
 		x = x.reshape(-1, 1)
 	return scaler.transform(x)
 
-def inverse(scaler: MinMaxScaler, x: np.ndarray):
+def infer_inverse(scaler: MinMaxScaler, x: np.ndarray):
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
 		x = x.reshape(-1, 1)

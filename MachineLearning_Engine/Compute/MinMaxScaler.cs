@@ -40,13 +40,11 @@ namespace BH.Engine.MachineLearning
 
         [Description("Rescale the data to a given range between 0 and 1.")]
         [Input("x", "Data to be rescaled.")]
-        [MultiOutput(0, "scaler", "The estimated scaler for the min-max scale transformation.")]
-        [MultiOutput(1, "rescaledX", "The rescaled data with a range between o and 1.")]
-        public static Output<MinMaxScaler, Tensor> MinMaxScaler(Tensor x)
+        [Output("scaler", "The estimated scaler for the min-max scale transformation.")]
+        public static MinMaxScaler MinMaxScaler(Tensor x)
         {
             PyObject scaler = BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.fit", x);
-            Tensor rescaledX = new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.scale", scaler, x));
-            return new Output<MinMaxScaler, Tensor> { Item1 = new MinMaxScaler(scaler), Item2 = rescaledX };
+            return new MinMaxScaler(scaler);
         }
 
         /*************************************/
@@ -57,17 +55,17 @@ namespace BH.Engine.MachineLearning
         [Output("rescaledX", "The rescaled data with a range between o and 1.")]
         public static Tensor MinMaxScale(MinMaxScaler scaler, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.scale", scaler, x));
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.infer", scaler, x));
         }
 
         /*************************************/
         [Description("Inverse transformation of data with the given scaler.")]
         [Input("scaler", "The min-max scaler used for inverse transformation.")]
-        [Input("x", "Data to be inverse transformed.")]
+        [Input("x", "Data to be inverse-transformed.")]
         [Output("inversedX", "The inverse transformed data using the min-max scaler.")]
         public static Tensor InverseMinMaxScale(MinMaxScaler scaler, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.inverse", scaler, x));
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.infer_inverse", scaler, x));
         }
 
         /*************************************/
