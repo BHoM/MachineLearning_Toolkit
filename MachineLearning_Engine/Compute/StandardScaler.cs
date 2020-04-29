@@ -40,13 +40,11 @@ namespace BH.Engine.MachineLearning
 
         [Description("Rescale the data with standard scaler.")]
         [Input("x", "Data to be rescaled.")]
-        [MultiOutput(0, "scaler", "The estimated scaler for the standard scale transformation.")]
-        [MultiOutput(1, "rescaledX", "The rescaled data after standard scale transformation.")]
-        public static Output<StandardScaler, Tensor> StandardScaler(Tensor x)
+        [Output("scaler", "The estimated scaler for the standard scale transformation.")]
+        public static StandardScaler StandardScaler(Tensor x)
         {
             PyObject scaler = BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.fit", x);
-            Tensor rescaledX = new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.scale", scaler, x));
-            return new Output<StandardScaler, Tensor> { Item1 = new StandardScaler(scaler), Item2 = rescaledX };
+            return new StandardScaler(scaler);
         }
 
         /*************************************/
@@ -57,17 +55,17 @@ namespace BH.Engine.MachineLearning
         [Output("rescaledX", "The rescaled data after the given standard scale transformation.")]
         public static Tensor StandardScale(StandardScaler scaler, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.scale", scaler, x));
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.infer", scaler, x));
         }
 
         /*************************************/
         [Description("Inverse transformation of data with the given scaler.")]
         [Input("scaler", "The standard scaler used for inverse transformation.")]
-        [Input("x", "Data to be inverse transformed.")]
+        [Input("x", "Data to be inverse-transformed.")]
         [Output("inversedX", "The inverse transformed data using the standard scaler.")]
         public static Tensor InverseStandardScale(StandardScaler scaler, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.inverse", scaler, x));
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.infer_inverse", scaler, x));
         }
 
         /*************************************/
