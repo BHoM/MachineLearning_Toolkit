@@ -53,7 +53,7 @@ namespace BH.Engine.MachineLearning
         [Input("scaler", "The given scaler for the standard scale transformation.")]
         [Input("x", "Data to be rescaled.")]
         [Output("rescaledX", "The rescaled data after the given standard scale transformation.")]
-        public static Tensor StandardScale(StandardScaler scaler, Tensor x)
+        public static Tensor Infer(StandardScaler scaler, Tensor x)
         {
             return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.infer", scaler, x));
         }
@@ -63,7 +63,7 @@ namespace BH.Engine.MachineLearning
         [Input("scaler", "The standard scaler used for inverse transformation.")]
         [Input("x", "Data to be inverse-transformed.")]
         [Output("inversedX", "The inverse transformed data using the standard scaler.")]
-        public static Tensor InverseStandardScale(StandardScaler scaler, Tensor x)
+        public static Tensor InferInverse(StandardScaler scaler, Tensor x)
         {
             return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("StandardScaler.infer_inverse", scaler, x));
         }
