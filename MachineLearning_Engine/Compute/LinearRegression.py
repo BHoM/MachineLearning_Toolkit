@@ -46,3 +46,11 @@ def infer(model: LinearRegression, x: np.ndarray):
 	if x.ndim == 1:
 		x = x.reshape(-1, 1)
 	return model.predict(x)
+
+def score(model: LinearRegression, x: np.ndarray, y: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	if y.ndim == 1:
+		y = y.reshape(-1, 1)
+	return model.score(x, y)
