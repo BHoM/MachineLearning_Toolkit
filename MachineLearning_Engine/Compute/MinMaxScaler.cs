@@ -53,7 +53,7 @@ namespace BH.Engine.MachineLearning
         [Input("scaler", "The given scaler for the min-max scale transformation.")]
         [Input("x", "Data to be rescaled.")]
         [Output("rescaledX", "The rescaled data with a range between o and 1.")]
-        public static Tensor MinMaxScale(MinMaxScaler scaler, Tensor x)
+        public static Tensor Infer(MinMaxScaler scaler, Tensor x)
         {
             return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.infer", scaler, x));
         }
@@ -63,7 +63,7 @@ namespace BH.Engine.MachineLearning
         [Input("scaler", "The min-max scaler used for inverse transformation.")]
         [Input("x", "Data to be inverse-transformed.")]
         [Output("inversedX", "The inverse transformed data using the min-max scaler.")]
-        public static Tensor InverseMinMaxScale(MinMaxScaler scaler, Tensor x)
+        public static Tensor InferInverse(MinMaxScaler scaler, Tensor x)
         {
             return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("MinMaxScaler.infer_inverse", scaler, x));
         }

@@ -74,11 +74,12 @@ namespace BH.Engine.MachineLearning
             return scaler.SkLearnScaler;
         }
 
+        /***************************************************/
+
         public static PyObject ToPython(this StandardScaler scaler)
         {
             return scaler.SkLearnScaler;
         }
-
 
         /***************************************************/
         /**** Private Methods                           ****/
