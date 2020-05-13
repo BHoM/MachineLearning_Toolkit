@@ -20,11 +20,10 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.Engine.MachineLearning;
 using BH.oM.MachineLearning;
 using BH.oM.Reflection;
 using BH.oM.Reflection.Attributes;
-using Python.Runtime;
+using BH.Engine.MachineLearning;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -32,31 +31,20 @@ using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Compute
+    public static partial class Query
     {
         /*************************************/
-        /**** Public Methods              ****/
+        /**** Public Fields              ****/
         /*************************************/
 
-        [Description("Finds the slope and the intercept of a linear function that best fits the given set of bidimensional data.")]
+        [Description("Finds the The coefficient of determination R^2 of the given regression model.")]
+        [Input("model", "The linear regressor model used for inference")]
         [Input("x", "Training data as a list of 2-elements list.")]
         [Input("y", "Target values as a list of 2-elements list.")]
-        [Output("model", "The ordinary least squares linear regression with the given data.")]
-        public static LinearRegression LinearRegression(Tensor x, Tensor y)
+        [Output("r2", "The coefficient of determination R^2 of the prediction.")]
+        public static Tensor Error(LinearRegression model, Tensor x, Tensor y)
         {
-            PyObject model = BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.fit", x, y);
-            return new LinearRegression(model);
-        }
-
-        /*************************************/
-
-        [Description("Projects the given input using a linear regression model.")]
-        [Input("model", "The linear regressor model used for inference.")]
-        [Input("x", "Data to project on.")]
-        [Output("y", "The projected output for the given data using the linear model.")]
-        public static Tensor Infer(LinearRegression model, Tensor x)
-        {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.infer", model, x));
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.score", model, x, y)); ;
         }
 
         /*************************************/

@@ -47,7 +47,7 @@ def infer(model: LinearRegression, x: np.ndarray):
 		x = x.reshape(-1, 1)
 	return model.predict(x)
 
-def score(model: LinearRegression, x: np.ndarray, y: np.ndarray):
+def error(model: LinearRegression, x: np.ndarray, y: np.ndarray):
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
 		x = x.reshape(-1, 1)

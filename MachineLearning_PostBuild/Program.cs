@@ -67,7 +67,7 @@ namespace BH.PostBuild.MachineLearning
             Console.WriteLine($"Installing {module}...");
             Compute.PipInstall(module, version: "2");
 
-            // install tensorflow
+            // install jax
             module = "jax";
             Console.WriteLine($"Installing {module}...");
             Compute.PipInstall(module);
