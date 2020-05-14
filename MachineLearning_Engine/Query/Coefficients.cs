@@ -38,7 +38,7 @@ namespace BH.Engine.MachineLearning
         /*************************************/
 
         [Description("Expose the attributes for the given regression model.")]
-        [Input("model", "The linear regressor model used for inference")]
+        [Input("model", "The linear regressor model used for inference.")]
         [MultiOutput(0, "coefficients", "Estimated coefficients for the linear regression model. This is a 1D array of double.")]
         [MultiOutput(1, "intercept", "The independent term in the linear model.")]
         public static Output<Tensor, Tensor> Coefficients(LinearRegression model)

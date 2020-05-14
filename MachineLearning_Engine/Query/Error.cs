@@ -38,13 +38,13 @@ namespace BH.Engine.MachineLearning
         /*************************************/
 
         [Description("Finds the The coefficient of determination R^2 of the given regression model.")]
-        [Input("model", "The linear regressor model used for inference")]
+        [Input("model", "The linear regressor model used for inference.")]
         [Input("x", "Training data as a list of 2-elements list.")]
         [Input("y", "Target values as a list of 2-elements list.")]
         [Output("r2", "The coefficient of determination R^2 of the prediction.")]
         public static Tensor Error(LinearRegression model, Tensor x, Tensor y)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.score", model, x, y)); ;
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.error", model, x, y)); ;
         }
 
         /*************************************/
