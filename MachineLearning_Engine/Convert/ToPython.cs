@@ -82,6 +82,13 @@ namespace BH.Engine.MachineLearning
         }
 
         /***************************************************/
+
+        public static PyObject ToPython(this PolynomialFeatures transformer)
+        {
+            return transformer.SkLearnTransformer;
+        }
+
+        /***************************************************/
         /**** Private Methods                           ****/
         /***************************************************/
 
