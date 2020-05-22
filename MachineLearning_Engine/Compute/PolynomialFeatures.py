@@ -19,9 +19,20 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
-from . import DetectObjects
-from . import DrawDetection
-from . import LinearRegression 
-from . import MinMaxScaler 
-from . import StandardScaler
-from . import PolynomialFeatures
+
+from sklearn.preprocessing import PolynomialFeatures
+import numpy as np
+
+
+def fit(deg: int, interaction: bool):
+	# instantiace a polynomial features transformer
+	transformer = PolynomialFeatures(degree = deg, interaction_only = interaction)
+
+	return transformer
+
+def infer(transformer: PolynomialFeatures, x: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+
+	return transformer.fit_transform(x)

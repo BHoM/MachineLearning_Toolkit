@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compute\PolynomialFeatures.cs" />
     <Compile Include="Compute\StandardScaler.cs" />
     <Compile Include="Compute\MinMaxScaler.cs" />
     <Compile Include="Compute\LinearRegression.cs" />
@@ -109,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Compute\StandardScaler.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compute\PolynomialFeatures.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
