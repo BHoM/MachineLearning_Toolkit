@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetectionResults.cs" />
+    <Compile Include="PolynomialFeatures.cs" />
     <Compile Include="StandardScaler.cs" />
     <Compile Include="MinMaxScaler.cs" />
     <Compile Include="LinearRegression.cs" />
