@@ -28,6 +28,6 @@ setup(
     author='Eduardo Pignatelli',
     author_email='info@bhom.xyz',
     license='LGPLv3',
-    packages=["MachineLearning_Engine.Compute"],
+    packages=["MachineLearning_Engine", "MachineLearning_Engine.Compute"],
     version="3.1.0.0",
     )
