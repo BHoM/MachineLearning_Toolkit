@@ -102,9 +102,7 @@
     <None Include="Compute\__init__.py" />
     <None Include="__init__.py" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Compute\MinMaxScaler.py" />
   </ItemGroup>
@@ -112,4 +110,8 @@
     <None Include="Compute\StandardScaler.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
+xcopy "$(SolutionDir)*.py" "C:\\ProgramData\\BHoM\\python-3.7.3-embed-amd64\src" /Y /I /S /F</PostBuildEvent>
+  </PropertyGroup>
 </Project>
