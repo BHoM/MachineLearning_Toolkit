@@ -38,59 +38,23 @@ namespace BH.Engine.MachineLearning
             if (!run)
                 return new Output<bool, List<string>>();
 
+            // basic modules (no additional parameters to pip install)
+            List<string> modules = new List<string> { "pillow", "pymongo", "numpy", "matplotlib", "pandas", "scikit-learn" };
             List<string> installed = new List<string>();
 
-            // install pillow
-            string module = "pillow";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install pymongo
-            module = "pymongo";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install numpy
-            module = "numpy";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install matplotlib
-            module = "matplotlib";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install pandas
-            module = "pandas";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install scikit-learn
-            module = "scikit-learn";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
+            // install basic modules
+            for (int i = 0; i < modules.Count; i++)
+            {
+                Console.WriteLine($"Installing {modules[i]}...");
+                Engine.Python.Compute.PipInstall(modules[i], force: force);
+                if (Python.Query.IsModuleInstalled(modules[i]))
+                    installed.Add(modules[i]);
+            }
 
             // install tensorflow
-            module = "tensorflow";
+            string module = "tensorflow";
             Console.WriteLine($"Installing {module}...");
             Engine.Python.Compute.PipInstall(module, force: force, version: "2");
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install jax
-            module = "jax";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force);
             if (Python.Query.IsModuleInstalled(module))
                 installed.Add(module);
 
