@@ -24,7 +24,7 @@ using BH.oM.MachineLearning;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 
 namespace BH.Engine.MachineLearning
 {
@@ -104,10 +104,15 @@ namespace BH.Engine.MachineLearning
             return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
         }
 
+
+        /***************************************************/
+        /**** Fallback case                             ****/
         /***************************************************/
 
         private static PyObject ToPython(this object obj)
         {
+            // If no method has been found in the MachineLearning_Engine,
+            // Try to see if there is any convert in the Python_Engine that works
             return Engine.Python.Convert.IToPython(obj);
         }
 
