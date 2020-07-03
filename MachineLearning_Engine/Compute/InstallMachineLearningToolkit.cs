@@ -73,7 +73,7 @@ namespace BH.Engine.MachineLearning
 
             // install pyBHoM
             Console.WriteLine("Installing MachineLearning_Engine...");
-            module = "MachineLearningEngine";
+            module = "MachineLearning_Engine";
             string mlPath = Path.Combine(Python.Query.EmbeddedPythonHome(), "src", "MachineLearning_Toolkit");
             Engine.Python.Compute.PipInstall($"-e {mlPath}", force: force);
             if (Python.Query.IsModuleInstalled(module))
