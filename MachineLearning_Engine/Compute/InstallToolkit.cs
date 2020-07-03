@@ -33,23 +33,22 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods              ****/
         /*************************************/
 
-        public static Output<bool, List<string>> InstallToolkit(bool force = false, bool run = false)
+        public static Output<bool, List<string>> InstallMachineLearningToolkit(bool run = false, bool force = false)
         {
             if (!run)
-                return null;
+                return new Output<bool, List<string>>();
 
-            string module;
             List<string> installed = new List<string>();
 
             // install pillow
-            module = "pillow";
+            string module = "pillow";
             Console.WriteLine($"Installing {module}...");
             Engine.Python.Compute.PipInstall(module, force: force);
             if (Python.Query.IsModuleInstalled(module))
                 installed.Add(module);
 
             // install pymongo
-                module = "pymongo";
+            module = "pymongo";
             Console.WriteLine($"Installing {module}...");
             Engine.Python.Compute.PipInstall(module, force: force);
             if (Python.Query.IsModuleInstalled(module))
