@@ -37,8 +37,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DeepLearning_oM">
-      <HintPath>..\..\BHoM\Build\DeepLearning_oM.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
     </Reference>
     <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
