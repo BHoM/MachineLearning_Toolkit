@@ -69,9 +69,9 @@ namespace BH.Engine.MachineLearning
         /**** Private Fields              ****/
         /*************************************/
 
-        private static PyObject m_PyCompute = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
+        private static PyObject m_PyCompute = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
 
-        public static PyObject m_Numpy = Engine.Python.Query.Import("numpy");
+        public static PyObject m_Numpy = Engine.Python.Query.TryImport("numpy");
 
         /*************************************/
     }
