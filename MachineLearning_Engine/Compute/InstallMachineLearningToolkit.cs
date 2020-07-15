@@ -21,8 +21,10 @@
  */
 
 using BH.oM.Reflection;
+using BH.oM.Reflection.Attributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace BH.Engine.MachineLearning
@@ -33,6 +35,11 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods              ****/
         /*************************************/
 
+        [Description("Install the python bindings of the Machine Learning Toolkit. This includes standard machine learning packages \n" +
+            "as the BHoM methods developed in python. Note that this depends on the Python_Toolkit.")]
+        [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
+        [Input("force", "If the toolkit is already installed it forces a reinstall of all the packages. It does not force a reinstall of Python.")]
+        [Output("True if installation is successful, false otherwise.")]
         public static Output<bool, List<string>> InstallMachineLearningToolkit(bool run = false, bool force = false)
         {
             if (!run)
