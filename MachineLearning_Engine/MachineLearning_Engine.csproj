@@ -38,19 +38,24 @@
     </Reference>
     <Reference Include="DeepLearning_oM">
       <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\ProgramData\BHoM\Assemblies\Python.Runtime.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Python_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Reflection_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Reflection_oM">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
