@@ -39,7 +39,8 @@ namespace BH.Engine.MachineLearning
             "as the BHoM methods developed in python. Note that this depends on the Python_Toolkit.")]
         [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
         [Input("force", "If the toolkit is already installed it forces a reinstall of all the packages. It does not force a reinstall of Python.")]
-        [Output("True if installation is successful, false otherwise.")]
+        [MultiOutput(0, "success", "True if installation is successful, false otherwise.")]
+        [MultiOutput(1, "packages", "The list of succesfully installed packages")]
         public static Output<bool, List<string>> InstallMachineLearningToolkit(bool run = false, bool force = false)
         {
             if (!run)
