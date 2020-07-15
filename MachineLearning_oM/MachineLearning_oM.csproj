@@ -32,24 +32,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BHoM">
-      <HintPath>..\..\BHoM\Build\BHoM.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Common_oM">
-      <HintPath>..\..\BHoM\Build\Common_oM.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
     </Reference>
     <Reference Include="Geometry_oM">
-      <HintPath>..\..\BHoM\Build\Geometry_oM.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
     </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-    <Reference Include="Python.Runtime">
-      <HintPath>..\..\Python_Toolkit\Build\Python.Runtime.dll</HintPath>
+    <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Python.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Reflection_oM">
-      <HintPath>..\..\BHoM\Build\Reflection_oM.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,4 +65,9 @@
     <Compile Include="Tensor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
+
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>

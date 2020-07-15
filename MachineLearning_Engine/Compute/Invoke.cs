@@ -20,11 +20,8 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.Vision;
-using BH.oM.DeepLearning.Models;
 using Python.Runtime;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BH.Engine.MachineLearning
 {
@@ -69,9 +66,9 @@ namespace BH.Engine.MachineLearning
         /**** Private Fields              ****/
         /*************************************/
 
-        private static PyObject m_PyCompute = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
+        private static PyObject m_PyCompute = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
 
-        public static PyObject m_Numpy = Engine.Python.Query.Import("numpy");
+        public static PyObject m_Numpy = Engine.Python.Query.TryImport("numpy");
 
         /*************************************/
     }

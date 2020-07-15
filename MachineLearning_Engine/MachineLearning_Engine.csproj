@@ -33,29 +33,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BHoM">
-      <HintPath>..\..\BHoM\Build\BHoM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Build\BHoM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DeepLearning_oM">
-      <HintPath>..\..\BHoM\Build\DeepLearning_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Python.Runtime">
-      <HintPath>..\..\Python_Toolkit\Build\Python.Runtime.dll</HintPath>
+    <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Python.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Python_Engine">
-      <HintPath>..\..\Python_Toolkit\Build\Python_Engine.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Reflection_Engine">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BHoM_Engine\Build\Reflection_Engine.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Reflection_oM">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BHoM\Build\Reflection_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -69,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
     <Compile Include="Compute\PolynomialFeatures.cs" />
     <Compile Include="Compute\StandardScaler.cs" />
     <Compile Include="Compute\MinMaxScaler.cs" />
@@ -102,9 +102,7 @@
     <None Include="Compute\__init__.py" />
     <None Include="__init__.py" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Compute\MinMaxScaler.py" />
   </ItemGroup>
@@ -115,4 +113,8 @@
     <None Include="Compute\PolynomialFeatures.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
+xcopy "$(SolutionDir)*.py" "C:\\ProgramData\\BHoM\\python-3.7.3-embed-amd64\src\$(SolutionName)\" /Y /I /S /F</PostBuildEvent>
+  </PropertyGroup>
 </Project>
