@@ -34,8 +34,14 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static PyObject IToPython(this object obj)
+        public static PyObject IToPython(dynamic obj)
         {
+            if (obj == null)
+                return Runtime.GetPyNone();
+
+            if (obj is PyObject)
+                return obj;
+
             return ToPython(obj as dynamic);
         }
 
