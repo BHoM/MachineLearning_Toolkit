@@ -34,7 +34,7 @@ namespace BH.Engine.Python.Charts
             List<double> annualValues, 
             string savePath, 
             bool detailed = false, 
-            string title = null, 
+            string title = "", 
             string toneColor = "black", 
             bool invertY = true, 
             bool transparency = false,
