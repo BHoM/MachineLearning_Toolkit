@@ -85,7 +85,7 @@ def utci(
     utci_cmap_norm = BoundaryNorm(utci_cmap_bounds, utci_cmap.N)
 
     bounds = np.arange(-41, 48, 1)
-    norm = BoundaryNorm(bounds, utci_cmap.N)
+    norm = BoundaryNorm(bounds, max(len(bounds), utci_cmap.N))
 
     if not detailed:
         # Instantiate figure
