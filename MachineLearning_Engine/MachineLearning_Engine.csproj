@@ -73,7 +73,6 @@
     <Compile Include="Compute\ClimateCharts\Heatmap.cs" />
     <Compile Include="Compute\ClimateCharts\UTCI.cs" />
     <Compile Include="Compute\ClimateCharts\Variablerose.cs" />
-    <Compile Include="Compute\ClimateCharts\Windrose.cs" />
     <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
     <Compile Include="Compute\PolynomialFeatures.cs" />
     <Compile Include="Compute\StandardScaler.cs" />
@@ -107,7 +106,6 @@
     <None Include="Compute\ClimateCharts\Heatmap.py" />
     <None Include="Compute\ClimateCharts\UTCI.py" />
     <None Include="Compute\ClimateCharts\Variablerose.py" />
-    <None Include="Compute\ClimateCharts\Windrose.py" />
     <None Include="Compute\ClimateCharts\__init__.py" />
     <None Include="Compute\LinearRegression.py" />
     <None Include="Compute\DrawDetection.py" />
