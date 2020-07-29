@@ -24,4 +24,3 @@ from . import Diurnal
 from . import UTCI
 from . import Frequency
 from . import Heatmap
-from . import Variablerose

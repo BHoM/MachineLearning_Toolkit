@@ -59,15 +59,8 @@ namespace BH.Engine.MachineLearning
                     installed.Add(modules[i]);
             }
 
-            // install windrose
-            string module = "windrose";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall("git+https://github.com/python-windrose/windrose");
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
             // install tensorflow
-            module = "tensorflow";
+            string module = "tensorflow";
             Console.WriteLine($"Installing {module}...");
             Engine.Python.Compute.PipInstall(module, force: force, version: "2");
             if (Python.Query.IsModuleInstalled(module))

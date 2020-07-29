@@ -29,4 +29,3 @@ from .ClimateCharts import Diurnal
 from .ClimateCharts import UTCI
 from .ClimateCharts import Frequency
 from .ClimateCharts import Heatmap
-from .ClimateCharts import Variablerose
