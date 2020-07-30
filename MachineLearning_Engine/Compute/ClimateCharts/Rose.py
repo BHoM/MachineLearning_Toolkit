@@ -23,7 +23,7 @@
 import os
 import numpy as np
 import matplotlib as mpl
-matplotlib.use("agg")
+mpl.use("agg")
 import matplotlib.pyplot as plt
 
 def rose(

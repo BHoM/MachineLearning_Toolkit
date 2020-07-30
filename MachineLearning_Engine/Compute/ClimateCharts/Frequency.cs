@@ -47,7 +47,8 @@ namespace BH.Engine.Python.Charts
             if (!run)
                 return null;
 
-             vRange = vRange ?? new List<double>() { values.Min(), values.Max() };
+            if (vRange == null)
+                vRange = new List<double>() { values.Min(), values.Max() };
 
             return BH.Engine.MachineLearning.Compute.Invoke(
                 "Frequency.frequency",

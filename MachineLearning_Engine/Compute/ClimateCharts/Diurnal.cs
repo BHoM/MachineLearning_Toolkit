@@ -46,7 +46,8 @@ namespace BH.Engine.Python.Charts
             if (!run)
                 return null;
 
-            months = months ?? Enumerable.Range(1, 12).ToList();
+            if (months == null)
+                months = Enumerable.Range(1, 12).ToList();
 
             return BH.Engine.MachineLearning.Compute.Invoke(
                 "Diurnal.diurnal",

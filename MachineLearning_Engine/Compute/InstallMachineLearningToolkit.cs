@@ -47,7 +47,7 @@ namespace BH.Engine.MachineLearning
                 return new Output<bool, List<string>>();
 
             // basic modules (no additional parameters to pip install)
-            List<string> modules = new List<string> { "pillow", "pymongo", "numpy", "matplotlib", "pandas", "scikit-learn" };
+            List<string> modules = new List<string> { "pillow", "pymongo", "numpy", "scikit-learn", "pandas", "matplotlib" };
             List<string> installed = new List<string>();
 
             // install basic modules
@@ -67,21 +67,22 @@ namespace BH.Engine.MachineLearning
                 installed.Add(module);
 
             // install pytorch
-            Console.WriteLine("Installing pytorch");
             module = "torch";
+            Console.WriteLine($"Installing {module}...");
             Engine.Python.Compute.PipInstall(module, force: force, version: "1.4.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
             if (Python.Query.IsModuleInstalled(module))
                 installed.Add(module);
 
             // installing torchvision
             module = "torchvision";
+            Console.WriteLine($"Installing {module}...");
             Engine.Python.Compute.PipInstall(module, force: force, version: "0.5.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
             if (Python.Query.IsModuleInstalled(module))
                 installed.Add(module);
 
             // install pyBHoM
-            Console.WriteLine("Installing MachineLearning_Engine...");
             module = "MachineLearning_Engine";
+            Console.WriteLine($"Installing {module}...");
             string mlPath = Path.Combine(Python.Query.EmbeddedPythonHome(), "src", "MachineLearning_Toolkit");
             Engine.Python.Compute.PipInstall($"-e {mlPath}", force: force);
             if (Python.Query.IsModuleInstalled(module))
