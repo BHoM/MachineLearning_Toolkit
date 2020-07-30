@@ -28,7 +28,17 @@ matplotlib.use("agg")
 import matplotlib.pyplot as plt
 
 
-def frequency(values: np.ndarray, save_path: str, title: str=None, unit: str=None, vrange: np.ndarray=None, bins: int=10, color: str="black", tone_color: str="black", transparency=False):
+def frequency(
+    values: np.ndarray,
+    save_path: str,
+    title: str=None,
+    unit: str=None,
+    vrange: np.ndarray=None,
+    bins: int=10,
+    color: str="black",
+    tone_color: str="black",
+    transparency=False,
+    ):
     """ Create a histogram with summary table for the data passed
 
     Parameters

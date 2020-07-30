@@ -21,11 +21,12 @@
 #
 from . import DetectObjects
 from . import DrawDetection
-from . import LinearRegression 
-from . import MinMaxScaler 
+from . import LinearRegression
+from . import MinMaxScaler
 from . import StandardScaler
 from . import PolynomialFeatures
 from .ClimateCharts import Diurnal
 from .ClimateCharts import UTCI
 from .ClimateCharts import Frequency
 from .ClimateCharts import Heatmap
+from .ClimateCharts import Rose

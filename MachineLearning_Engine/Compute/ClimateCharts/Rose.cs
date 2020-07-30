@@ -21,7 +21,6 @@
  */
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BH.Engine.Python.Charts
 {
@@ -31,32 +30,37 @@ namespace BH.Engine.Python.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        public static string PlotDiurnal(
-            List<double> annualValues,
+        public static string PlotRose(
+            List<double> directions,
+            List<double> values,
             string savePath,
-            string grouping = "Daily",
-            List<int> months = null,
+            int ndirections = 16,
+            List<double> bins = null,
+            double barwidth = 0.8,
+            bool normed = true,
             string title = null,
             string unit = null,
-            string color = "black",
+            string cmap = "viridis",
             string toneColor = "black",
             bool transparency = false,
-            bool run = false)
+            bool run = false
+            )
         {
             if (!run)
                 return null;
 
-            months = months ?? Enumerable.Range(1, 12).ToList();
-
             return BH.Engine.MachineLearning.Compute.Invoke(
-                "Diurnal.diurnal",
-                annualValues,
+                "Rose.rose",
+                directions,
+                values,
                 savePath,
-                grouping,
-                months,
+                ndirections,
+                bins,
+                barwidth,
+                normed,
                 title,
                 unit,
-                color,
+                cmap,
                 toneColor,
                 transparency
                 ).ToString();

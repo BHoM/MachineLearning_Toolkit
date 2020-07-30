@@ -71,6 +71,7 @@
     <Compile Include="Compute\ClimateCharts\Diurnal.cs" />
     <Compile Include="Compute\ClimateCharts\Frequency.cs" />
     <Compile Include="Compute\ClimateCharts\Heatmap.cs" />
+    <Compile Include="Compute\ClimateCharts\Rose.cs" />
     <Compile Include="Compute\ClimateCharts\UTCI.cs" />
     <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
     <Compile Include="Compute\PolynomialFeatures.cs" />
@@ -103,6 +104,7 @@
     <None Include="Compute\ClimateCharts\Diurnal.py" />
     <None Include="Compute\ClimateCharts\Frequency.py" />
     <None Include="Compute\ClimateCharts\Heatmap.py" />
+    <None Include="Compute\ClimateCharts\Rose.py" />
     <None Include="Compute\ClimateCharts\UTCI.py" />
     <None Include="Compute\ClimateCharts\__init__.py" />
     <None Include="Compute\LinearRegression.py" />
