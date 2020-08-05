@@ -73,6 +73,7 @@
     <Compile Include="Compute\ClimateCharts\Heatmap.cs" />
     <Compile Include="Compute\ClimateCharts\UTCI.cs" />
     <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
+    <Compile Include="Compute\LoadCsv.cs" />
     <Compile Include="Compute\PolynomialFeatures.cs" />
     <Compile Include="Compute\StandardScaler.cs" />
     <Compile Include="Compute\MinMaxScaler.cs" />
