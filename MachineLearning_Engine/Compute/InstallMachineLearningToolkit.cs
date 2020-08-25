@@ -47,7 +47,7 @@ namespace BH.Engine.MachineLearning
                 return new Output<bool, List<string>>();
 
             // basic modules (no additional parameters to pip install)
-            List<string> modules = new List<string> { "pillow", "pymongo", "numpy", "matplotlib", "pandas", "scikit-learn" };
+            List<string> modules = new List<string> { "pillow", "pymongo", "numpy", "matplotlib", "cython", "pandas", "scikit-learn" };
             List<string> installed = new List<string>();
 
             // install basic modules
