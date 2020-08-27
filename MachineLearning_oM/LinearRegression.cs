@@ -38,9 +38,9 @@ namespace BH.oM.MachineLearning
         /**** Constructors                              ****/
         /***************************************************/
 
-        public LinearRegression(PyObject model)
+        public LinearRegression(PyObject skLearnModel)
         {
-            SkLearnModel = model;
+            SkLearnModel = skLearnModel;
         }
 
 

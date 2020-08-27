@@ -38,9 +38,9 @@ namespace BH.oM.MachineLearning
         /**** Constructors                              ****/
         /***************************************************/
 
-        public MinMaxScaler(PyObject scaler)
+        public MinMaxScaler(PyObject skLearnModel)
         {
-            SkLearnScaler = scaler;
+            SkLearnScaler = skLearnModel;
         }
 
 
