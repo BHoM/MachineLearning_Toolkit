@@ -38,9 +38,9 @@ namespace BH.oM.MachineLearning
         /**** Constructors                              ****/
         /***************************************************/
 
-        public StandardScaler(PyObject scaler)
+        public StandardScaler(PyObject skLearnScaler)
         {
-            SkLearnScaler = scaler;
+            SkLearnScaler = skLearnScaler;
         }
 
 
