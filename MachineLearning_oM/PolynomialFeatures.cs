@@ -38,9 +38,9 @@ namespace BH.oM.MachineLearning
         /**** Constructors                              ****/
         /***************************************************/
 
-        public PolynomialFeatures(PyObject transformer)
+        public PolynomialFeatures(PyObject skLearnTransformer)
         {
-            SkLearnTransformer = transformer;
+            SkLearnTransformer = skLearnTransformer;
         }
 
 

@@ -39,9 +39,9 @@ namespace BH.oM.MachineLearning
         /**** Constructor                               ****/
         /***************************************************/
         
-        public Tensor(PyObject handle)
+        public Tensor(PyObject numpyArray)
         {
-            NumpyArray = handle;
+            NumpyArray = numpyArray;
         }
 
 
