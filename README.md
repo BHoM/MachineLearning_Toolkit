@@ -1,12 +1,45 @@
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
-# BHoM
+## Install me
+To install the MachineLearning_Toolkit:
+1. Compile:  
+    1. [BHoM](https://github.com/BHoM/BHoM)  
+    1. [BHoM_Engine](https://github.com/BHoM/BHoM_Engine)  
+    1. [BHoM_Adapter](https://github.com/BHoM/BHoM_Adapter)   
+    1. [BHoM_UI](https://github.com/BHoM/BHoM_UI)  
+	  1. [Rhinoceros_Toolkit](https://github.com/BHoM/Rhinoceros_Toolkit)  
+	  1. [Grasshopper_Toolkit](https://github.com/BHoM/Grasshopper_Toolkit)  
+	  1. [Python_Toolkit](https://github.com/BHoM/Python_Toolkit)
+    1. MachineLearning_Toolkit (this repo)
+1. Open a UI of your choice (e.g. Grasshopper)
+1. Run the `BH.Engine.Python.Compute.InstallPythonToolkit` component and wait for the installation to finish.
+1. The installation has succeeded if the install packages include:
+	  - Python 3.7
+  	- jupyter
+  	- matplotlib
+  	- Python_Toolkit
+1. Restart your UI - if using Grasshopper, restart Rhinoceros and Grasshopper
+1. Reopen the UI and now install the python bindings of the MachineLearning_Toolkit by running
+   the `BH.Engine.Python.Compute.InstallMachineLearningToolkit` component
+1. Restart your UI
+   
+Note that the intallation will take a while - around 15 minutes.
 
-A great place to start is reading our Wiki [here](https://github.com/BHoM/documentation/wiki) including pages like the [Structure of the BHoM](https://github.com/BHoM/documentation/wiki/Structure-of-the-BHoM) and [Using the BHoM](https://github.com/BHoM/documentation/wiki/Using-the-BHoM).
+## Notes for developers
+- The python source files used by Python are stored in `C:\ProgramData\BHoM\Extensions\Python\src`. This folder is populated by the Visual Studio post-build events, which copy all the `*.py` files in the Toolkit into the destination folder.
+- If you update a python file in your repo, to update the BHoM you just need to recompile the solution - this will copy the relevant files as described above.
+- If you update a `.cs` file, you need to recompile the solution as usual.
+- The component `InstallMachineLearningToolkit` installs the additional packages required by the python bindings of the BHoM. You will seldom use this method - usually only the first time.
 
-## Quick start ##
+Also, take a look at the [Python_Toolkit](https://github.com/BHoM/Python_Toolkit) for additional information: 
 
-Try the [installer](http://bhom.xyz/assets/installers/v2.1/BHoM%20Alpha%20v2.1.0.5%20Installer.exe) and a selection of [sample scripts](https://github.com/BHoM/samples).
 
+## Adding a new algorithm using python
+If you want to add a new algorithm (e.g. KMeans) that requires python, below are the required steps to enable automatic deployment of the mehtod.
+1. Add an oM object that stores the model - usually ML algorithms are parameterised functions, whose parameters are stored in a _model_.
+   The object must be `IImmutable` and usually contains only one field that is a `PyObject`.
+1. Add a `Engine.Convert.ToPython` method that takes the new object in and returns a `PyObject`
+1. Add your algorithm in the `Engine.Compute` class. The algorithm usually contains three main methods: `Create`, which creates or loads the model; `Fit` that runs the learning routine; and `Infer`, which allows inference on a learnt model.
+1. Note that all the python files must be contained into a `youralgorithmname.py` file, in the `Compute` folder, in order for it to work.
 
 
 ## Building the BHoM and the Toolkits from Source ##
@@ -17,37 +50,6 @@ You will need the following to build BHoM:
 - Note that there are no software - specific dependencies (only operating system relevant), this is specific: BHoM is a software agnostic object model.
 
 
-### Clone and build the Core BHoM Repos
-
-In the following build order:
-- [BHoM](https://github.com/BHoM/BHoM)
-- [BHoM_Engine](https://github.com/BHoM/BHoM_Engine)
-- [BHoM_Adapter](https://github.com/BHoM/BHoM_Adapter)
-- [BHoM_UI](https://github.com/BHoM/BHoM_UI)
-
-- [Socket_Toolkit](https://github.com/BHoM/Socket_Toolkit)
-- [Mongo_Toolkit](https://github.com/BHoM/Mongo_Toolkit)
-
-
-Build as many as you like of your chosen Interop Toolkits:
-- [Revit_Toolkit](https://github.com/BHoM/Revit_Toolkit)
-- [Robot_Toolkit](https://github.com/BHoM/Robot_Toolkit)
-- [ETABS_Toolkit](https://github.com/BHoM/ETABS_Toolkit)
-- [Lusas_Toolkit](https://github.com/BHoM/Lusas_Toolkit)
-- [GSA_Toolkit](https://github.com/BHoM/GSA_Toolkit)
-- [TAS_Toolkit](https://github.com/BHoM/TAS_Toolkit)
-- [XML_Toolkit](https://github.com/BHoM/XML_Toolkit)
-
-Then build as many User Interface Repositories as you like:
-- [Rhinoceros_Toolkit](https://github.com/BHoM/Rhinoceros_Toolkit) & [Grasshopper_Toolkit](https://github.com/BHoM/Grasshopper_Toolkit) (you need both)
-- [Dynamo_Toolkit](https://github.com/BHoM/Dynamo_Toolkit)
-- [Excel_Toolkit](https://github.com/BHoM/Excel_Toolkit)
-
-
-You are good to go!
-
-
-
 ## Want to contribute? ##
 
 BHoM is an open-source project and would be nothing without its community. Take a look at our contributing guidelines and tips [here](https://github.com/BHoM/BHoM/blob/master/CONTRIBUTING.md).
@@ -55,7 +57,7 @@ BHoM is an open-source project and would be nothing without its community. Take 
 
 ## Licence ##
 
-BHoM is free software licenced under GNU Lesser General Public Licence - [https://www.gnu.org/licenses/lgpl-3.0.html](https://www.gnu.org/licenses/lgpl-3.0.html)
+BHoM is free software licenced under GNU Lesser General Public Licence - [https://www.gnu.org/licenses/lgpl-3.0.html](https://www.gnu.org/licenses/lgpl-3.0.html)  
 Each contributor holds copyright over their respective contributions.
 The project versioning (Git) records all such contribution source information.
 See [LICENSE](https://github.com/BHoM/BHoM/blob/master/LICENSE) and [COPYRIGHT_HEADER](https://github.com/BHoM/BHoM/blob/master/COPYRIGHT_HEADER.txt).
