@@ -22,7 +22,7 @@ To install the MachineLearning_Toolkit:
    the `BH.Engine.MachineLearning.Compute.InstallMachineLearningToolkit` component
 1. Restart your UI
    
-Note that the intallation will take a while - around 15 minutes.
+Note that the installation will take a while - around 15 minutes.
 
 ## Notes for developers
 - The python source files used by Python are stored in `C:\ProgramData\BHoM\Extensions\Python\src`. This folder is populated by the Visual Studio post-build events, which copy all the `*.py` files in the Toolkit into the destination folder.
