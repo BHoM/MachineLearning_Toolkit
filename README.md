@@ -19,7 +19,7 @@ To install the MachineLearning_Toolkit:
   	- Python_Toolkit
 1. Restart your UI - if using Grasshopper, restart Rhinoceros and Grasshopper
 1. Reopen the UI and now install the python bindings of the MachineLearning_Toolkit by running
-   the `BH.Engine.Python.Compute.InstallMachineLearningToolkit` component
+   the `BH.Engine.MachineLearning.Compute.InstallMachineLearningToolkit` component
 1. Restart your UI
    
 Note that the intallation will take a while - around 15 minutes.
