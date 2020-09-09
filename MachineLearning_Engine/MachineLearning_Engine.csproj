@@ -73,10 +73,10 @@
     <Compile Include="Compute\Charts\Heatmap.cs" />
     <Compile Include="Compute\Charts\UTCI.cs" />
     <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
-    <Compile Include="Compute\LoadCsv.cs" />
-    <Compile Include="Compute\PolynomialFeatures.cs" />
-    <Compile Include="Compute\StandardScaler.cs" />
-    <Compile Include="Compute\MinMaxScaler.cs" />
+    <Compile Include="Compute\Datasets\LoadCsv.cs" />
+    <Compile Include="Compute\Preprocessing\PolynomialFeatures.cs" />
+    <Compile Include="Compute\Preprocessing\StandardScaler.cs" />
+    <Compile Include="Compute\Preprocessing\MinMaxScaler.cs" />
     <Compile Include="Compute\LinearRegression.cs" />
     <Compile Include="Compute\Charts\PlotImage.cs" />
     <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
@@ -108,6 +108,7 @@
     <None Include="Compute\Charts\Frequency.py" />
     <None Include="Compute\Charts\Heatmap.py" />
     <None Include="Compute\Charts\UTCI.py" />
+    <None Include="Compute\Preprocessing\__init__.py" />
     <None Include="Compute\Charts\__init__.py" />
     <None Include="Compute\LinearRegression.py" />
     <None Include="Compute\Charts\PlotImage.py" />
@@ -125,13 +126,13 @@
     <Folder Include="Compute\Text\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\MinMaxScaler.py" />
+    <None Include="Compute\Preprocessing\MinMaxScaler.py" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\StandardScaler.py" />
+    <None Include="Compute\Preprocessing\StandardScaler.py" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\PolynomialFeatures.py" />
+    <None Include="Compute\Preprocessing\PolynomialFeatures.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
