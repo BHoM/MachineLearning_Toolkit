@@ -68,10 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compute\ClimateCharts\Diurnal.cs" />
-    <Compile Include="Compute\ClimateCharts\Frequency.cs" />
-    <Compile Include="Compute\ClimateCharts\Heatmap.cs" />
-    <Compile Include="Compute\ClimateCharts\UTCI.cs" />
+    <Compile Include="Compute\Charts\Diurnal.cs" />
+    <Compile Include="Compute\Charts\Frequency.cs" />
+    <Compile Include="Compute\Charts\Heatmap.cs" />
+    <Compile Include="Compute\Charts\UTCI.cs" />
     <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
     <Compile Include="Compute\LoadCsv.cs" />
     <Compile Include="Compute\PolynomialFeatures.cs" />
@@ -101,11 +101,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\ClimateCharts\Diurnal.py" />
-    <None Include="Compute\ClimateCharts\Frequency.py" />
-    <None Include="Compute\ClimateCharts\Heatmap.py" />
-    <None Include="Compute\ClimateCharts\UTCI.py" />
-    <None Include="Compute\ClimateCharts\__init__.py" />
+    <None Include="Compute\Charts\Diurnal.py" />
+    <None Include="Compute\Charts\Frequency.py" />
+    <None Include="Compute\Charts\Heatmap.py" />
+    <None Include="Compute\Charts\UTCI.py" />
+    <None Include="Compute\Charts\__init__.py" />
     <None Include="Compute\LinearRegression.py" />
     <None Include="Compute\DrawDetection.py" />
     <None Include="Compute\DetectObjects.py" />

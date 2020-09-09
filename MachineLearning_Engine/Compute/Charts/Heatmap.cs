@@ -22,7 +22,7 @@
 
 using System.Collections.Generic;
 
-namespace BH.Engine.Python.Charts
+namespace BH.Engine.MachineLearning.Charts
 {
     public static partial class Compute
     {
@@ -30,11 +30,13 @@ namespace BH.Engine.Python.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        public static string PlotUTCI(
+        public static string PlotHeatmap(
             List<double> annualValues, 
             string savePath, 
-            bool detailed = false, 
-            string title = "", 
+            string title = null, 
+            string unit = null, 
+            List<double> vRange = null, 
+            string cmap = "viridis", 
             string toneColor = "black", 
             bool invertY = true, 
             bool transparency = false,
@@ -45,12 +47,14 @@ namespace BH.Engine.Python.Charts
                 return null;
 
             return BH.Engine.MachineLearning.Compute.Invoke(
-                "UTCI.utci", 
+                "Heatmap.heatmap", 
                 annualValues, 
                 savePath, 
-                detailed, 
                 title, 
-                toneColor,
+                unit, 
+                vRange, 
+                cmap, 
+                toneColor, 
                 invertY, 
                 transparency
                 ).ToString();

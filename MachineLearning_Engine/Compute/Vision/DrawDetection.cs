@@ -20,9 +20,11 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using BH.oM.MachineLearning.Vision;
 using System.Collections.Generic;
+using System.Drawing;
 
-namespace BH.Engine.Python.Charts
+namespace BH.Engine.MachineLearning.Vision
 {
     public static partial class Compute
     {
@@ -30,34 +32,9 @@ namespace BH.Engine.Python.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        public static string PlotHeatmap(
-            List<double> annualValues, 
-            string savePath, 
-            string title = null, 
-            string unit = null, 
-            List<double> vRange = null, 
-            string cmap = "viridis", 
-            string toneColor = "black", 
-            bool invertY = true, 
-            bool transparency = false,
-            bool run = false
-            )
+        public static object DrawDetection(System.Drawing.Image image, DetectionResults detection, double minAccuracy=0.8)
         {
-            if (!run)
-                return null;
-
-            return BH.Engine.MachineLearning.Compute.Invoke(
-                "Heatmap.heatmap", 
-                annualValues, 
-                savePath, 
-                title, 
-                unit, 
-                vRange, 
-                cmap, 
-                toneColor, 
-                invertY, 
-                transparency
-                ).ToString();
+            return BH.Engine.MachineLearning.Compute.Invoke("DrawDetection.draw_detection", image, detection, minAccuracy);
         }
 
         /*************************************/

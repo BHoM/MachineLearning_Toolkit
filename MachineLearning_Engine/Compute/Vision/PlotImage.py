@@ -19,14 +19,44 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
-from . import DetectObjects
-from . import DrawDetection
-from . import LinearRegression 
-from . import MinMaxScaler 
-from . import StandardScaler
-from . import PolynomialFeatures
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
+import PIL
+import torch
+import matplotlib
+import matplotlib.pyplot as plt
+import os
+import subprocess
+
+
+def plot_pil_image(image: PIL.Image, height: int, width: int, grayscale: bool):
+	fig = plt.figure(figsize=(height, width))
+
+	if grayscale:
+		cmap = "gray"
+	else:
+		cmap = None
+	plt.imshow(image, cmap=cmap)
+
+	plt.show()
+	return
+	
+
+def plot_tensor_image(image: torch.Tensor, height: int, width: int, grayscale: bool):
+	fig = plt.figure(figsize=(height, width))
+
+	if grayscale:
+		cmap = "gray"
+	else:
+		cmap = None
+	plt.imshow(image.cpu(), cmap=cmap)
+	plt.tight_layout()
+
+	home = r"C:\ProgramData\BHoM\Extensions\Python\temp"
+	os.makedirs(home)
+
+	path = os.path.join(home, "current_plot.png")
+	plt.savefig(path)
+	
+	subprocess.run(["explorer", path])
+	return
+	

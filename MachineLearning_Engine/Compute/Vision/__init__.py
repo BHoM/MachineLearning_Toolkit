@@ -19,14 +19,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
-from . import DetectObjects
-from . import DrawDetection
-from . import LinearRegression 
-from . import MinMaxScaler 
-from . import StandardScaler
-from . import PolynomialFeatures
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
+from . import DetectObjects
+from . import RecogniseObject
+from . import SemanticSegmentation
+from . import DrawDetection
+from . import PlotImage

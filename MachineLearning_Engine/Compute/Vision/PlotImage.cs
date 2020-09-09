@@ -20,9 +20,10 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using System.Collections.Generic;
+using BH.oM.MachineLearning;
+using BH.oM.MachineLearning.Vision;
 
-namespace BH.Engine.Python.Charts
+namespace BH.Engine.MachineLearning.Vision
 {
     public static partial class Compute
     {
@@ -30,12 +31,16 @@ namespace BH.Engine.Python.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        public static string PlotDiurnal(List<double> annualValues, string savePath, string grouping = "Daily", List<int> months = null, string title = null, string unit = null, string color = "black", string toneColor = "black", bool transparency = false, bool run = false)
+        public static object PlotImage(Image image, int height, int width, bool grayscale = false)
         {
-            if (!run)
-                return null;
+            return BH.Engine.MachineLearning.Compute.Invoke("PlotImage.plot_pil_image", image, height, width, grayscale);
+        }
 
-            return BH.Engine.MachineLearning.Compute.Invoke("Diurnal.diurnal", annualValues, savePath, grouping, months, title, unit, color, toneColor, transparency).ToString();
+        /*************************************/
+
+        public static object PlotImage(Tensor tensor, int height, int width, bool grayscale = false)
+        {
+            return BH.Engine.MachineLearning.Compute.Invoke("PlotImage.plot_tensor_image", tensor, height, width, grayscale);
         }
 
         /*************************************/

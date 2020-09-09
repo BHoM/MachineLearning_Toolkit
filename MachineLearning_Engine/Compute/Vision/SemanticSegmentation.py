@@ -19,14 +19,37 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
-from . import DetectObjects
-from . import DrawDetection
-from . import LinearRegression 
-from . import MinMaxScaler 
-from . import StandardScaler
-from . import PolynomialFeatures
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
+import os
+import PIL
+import numpy as np
+import torch
+import torchvision
+
+
+def infer(image_path: str, gpu: bool=False):
+	if not (os.path.isfile(image_path)):
+		raise FileNotFoundError(image_path)
+
+	global model
+	if model is None:
+		model = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True)
+	model.eval()
+
+	pil_image: PIL.Image.Image = PIL.Image.open(image_path)
+	tensor_image: torch.Tensor = torchvision.transforms.functional.to_tensor(pil_image)
+
+	if gpu:
+		tensor_image = tensor_image.cuda()
+		model = model.cuda()
+
+	with torch.no_grad():
+		output = model(tensor_image.unsqueeze(0)).get("out")
+
+	colors = np.random.randn(output.size(1), 3)
+	prediction = torch.argmax(output, dim=1).squeeze()
+
+	return prediction
+
+
+model = None
