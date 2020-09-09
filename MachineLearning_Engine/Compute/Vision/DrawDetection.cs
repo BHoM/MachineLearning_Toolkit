@@ -21,10 +21,7 @@
  */
 
 using BH.oM.MachineLearning;
-using BH.oM.MachineLearning.Vision;
 using Python.Runtime;
-using System.Collections.Generic;
-using System.Drawing;
 
 namespace BH.Engine.MachineLearning.Vision
 {
