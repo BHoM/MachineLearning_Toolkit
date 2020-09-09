@@ -20,29 +20,23 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.MachineLearning;
-using BH.oM.MachineLearning.Vision;
+using BH.oM.Geometry;
+using System.Collections.Generic;
 
-namespace BH.Engine.MachineLearning.Vision
+namespace BH.oM.MachineLearning.Vision
 {
-    public static partial class Compute
+    public class DetectionResults
     {
-        /*************************************/
-        /**** Public Methods              ****/
-        /*************************************/
+        /***************************************************/
+        /**** Properties                                ****/
+        /***************************************************/
 
-        public static object PlotImage(Image image, int height, int width, bool grayscale = false)
-        {
-            return BH.Engine.MachineLearning.Compute.Invoke("PlotImage.plot_pil_image", image, height, width, grayscale);
-        }
+        public virtual List<Polyline> Boxes { get; set; } = new List<Polyline>();
 
-        /*************************************/
+        public virtual List<int> Categories { get; set; } = new List<int>();
 
-        public static object PlotImage(Tensor tensor, int height, int width, bool grayscale = false)
-        {
-            return BH.Engine.MachineLearning.Compute.Invoke("PlotImage.plot_tensor_image", tensor, height, width, grayscale);
-        }
+        public virtual List<double> Scores { get; set; } = new List<double>();
 
-        /*************************************/
+        /***************************************************/
     }
 }

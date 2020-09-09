@@ -21,9 +21,14 @@
 #
 
 import PIL
+import PIL.ImageDraw
+import PIL.ImageFont
+import torch
+import torchvision
 
 
-def draw_detection(image: PIL.Image.Image, detection, category: str=None, min_accuracy: float=0.9):
+def draw_detection(image_path: str, detection, category: str=None, min_accuracy: float=0.9):
+    image = PIL.Image.open(image_path)
     draw = PIL.ImageDraw.Draw(image)
     for i, rect in enumerate(detection["boxes"]):
         if detection["scores"][i] < min_accuracy:
@@ -31,7 +36,7 @@ def draw_detection(image: PIL.Image.Image, detection, category: str=None, min_ac
         draw.rectangle(((rect[0], rect[1]), (rect[2], rect[3])), outline="red")
         draw.text((rect[0], rect[1]), coco_labels[int(
             detection["labels"][i])], font=PIL.ImageFont.truetype("arial", 20), fill="red")
-    return image
+    return torchvision.transforms.functional.to_tensor(image)
 
 
 coco_labels = {

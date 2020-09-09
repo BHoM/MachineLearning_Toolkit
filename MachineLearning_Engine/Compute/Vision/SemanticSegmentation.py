@@ -33,7 +33,7 @@ def infer(image_path: str, gpu: bool=False):
 
 	global model
 	if model is None:
-		model = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True)
+		model = torch.hub.load('pytorch/vision:v0.6.0', 'deeplabv3_resnet101', pretrained=True)
 	model.eval()
 
 	pil_image: PIL.Image.Image = PIL.Image.open(image_path)
@@ -42,6 +42,9 @@ def infer(image_path: str, gpu: bool=False):
 	if gpu:
 		tensor_image = tensor_image.cuda()
 		model = model.cuda()
+	else:
+		tensor_image = tensor_image.cpu()
+		model = model.cpu()
 
 	with torch.no_grad():
 		output = model(tensor_image.unsqueeze(0)).get("out")
