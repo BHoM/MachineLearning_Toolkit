@@ -22,7 +22,7 @@
 
 using System.Collections.Generic;
 
-namespace BH.Engine.Python.Charts
+namespace BH.Engine.MachineLearning.Vision
 {
     public static partial class Compute
     {
@@ -30,12 +30,9 @@ namespace BH.Engine.Python.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        public static string PlotFrequency(List<double> values, string savePath, string title = null, string unit = null, List<double> vRange = null, int bins = 10, string color = "black", string toneColor = "black", bool transparency = false, bool run = false)
+        public static object DetectObjects(string imagePath, bool gpu = false)
         {
-            if (!run)
-                return null;
-
-            return BH.Engine.MachineLearning.Compute.Invoke("Frequency.frequency", values, savePath, title, unit, vRange, bins, color, toneColor, transparency).ToString();
+            return BH.Engine.MachineLearning.Compute.Invoke("DetectObjects.infer", imagePath, gpu);
         }
 
         /*************************************/
