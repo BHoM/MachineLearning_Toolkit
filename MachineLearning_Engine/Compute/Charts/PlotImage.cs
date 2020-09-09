@@ -20,10 +20,10 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.DeepLearning.Models;
-using System.Collections.Generic;
+using BH.oM.MachineLearning;
+using BH.oM.MachineLearning.Vision;
 
-namespace BH.Engine.Vision
+namespace BH.Engine.MachineLearning.Charts
 {
     public static partial class Compute
     {
@@ -31,14 +31,16 @@ namespace BH.Engine.Vision
         /**** Public Methods              ****/
         /*************************************/
 
-        public static object DetectObjects(string imagePath, bool gpu = false)
+        public static object PlotImage(Image image, int height, int width, bool grayscale = false)
         {
-            Dictionary<string, object> kwargs = new Dictionary<string, object>
-            {
-                { "image_path", imagePath },
-                { "gpu", gpu }
-            };
-            return BH.Engine.MachineLearning.Compute.Invoke("DetectObjects.detect_objects", kwargs);
+            return BH.Engine.MachineLearning.Compute.Invoke("PlotImage.plot_pil_image", image, height, width, grayscale);
+        }
+
+        /*************************************/
+
+        public static object PlotImage(Tensor tensor, int height, int width, bool grayscale = false)
+        {
+            return BH.Engine.MachineLearning.Compute.Invoke("PlotImage.plot_tensor_image", tensor, height, width, grayscale);
         }
 
         /*************************************/
