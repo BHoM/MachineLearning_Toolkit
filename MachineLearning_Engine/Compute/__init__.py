@@ -30,3 +30,4 @@ from .Charts import Diurnal
 from .Charts import UTCI
 from .Charts import Frequency
 from .Charts import Heatmap
+from .Charts import PlotImage

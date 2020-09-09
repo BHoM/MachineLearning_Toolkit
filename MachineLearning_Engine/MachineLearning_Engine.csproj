@@ -80,6 +80,7 @@
     <Compile Include="Compute\LinearRegression.cs" />
     <Compile Include="Compute\DetectObjects.cs" />
     <Compile Include="Compute\DrawDetection.cs" />
+    <Compile Include="Compute\Charts\PlotImage.cs" />
     <Compile Include="Compute\Invoke.cs" />
     <Compile Include="Convert\FromDType.cs" />
     <Compile Include="Modify\AsType.cs" />
@@ -109,6 +110,7 @@
     <None Include="Compute\LinearRegression.py" />
     <None Include="Compute\DrawDetection.py" />
     <None Include="Compute\DetectObjects.py" />
+    <None Include="Compute\Charts\PlotImage.py" />
     <None Include="Compute\__init__.py" />
     <None Include="__init__.py" />
   </ItemGroup>
