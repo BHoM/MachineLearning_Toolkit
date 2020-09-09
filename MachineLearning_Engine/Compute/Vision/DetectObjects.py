@@ -26,7 +26,7 @@ import torch
 import torchvision
 
 
-def infer(image_path: str, gpu: bool=False):
+def infer(image_path: str, gpu: bool, score_threshold: float):
 	if not (os.path.isfile(image_path)):
 		raise FileNotFoundError(image_path)
 
@@ -44,6 +44,6 @@ def infer(image_path: str, gpu: bool=False):
 
 	with torch.no_grad():
 		detection: List[Dict[str, torch.Tensor]] = model(tensor_image.unsqueeze(0))
-	return detection
+	return detection[0]
 		
 model = None

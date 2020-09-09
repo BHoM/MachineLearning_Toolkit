@@ -55,7 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetectionResults.cs" />
+    <Compile Include="Vision\Image.cs" />
+    <Compile Include="Vision\DetectionResults.cs" />
     <Compile Include="PolynomialFeatures.cs" />
     <Compile Include="StandardScaler.cs" />
     <Compile Include="MinMaxScaler.cs" />

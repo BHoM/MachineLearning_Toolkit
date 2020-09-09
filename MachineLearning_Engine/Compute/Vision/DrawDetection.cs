@@ -20,7 +20,9 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using BH.oM.MachineLearning;
 using BH.oM.MachineLearning.Vision;
+using Python.Runtime;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -32,9 +34,9 @@ namespace BH.Engine.MachineLearning.Vision
         /**** Public Methods              ****/
         /*************************************/
 
-        public static object DrawDetection(System.Drawing.Image image, DetectionResults detection, double minAccuracy=0.8)
+        public static Tensor DrawDetection(string imagePath, PyObject detection, double minAccuracy=0.8)
         {
-            return BH.Engine.MachineLearning.Compute.Invoke("DrawDetection.draw_detection", image, detection, minAccuracy);
+            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("DrawDetection.draw_detection", imagePath, detection, minAccuracy));
         }
 
         /*************************************/

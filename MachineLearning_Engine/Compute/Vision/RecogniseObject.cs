@@ -34,12 +34,12 @@ namespace BH.Engine.MachineLearning.Vision
         /*************************************/
 
         [Description("Returns the type of object in the image, e.g. an apple")]
-        [Input("imagePath", "The absolute path to the image to analyse")]
-        [Input("gpu", "If true, computation is accelarated using a capable gpu")]
-        [Output("probabilities", "The probabilities (score) for each class. Use the Query.ImageClasses() method to match ")]
-        public static int RecogniseObject(string imagePath, bool gpu = false)
+        [Input("Image path", "The absolute path to the image to analyse")]
+        [Input("Gpu", "If true, computation is accelarated using a capable gpu")]
+        [Output("Object", "The probabilities (score) for each class. Use the Query.ImageClasses() method to match ")]
+        public static string RecogniseObject(string imagePath, bool gpu = false)
         {
-            return BH.Engine.MachineLearning.Compute.Invoke("RecogniseObject.infer", imagePath, gpu).As<int>();
+            return BH.Engine.MachineLearning.Compute.Invoke("RecogniseObject.infer", imagePath, gpu).As<string>();
         }
 
         /*************************************/

@@ -20,22 +20,31 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using BH.oM.Base;
 using BH.oM.Geometry;
+using Python.Runtime;
 using System.Collections.Generic;
 
-namespace BH.oM.Vision
+namespace BH.oM.MachineLearning.Vision
 {
-    public class DetectionResults
+    public class Image : BHoMObject, IImmutable
     {
         /***************************************************/
         /**** Properties                                ****/
         /***************************************************/
 
-        public virtual List<Polyline> Boxes { get; set; } = new List<Polyline>();
+        public virtual PyObject Data { get; } = null;
 
-        public virtual List<int> Categories { get; set; } = new List<int>();
 
-        public virtual List<double> Scores { get; set; } = new List<double>();
+        /***************************************************/
+        /**** Constructors                              ****/
+        /***************************************************/
+
+        public Image(PyObject data)
+        {
+            Data = data;
+        }
+
 
         /***************************************************/
     }

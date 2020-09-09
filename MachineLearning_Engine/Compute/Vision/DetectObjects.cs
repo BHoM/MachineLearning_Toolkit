@@ -30,9 +30,9 @@ namespace BH.Engine.MachineLearning.Vision
         /**** Public Methods              ****/
         /*************************************/
 
-        public static object DetectObjects(string imagePath, bool gpu = false)
+        public static object DetectObjects(string imagePath, bool gpu = false, double scoreThreshold = 0.9)
         {
-            return BH.Engine.MachineLearning.Compute.Invoke("DetectObjects.infer", imagePath, gpu);
+            return BH.Engine.MachineLearning.Compute.Invoke("DetectObjects.infer", imagePath, gpu, scoreThreshold);
         }
 
         /*************************************/

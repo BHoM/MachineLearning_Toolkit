@@ -78,9 +78,11 @@
     <Compile Include="Compute\StandardScaler.cs" />
     <Compile Include="Compute\MinMaxScaler.cs" />
     <Compile Include="Compute\LinearRegression.cs" />
-    <Compile Include="Compute\DetectObjects.cs" />
-    <Compile Include="Compute\DrawDetection.cs" />
     <Compile Include="Compute\Charts\PlotImage.cs" />
+    <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
+    <Compile Include="Compute\Vision\RecogniseObject.cs" />
+    <Compile Include="Compute\Vision\DetectObjects.cs" />
+    <Compile Include="Compute\Vision\DrawDetection.cs" />
     <Compile Include="Compute\Invoke.cs" />
     <Compile Include="Convert\FromDType.cs" />
     <Compile Include="Modify\AsType.cs" />
@@ -108,13 +110,20 @@
     <None Include="Compute\Charts\UTCI.py" />
     <None Include="Compute\Charts\__init__.py" />
     <None Include="Compute\LinearRegression.py" />
-    <None Include="Compute\DrawDetection.py" />
-    <None Include="Compute\DetectObjects.py" />
     <None Include="Compute\Charts\PlotImage.py" />
+    <None Include="Compute\Vision\SemanticSegmentation.py" />
+    <None Include="Compute\Vision\RecogniseObject.py" />
+    <None Include="Compute\Vision\DrawDetection.py" />
+    <None Include="Compute\Vision\DetectObjects.py" />
+    <None Include="Compute\Vision\__init__.py" />
     <None Include="Compute\__init__.py" />
     <None Include="__init__.py" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Compute\Audio\" />
+    <Folder Include="Compute\Geometry\" />
+    <Folder Include="Compute\Text\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Compute\MinMaxScaler.py" />
   </ItemGroup>

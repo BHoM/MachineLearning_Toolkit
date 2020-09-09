@@ -31,3 +31,8 @@ from .Charts import UTCI
 from .Charts import Frequency
 from .Charts import Heatmap
 from .Charts import PlotImage
+
+from .Vision import DetectObjects
+from .Vision import DrawDetection
+from .Vision import RecogniseObject
+from .Vision import SemanticSegmentation
