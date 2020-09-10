@@ -20,24 +20,18 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
-from . import LinearRegression 
+from transformers import pipeline
 
-from .Audio import PlayAudio
-from .Audio import SynthesiseSpeech
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
-from .Charts import PlotImage
+def infer(text: str, gpu: bool):
+    global nlp
+    if nlp is None:
+        nlp = pipeline('sentiment-analysis')
 
-from .Preprocessing import MinMaxScaler
-from .Preprocessing import PolynomialFeatures
-from .Preprocessing import StandardScaler
+    output = nlp(text)[0]
+    sentiment = 1 if output.get("label") == "POSITIVE" else -1
+    score = output.get("score")
 
-from .Text import SentimentAnalysis
+    return score * sentiment
 
-from .Vision import DetectObjects
-from .Vision import DrawDetection
-from .Vision import RecogniseObject
-from .Vision import SemanticSegmentation
+nlp = None
