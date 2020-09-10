@@ -22,7 +22,7 @@
 
 using BH.oM.MachineLearning;
 
-namespace BH.Engine.MachineLearning.Vision
+namespace BH.Engine.MachineLearning.Audio
 {
     public static partial class Compute
     {
