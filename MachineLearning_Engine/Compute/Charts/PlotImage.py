@@ -23,37 +23,35 @@
 import PIL
 import torch
 import torchvision
-import matplotlib
 import matplotlib.pyplot as plt
 import os
 import subprocess
 
 
 def plot_pil_image(image: PIL.Image, height: int, width: int, grayscale: bool):
-	fig = plt.figure(figsize=(height, width))
+    fig = plt.figure(figsize=(height, width))
 
-	if grayscale:
-		cmap = "gray"
-	else:
-		cmap = None
+    if grayscale:
+        cmap = "gray"
+    else:
+        cmap = None
 
-	plt.imshow(image, cmap=cmap)
-	plt.tight_layout()
+    plt.imshow(image, cmap=cmap)
+    plt.tight_layout()
 
-	home = os.path.abspath("C:\\ProgramData\\BHoM\\Extensions\\Python\\temp")
+    home = os.path.abspath("C:\\ProgramData\\BHoM\\Extensions\\Python\\temp")
 
-	path = os.path.join(home, "current_plot.png")
-	if os.path.exists(path):
-		os.remove(path)
+    path = os.path.join(home, "current_plot.png")
+    if os.path.exists(path):
+        os.remove(path)
 
-	plt.savefig(path)
-	
-	subprocess.run(["explorer", path])
-	return
-	
+    plt.savefig(path)
+
+    subprocess.run(["explorer", path])
+    return
+
 
 def plot_tensor_image(image: torch.Tensor, height: int, width: int, grayscale: bool):
-	image = image.float()
-	pil_image = torchvision.transforms.functional.to_pil_image(image.cpu())
-	return plot_pil_image(pil_image, height, width, grayscale)
-	
+    image = image.float()
+    pil_image = torchvision.transforms.functional.to_pil_image(image.cpu())
+    return plot_pil_image(pil_image, height, width, grayscale)

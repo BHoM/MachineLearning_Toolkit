@@ -20,22 +20,5 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
-from . import LinearRegression 
-
-from .Audio import PlayAudio
-from .Audio import SynthesiseSpeech
-
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
-from .Charts import PlotImage
-
-from .Preprocessing import MinMaxScaler
-from .Preprocessing import PolynomialFeatures
-from .Preprocessing import StandardScaler
-
-from .Vision import DetectObjects
-from .Vision import DrawDetection
-from .Vision import RecogniseObject
-from .Vision import SemanticSegmentation
+from . import PlayAudio
+from . import SynthesiseSpeech
