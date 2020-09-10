@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compute\Audio\PlayAudio.cs" />
     <Compile Include="Compute\Charts\Diurnal.cs" />
     <Compile Include="Compute\Charts\Frequency.cs" />
     <Compile Include="Compute\Charts\Heatmap.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Compute\Preprocessing\MinMaxScaler.cs" />
     <Compile Include="Compute\LinearRegression.cs" />
     <Compile Include="Compute\Charts\PlotImage.cs" />
+    <Compile Include="Compute\Audio\SynthesiseSpeech.cs" />
     <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
     <Compile Include="Compute\Vision\RecogniseObject.cs" />
     <Compile Include="Compute\Vision\DetectObjects.cs" />
@@ -104,6 +106,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Compute\Audio\PlayAudio.py" />
     <None Include="Compute\Charts\Diurnal.py" />
     <None Include="Compute\Charts\Frequency.py" />
     <None Include="Compute\Charts\Heatmap.py" />
@@ -112,16 +115,17 @@
     <None Include="Compute\Charts\__init__.py" />
     <None Include="Compute\LinearRegression.py" />
     <None Include="Compute\Charts\PlotImage.py" />
+    <None Include="Compute\Audio\SynthesiseSpeech.py" />
     <None Include="Compute\Vision\SemanticSegmentation.py" />
     <None Include="Compute\Vision\RecogniseObject.py" />
     <None Include="Compute\Vision\DrawDetection.py" />
     <None Include="Compute\Vision\DetectObjects.py" />
+    <None Include="Compute\Audio\__init__ .py" />
     <None Include="Compute\Vision\__init__.py" />
     <None Include="Compute\__init__.py" />
     <None Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Compute\Audio\" />
     <Folder Include="Compute\Geometry\" />
     <Folder Include="Compute\Text\" />
   </ItemGroup>
