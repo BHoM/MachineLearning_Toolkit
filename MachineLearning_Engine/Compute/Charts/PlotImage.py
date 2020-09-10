@@ -53,13 +53,6 @@ def plot_pil_image(image: PIL.Image, height: int, width: int, grayscale: bool):
 	
 
 def plot_tensor_image(image: torch.Tensor, height: int, width: int, grayscale: bool):
-	fig = plt.figure(figsize=(height, width))
-
-	if grayscale:
-		cmap = "gray"
-	else:
-		cmap = None
-
 	image = image.float()
 	pil_image = torchvision.transforms.functional.to_pil_image(image.cpu())
 	return plot_pil_image(pil_image, height, width, grayscale)
