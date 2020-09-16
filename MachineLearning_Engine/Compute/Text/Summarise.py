@@ -20,26 +20,17 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
-from . import LinearRegression 
+from transformers import pipeline
 
-from .Audio import PlayAudio
-from .Audio import SynthesiseSpeech
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
-from .Charts import PlotImage
+def infer(text: str, gpu: bool):
+    global summarisation_pipeline
+    if summarisation_pipeline is None:
+        summarisation_pipeline = pipeline('summarization')
 
-from .Preprocessing import MinMaxScaler
-from .Preprocessing import PolynomialFeatures
-from .Preprocessing import StandardScaler
+    output = summarisation_pipeline(text)[0]
+	summary_text = output.get("summary_text")
 
-from .Text import Answer
-from .Text import SentimentAnalysis
-from .Text import Summarise
+    return summary_text
 
-from .Vision import DetectObjects
-from .Vision import DrawDetection
-from .Vision import RecogniseObject
-from .Vision import SemanticSegmentation
+summarisation_pipeline = None

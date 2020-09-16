@@ -24,14 +24,14 @@ from transformers import pipeline
 
 
 def infer(text: str, gpu: bool):
-    global nlp
-    if nlp is None:
-        nlp = pipeline('sentiment-analysis')
+    global sentiment_analysis_pipeline
+    if sentiment_analysis_pipeline is None:
+        sentiment_analysis_pipeline = pipeline('sentiment-analysis')
 
-    output = nlp(text)[0]
+    output = sentiment_analysis_pipeline(text)[0]
     sentiment = 1 if output.get("label") == "POSITIVE" else -1
     score = output.get("score")
 
     return score * sentiment
 
-nlp = None
+sentiment_analysis_pipeline = None
