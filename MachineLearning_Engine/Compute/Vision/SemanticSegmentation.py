@@ -27,18 +27,26 @@ import torch
 import torchvision
 
 
+@torch.no_grad()
 def infer(image_path: str, gpu: bool=False):
 	if not (os.path.isfile(image_path)):
 		raise FileNotFoundError(image_path)
 
+	# intantiace the model
 	global model
 	if model is None:
 		model = torch.hub.load('pytorch/vision:v0.6.0', 'deeplabv3_resnet101', pretrained=True)
 	model.eval()
 
+	# preprocess image and transform into tensor
 	pil_image: PIL.Image.Image = PIL.Image.open(image_path)
-	tensor_image: torch.Tensor = torchvision.transforms.functional.to_tensor(pil_image)
+	preprocess = torchvision.transforms.Compose([
+		torchvision.transforms.ToTensor(),
+		torchvision.transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+	])
+	tensor_image: torch.Tensor = preprocess(pil_image).unsqueeze(0)
 
+	# set accelerators
 	if gpu:
 		tensor_image = tensor_image.cuda()
 		model = model.cuda()
@@ -46,13 +54,9 @@ def infer(image_path: str, gpu: bool=False):
 		tensor_image = tensor_image.cpu()
 		model = model.cpu()
 
-	with torch.no_grad():
-		output = model(tensor_image.unsqueeze(0)).get("out")
-
-	colors = np.random.randn(output.size(1), 3)
-	prediction = torch.argmax(output, dim=1).squeeze()
-
-	return prediction
+	# run prediction
+	output = model(tensor_image).get("out")
+	return torch.argmax(output, dim=1).squeeze()
 
 
 model = None
