@@ -31,14 +31,17 @@ def infer(text: str, gpu: bool):
     # load models if necessary
     global WAVEGLOW
     if WAVEGLOW is None:
-        WAVEGLOW = torch.hub.load('nvidia/DeepLearningExamples:torchhub', 'nvidia_waveglow').to(device)
+        WAVEGLOW = torch.hub.load('nvidia/DeepLearningExamples:torchhub', 'nvidia_waveglow')
         WAVEGLOW = WAVEGLOW.remove_weightnorm(WAVEGLOW)
         WAVEGLOW.eval()
 
     global TACOTRON2
     if TACOTRON2 is None:
-        TACOTRON2 = torch.hub.load('nvidia/DeepLearningExamples:torchhub', 'nvidia_tacotron2').to(device)
+        TACOTRON2 = torch.hub.load('nvidia/DeepLearningExamples:torchhub', 'nvidia_tacotron2')
         TACOTRON2.eval()
+
+    WAVEGLOW = WAVEGLOW.to(device)
+    TACOTRON2 = TACOTRON2.to(device)
 
     # preprocess text sequence
     sequence = np.array(TACOTRON2.text_to_sequence(text, ['english_cleaners']))[None, :]
