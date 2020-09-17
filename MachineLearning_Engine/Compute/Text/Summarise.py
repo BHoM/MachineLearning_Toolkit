@@ -29,7 +29,7 @@ def infer(text: str, gpu: bool):
         summarisation_pipeline = pipeline('summarization')
 
     output = summarisation_pipeline(text)[0]
-	summary_text = output.get("summary_text")
+    summary_text = output.get("summary_text")
 
     return summary_text
 
