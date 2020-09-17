@@ -81,6 +81,8 @@
     <Compile Include="Compute\LinearRegression.cs" />
     <Compile Include="Compute\Charts\PlotImage.cs" />
     <Compile Include="Compute\Audio\SynthesiseSpeech.cs" />
+    <Compile Include="Compute\Text\Summarise.cs" />
+    <Compile Include="Compute\Text\Answer.cs" />
     <Compile Include="Compute\Text\SentimentAnalysis.cs" />
     <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
     <Compile Include="Compute\Vision\RecogniseObject.cs" />
@@ -117,6 +119,8 @@
     <None Include="Compute\LinearRegression.py" />
     <None Include="Compute\Charts\PlotImage.py" />
     <None Include="Compute\Audio\SynthesiseSpeech.py" />
+    <None Include="Compute\Text\Summarise.py" />
+    <None Include="Compute\Text\Answer.py" />
     <None Include="Compute\Text\SentimentAnalysis.py" />
     <None Include="Compute\Vision\SemanticSegmentation.py" />
     <None Include="Compute\Vision\RecogniseObject.py" />
