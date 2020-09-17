@@ -29,13 +29,13 @@ def infer(question: str, context: str,		gpu: bool):
         q_a_pipeline = pipeline('question-answering')
 
     output = q_a_pipeline({
-		"question": question,
-		"context": context
-	})[0]
+        "question": question,
+        "context": context
+    })[0]
     start = output.get("start")
     end = output.get("end")
     score = output.get("score")
-	answer = output.get("answer")
+    answer = output.get("answer")
 
     return answer
 
