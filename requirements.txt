@@ -1,0 +1,11 @@
+pillow
+pymongo
+numpy
+matplotlib
+pandas
+scikit-learn
+sounddevice
+tensorflow==1.4
+torch
+torchvision
+transformers
