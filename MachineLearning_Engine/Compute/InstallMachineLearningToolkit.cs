@@ -26,6 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace BH.Engine.MachineLearning
 {
@@ -46,42 +47,17 @@ namespace BH.Engine.MachineLearning
             if (!run)
                 return new Output<bool, List<string>>();
 
-            // basic modules (no additional parameters to pip install)
-            List<string> modules = new List<string> { "pillow", "pymongo", "numpy", "matplotlib", "pandas", "scikit-learn" };
-            List<string> installed = new List<string>();
+            // install from requirements.txt file
+            string requirementsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "BHoM", "Extensions", "Python", "etc", "requirements.txt");
+            Python.Compute.PipInstall($"-r {requirementsPath}");
 
-            // install basic modules
-            for (int i = 0; i < modules.Count; i++)
-            {
-                Console.WriteLine($"Installing {modules[i]}...");
-                Engine.Python.Compute.PipInstall(modules[i], force: force);
-                if (Python.Query.IsModuleInstalled(modules[i]))
-                    installed.Add(modules[i]);
-            }
-
-            // install tensorflow
-            string module = "tensorflow";
-            Console.WriteLine($"Installing {module}...");
-            Engine.Python.Compute.PipInstall(module, force: force, version: "2");
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // install pytorch
-            Console.WriteLine("Installing pytorch");
-            module = "torch";
-            Engine.Python.Compute.PipInstall(module, force: force, version: "1.4.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
-
-            // installing torchvision
-            module = "torchvision";
-            Engine.Python.Compute.PipInstall(module, force: force, version: "0.5.0", findLinks: "https://download.pytorch.org/whl/torch_stable.html");
-            if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
+            // check if installed correctly
+            string[] packages = File.ReadAllLines(requirementsPath);
+            List<string> installed = packages.Where(x => Python.Query.IsModuleInstalled(x)).ToList();
 
             // install pyBHoM
             Console.WriteLine("Installing MachineLearning_Engine...");
-            module = "MachineLearning_Engine";
+            string module = "MachineLearning_Engine";
             string mlPath = Path.Combine(Python.Query.EmbeddedPythonHome(), "src", "MachineLearning_Toolkit");
             Engine.Python.Compute.PipInstall($"-e {mlPath}", force: force);
             if (Python.Query.IsModuleInstalled(module))
