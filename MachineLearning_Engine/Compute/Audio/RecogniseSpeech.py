@@ -21,19 +21,22 @@
 #
 
 import os
+import sys
 import at16k
 import at16k.api
-import urllib
+
 
 def infer(wav_file: str, run: bool):
     if not run:
         return ""
 
+    os.environ['AT16K_RESOURCES_DIR'] = HOME
+
     # load models if necessary
-    global speech_recognition_model
-    if speech_recognition_model is None:
+    global SPEECH_RECOGNITION_MODEL
+    if SPEECH_RECOGNITION_MODEL is None:
         _download()
-        speech_recognition_model = at16k.api.SpeechToText(os.path.normpath("en_16k")
+        SPEECH_RECOGNITION_MODEL = at16k.api.SpeechToText(os.path.normpath("en_16k"))
 
 
 
@@ -41,13 +44,11 @@ def infer(wav_file: str, run: bool):
 
 
 def _download():
-    home = "C:\\ProgramData\\BHoM\\Extensions\\Python\\models\\audio\\at_16k\\"
-    os.makedirs(home, exist_ok=True)
-    os.environ['AT16K_RESOURCES_DIR'] = home
+    os.makedirs(HOME, exist_ok=True)
 
     sys.argv = ['download', 'en_16k']
     exec(open(at16k.download.__file__).read())
     return
 
-
-speech_recognition_model = None
+HOME = "C:\\ProgramData\\BHoM\\Extensions\\Python\\models\\audio\\at_16k\\"
+SPEECH_RECOGNITION_MODEL = None
