@@ -33,7 +33,7 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject Invoke(string method, params object[] args)
         {
-            PyObject mlComputeModule = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
+            PyObject mlComputeModule = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
 
             PyObject[] pyargs = new PyObject[args.Length];
             for (int i = 0; i < args.Length; i++)
@@ -46,7 +46,7 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject Invoke(string method, Dictionary<string, object> kwargs)
         {
-            PyObject mlComputeModule = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
+            PyObject mlComputeModule = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
             return BH.Engine.Python.Compute.Invoke(mlComputeModule, method, null, kwargs);
         }
 
@@ -54,7 +54,7 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject InvokeNumpy(string method, IEnumerable<object> args = null, Dictionary<string, object> kwargs = null)
         {
-            PyObject numpyModule = Engine.Python.Query.TryImport("numpy");
+            PyObject numpyModule = Engine.Python.Query.Import("numpy");
             return BH.Engine.Python.Compute.Invoke(numpyModule, method, args, kwargs);
         }
 
@@ -62,7 +62,7 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject InvokeNumpy(string method, params object[] args)
         {
-            PyObject numpyModule = Engine.Python.Query.TryImport("numpy");
+            PyObject numpyModule = Engine.Python.Query.Import("numpy");
             return BH.Engine.Python.Compute.Invoke(numpyModule, method, args, null);
         }
 
