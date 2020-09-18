@@ -33,7 +33,7 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject Invoke(string method, params object[] args)
         {
-            PyObject mlComputeModule = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
+            PyObject mlComputeModule = Engine.Python.Query.Import("MachineLearning_Engine.Compute.Preprocessing");
 
             PyObject[] pyargs = new PyObject[args.Length];
             for (int i = 0; i < args.Length; i++)
@@ -46,7 +46,7 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject Invoke(string method, Dictionary<string, object> kwargs)
         {
-            PyObject mlComputeModule = Engine.Python.Query.Import("MachineLearning_Engine.Compute");
+            PyObject mlComputeModule = Engine.Python.Query.Import("MachineLearning_Engine.Compute.Preprocessing");
             return BH.Engine.Python.Compute.Invoke(mlComputeModule, method, null, kwargs);
         }
 
