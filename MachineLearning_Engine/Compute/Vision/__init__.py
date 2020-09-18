@@ -24,4 +24,3 @@ from . import DetectObjects
 from . import RecogniseObject
 from . import SemanticSegmentation
 from . import DrawDetection
-from . import PlotImage
