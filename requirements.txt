@@ -5,7 +5,7 @@ matplotlib
 pandas
 scikit-learn
 sounddevice
-tensorflow==1.4
+tensorflow==1.14
 torch
 torchvision
 transformers
