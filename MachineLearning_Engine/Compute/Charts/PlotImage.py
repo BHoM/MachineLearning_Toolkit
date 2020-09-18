@@ -39,7 +39,9 @@ def plot_pil_image(image: PIL.Image, height: int, width: int, grayscale: bool):
     plt.imshow(image, cmap=cmap)
     plt.tight_layout()
 
-    home = os.path.abspath("C:\\ProgramData\\BHoM\\Extensions\\Python\\temp")
+    home = os.path.abspath("C:\\ProgramData\\BHoM\\Extensions\\Python\\temp\\")
+    if not os.path.exists(home):
+        os.makedirs(home, exist_ok=True)
 
     path = os.path.join(home, "current_plot.png")
     if os.path.exists(path):
