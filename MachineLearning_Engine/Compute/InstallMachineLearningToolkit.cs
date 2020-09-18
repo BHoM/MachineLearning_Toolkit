@@ -47,6 +47,9 @@ namespace BH.Engine.MachineLearning
             if (!run)
                 return new Output<bool, List<string>>();
 
+            // install the python toolkit if necessary
+            BH.Engine.Python.Compute.InstallPythonToolkit(run, force);
+
             // the requirements.txt file is copied to the python home in the postbuil events - we only pick it up now at runtime to install the toolkit lazily
             string requirementsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "BHoM", "Extensions", "Python", "etc", "requirements.txt");
             
