@@ -33,32 +33,37 @@ namespace BH.Engine.MachineLearning
 
         public static PyObject Invoke(string method, params object[] args)
         {
+            PyObject mlComputeModule = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
+
             PyObject[] pyargs = new PyObject[args.Length];
             for (int i = 0; i < args.Length; i++)
                 pyargs[i] = Engine.MachineLearning.Convert.IToPython(args[i]);
 
-            return Python.Compute.Invoke(m_PyCompute, method, pyargs, null);
+            return Python.Compute.Invoke(mlComputeModule, method, pyargs, null);
         }
 
         /*************************************/
 
         public static PyObject Invoke(string method, Dictionary<string, object> kwargs)
         {
-            return BH.Engine.Python.Compute.Invoke(m_PyCompute, method, null, kwargs);
+            PyObject mlComputeModule = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
+            return BH.Engine.Python.Compute.Invoke(mlComputeModule, method, null, kwargs);
         }
 
         /***************************************************/
 
         public static PyObject InvokeNumpy(string method, IEnumerable<object> args = null, Dictionary<string, object> kwargs = null)
         {
-            return BH.Engine.Python.Compute.Invoke(m_Numpy, method, args, kwargs);
+            PyObject numpyModule = Engine.Python.Query.TryImport("numpy");
+            return BH.Engine.Python.Compute.Invoke(numpyModule, method, args, kwargs);
         }
 
         /***************************************************/
 
         public static PyObject InvokeNumpy(string method, params object[] args)
         {
-            return BH.Engine.Python.Compute.Invoke(m_Numpy, method, args, null);
+            PyObject numpyModule = Engine.Python.Query.TryImport("numpy");
+            return BH.Engine.Python.Compute.Invoke(numpyModule, method, args, null);
         }
 
 
@@ -66,9 +71,9 @@ namespace BH.Engine.MachineLearning
         /**** Private Fields              ****/
         /*************************************/
 
-        private static PyObject m_PyCompute = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
+        //private static PyObject mlComputeModule = Engine.Python.Query.TryImport("MachineLearning_Engine.Compute");
 
-        public static PyObject m_Numpy = Engine.Python.Query.TryImport("numpy");
+        //public static PyObject m_Numpy = Engine.Python.Query.TryImport("numpy");
 
         /*************************************/
     }
