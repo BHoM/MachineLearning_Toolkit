@@ -54,7 +54,7 @@ namespace BH.Engine.MachineLearning
             string requirementsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "BHoM", "Extensions", "Python", "src", "requirements.txt");
             
             // install from requirements.txt file
-            Python.Compute.PipInstall($"-r {requirementsPath}");
+            Python.Compute.PipInstall($"-r {requirementsPath} -f https://download.pytorch.org/whl/torch_stable.html");
 
             // check if installed correctly
             string[] packages = File.ReadAllLines(requirementsPath);
