@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compute\Audio\PlayAudio.cs" />
+    <Compile Include="Compute\Audio\RecogniseSpeech.cs" />
     <Compile Include="Compute\Charts\Diurnal.cs" />
     <Compile Include="Compute\Charts\Frequency.cs" />
     <Compile Include="Compute\Charts\Heatmap.cs" />
@@ -110,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Compute\Audio\PlayAudio.py" />
+    <None Include="Compute\Audio\RecogniseSpeech.py" />
     <None Include="Compute\Charts\Diurnal.py" />
     <None Include="Compute\Charts\Frequency.py" />
     <None Include="Compute\Charts\Heatmap.py" />
