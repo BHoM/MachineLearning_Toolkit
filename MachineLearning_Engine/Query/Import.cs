@@ -50,11 +50,6 @@ namespace BH.Engine.MachineLearning
                     // InstallMachineLearningToolkit also installs python if it is not found
                     bool mlToolkitSuccess = Compute.InstallMachineLearningToolkit(true).Item1;
                 }
-                if (!Python.Query.IsModuleInstalled("MachineLearning_Engine"))
-                {
-                    Reflection.Compute.RecordWarning($"{module} has been installed, please restart the UI");
-                    Application.Restart();
-                }
             }
             else
             {
