@@ -54,7 +54,7 @@ namespace BH.Engine.MachineLearning
             else
             {
                 string errorMessage = $"Cannot import module {module} because no valid version of Python for the BHoM has been found.\n" +
-                                       "Try installing Python and the Python_Toolkit using the Compute.InstallPythonToolkit component.\n" +
+                                       "Try installing Python and the MachineLearning_Toolkit using the Compute.InstallMachineLearningToolkit component.\n" +
                                        "If the installation process fails, pleae consider reporting a bug at " +
                                        "https://github.com/BHoM/MachineLearning_Toolkit/issues/new?labels=type%3Abug&template=00_bug.md";
                 throw new Exception(errorMessage);
