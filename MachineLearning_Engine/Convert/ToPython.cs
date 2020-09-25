@@ -107,7 +107,7 @@ namespace BH.Engine.MachineLearning
             {
                 { "dtype", dtype.ToDType() }
             };
-            return Engine.MachineLearning.Compute.InvokeNumpy("array", args, kwargs);
+            return Engine.MachineLearning.Base.Compute.InvokeNumpy("array", args, kwargs);
         }
 
 

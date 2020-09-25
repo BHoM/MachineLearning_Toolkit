@@ -23,7 +23,7 @@
 using Python.Runtime;
 using System.Collections.Generic;
 
-namespace BH.Engine.MachineLearning
+namespace BH.Engine.MachineLearning.Base
 {
     public static partial class Compute
     {

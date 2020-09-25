@@ -36,14 +36,14 @@ namespace BH.Engine.MachineLearning
 
         public static Tensor AsType(this Tensor tensor, string dtype)
         {
-            return new Tensor(Compute.InvokeNumpy("astype", tensor.ToPython(), dtype));
+            return new Tensor(Base.Compute.InvokeNumpy("astype", tensor.ToPython(), dtype));
         }
 
         /***************************************************/
 
         public static Tensor AsType(this Tensor tensor, Type dtype)
         {
-            return new Tensor(Compute.InvokeNumpy("astype", tensor.ToPython(), dtype.ToDType()));
+            return new Tensor(Base.Compute.InvokeNumpy("astype", tensor.ToPython(), dtype.ToDType()));
         }
 
         /***************************************************/

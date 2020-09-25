@@ -30,7 +30,7 @@ namespace BH.Engine.MachineLearning.Text
 
         public static double SentimentAnalysis(string text, bool gpu = false)
         {
-            return BH.Engine.MachineLearning.Compute.Invoke("SentimentAnalysis.infer", text, gpu).As<double>();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke("SentimentAnalysis.infer", text, gpu).As<double>();
         }
 
         /*************************************/

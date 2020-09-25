@@ -21,6 +21,7 @@
 #
 
 from . import DetectObjects
+from . import DrawDetection
+from . import FindContours
 from . import RecogniseObject
 from . import SemanticSegmentation
-from . import DrawDetection

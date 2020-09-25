@@ -40,6 +40,10 @@
       <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Geometry_oM, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
+    </Reference>
     <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\ProgramData\BHoM\Assemblies\Python.Runtime.dll</HintPath>
@@ -86,6 +90,7 @@
     <Compile Include="Compute\Text\Summarise.cs" />
     <Compile Include="Compute\Text\Answer.cs" />
     <Compile Include="Compute\Text\SentimentAnalysis.cs" />
+    <Compile Include="Compute\Vision\FindContours.cs" />
     <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
     <Compile Include="Compute\Vision\RecogniseObject.cs" />
     <Compile Include="Compute\Vision\DetectObjects.cs" />
@@ -102,6 +107,8 @@
     <Compile Include="Convert\ToDType.cs" />
     <Compile Include="Query\Coefficients.cs" />
     <Compile Include="Query\Import.cs" />
+    <Compile Include="Query\GetAttribute.cs" />
+    <Compile Include="Query\Shape.cs" />
     <Compile Include="Query\Size.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +133,7 @@
     <None Include="Compute\Text\Summarise.py" />
     <None Include="Compute\Text\Answer.py" />
     <None Include="Compute\Text\SentimentAnalysis.py" />
+    <None Include="Compute\Vision\FindContours.py" />
     <None Include="Compute\Vision\SemanticSegmentation.py" />
     <None Include="Compute\Vision\RecogniseObject.py" />
     <None Include="Compute\Vision\DrawDetection.py" />

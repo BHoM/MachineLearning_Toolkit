@@ -30,7 +30,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BH.Engine.MachineLearning
+namespace BH.Engine.MachineLearning.Base
 {
     public static partial class Compute
     {
@@ -44,7 +44,7 @@ namespace BH.Engine.MachineLearning
         [Output("model", "The ordinary least squares linear regression with the given data.")]
         public static LinearRegression LinearRegression(Tensor x, Tensor y)
         {
-            PyObject model = BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.fit", x, y);
+            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke("LinearRegression.fit", x, y);
             return new LinearRegression(model);
         }
 
@@ -56,7 +56,7 @@ namespace BH.Engine.MachineLearning
         [Output("y", "The projected output for the given data using the linear model.")]
         public static Tensor Infer(LinearRegression model, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("LinearRegression.infer", model, x));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("LinearRegression.infer", model, x));
         }
 
         /*************************************/

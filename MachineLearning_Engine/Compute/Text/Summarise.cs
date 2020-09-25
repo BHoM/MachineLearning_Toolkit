@@ -30,7 +30,7 @@ namespace BH.Engine.MachineLearning.Text
 
         public static string Summarise(string text, bool gpu = false)
         {
-            return BH.Engine.MachineLearning.Compute.Invoke("Summarise.infer", text, gpu).As<string>();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke("Summarise.infer", text, gpu).As<string>();
         }
 
         /*************************************/

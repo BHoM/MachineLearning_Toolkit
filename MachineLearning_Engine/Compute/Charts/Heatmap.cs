@@ -46,7 +46,7 @@ namespace BH.Engine.MachineLearning.Charts
             if (!run)
                 return null;
 
-            return BH.Engine.MachineLearning.Compute.Invoke(
+            return BH.Engine.MachineLearning.Base.Compute.Invoke(
                 "Heatmap.heatmap", 
                 annualValues, 
                 savePath, 
