@@ -35,7 +35,7 @@ namespace BH.Engine.MachineLearning.Charts
             if (!run)
                 return null;
 
-            return BH.Engine.MachineLearning.Compute.Invoke("Diurnal.diurnal", annualValues, savePath, grouping, months, title, unit, color, toneColor, transparency).ToString();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke("Diurnal.diurnal", annualValues, savePath, grouping, months, title, unit, color, toneColor, transparency).ToString();
         }
 
         /*************************************/

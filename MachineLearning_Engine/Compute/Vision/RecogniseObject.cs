@@ -37,7 +37,7 @@ namespace BH.Engine.MachineLearning.Vision
         [Output("Object", "The probabilities (score) for each class. Use the Query.ImageClasses() method to match ")]
         public static string RecogniseObject(string imagePath, bool gpu = false)
         {
-            return BH.Engine.MachineLearning.Compute.Invoke("RecogniseObject.infer", imagePath, gpu).As<string>();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke("RecogniseObject.infer", imagePath, gpu).As<string>();
         }
 
         /*************************************/

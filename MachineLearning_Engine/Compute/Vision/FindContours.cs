@@ -20,9 +20,13 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
  */
 
+using BH.Engine.Python;
+using BH.oM.Geometry;
 using BH.oM.MachineLearning;
+using Python.Runtime;
+using System.Collections.Generic;
 
-namespace BH.Engine.MachineLearning.Audio
+namespace BH.Engine.MachineLearning.Vision
 {
     public static partial class Compute
     {
@@ -30,11 +34,22 @@ namespace BH.Engine.MachineLearning.Audio
         /**** Public Methods              ****/
         /*************************************/
 
-        public static void PlayAudio(Tensor audioTensor, int rate = 22050, bool run = false)
+        public static List<Polyline> FindContours(Tensor image, int level)
         {
-            if (run)
-                BH.Engine.MachineLearning.Base.Compute.Invoke("PlayAudio.play_numpy_audio", audioTensor, rate);
-            return;
+            List<Polyline> polylines = new List<Polyline>();
+            // returns a list of points as numpy arrays
+            List<object> contours = (BH.Engine.MachineLearning.Base.Compute.Invoke("FindContours.infer", image, level).IFromPython()) as List<object>;
+            foreach (List<List<double>> polyline in contours)
+            {
+                Polyline bhomPolyline = new Polyline();
+                foreach(List<double> point in polyline)
+                {
+                    Point bhomPoint = new Point { X = point[0], Y = point[1] };
+                    bhomPolyline.ControlPoints.Add(bhomPoint);
+                }
+                polylines.Add(bhomPolyline);
+            }
+            return polylines;
         }
 
         /*************************************/

@@ -33,7 +33,7 @@ namespace BH.Engine.MachineLearning
 
         public static int Size(this Tensor tensor)
         {
-            return (Compute.InvokeNumpy("size", tensor.ToPython())).FromPython<int>();
+            return (Base.Compute.InvokeNumpy("size", tensor.ToPython())).FromPython<int>();
         }
 
         /*************************************/

@@ -32,7 +32,7 @@ namespace BH.Engine.MachineLearning.Audio
 
         public static Tensor RecogniseSpeech(string wavFile = "", bool run = false)
         {
-            return new Tensor(BH.Engine.MachineLearning.Compute.Invoke("RecogniseSpeech.infer", wavFile, run));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("RecogniseSpeech.infer", wavFile, run));
         }
 
         /*************************************/

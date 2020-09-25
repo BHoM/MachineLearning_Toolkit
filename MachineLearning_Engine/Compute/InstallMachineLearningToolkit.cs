@@ -28,7 +28,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
-namespace BH.Engine.MachineLearning
+namespace BH.Engine.MachineLearning.Base
 {
     public static partial class Compute
     {

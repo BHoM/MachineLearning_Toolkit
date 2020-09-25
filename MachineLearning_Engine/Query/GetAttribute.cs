@@ -21,19 +21,20 @@
  */
 
 using BH.oM.MachineLearning;
-using Python.Runtime;
+using BH.Engine.Python;
+using System.Collections.Generic;
 
-namespace BH.Engine.MachineLearning.Vision
+namespace BH.Engine.MachineLearning
 {
-    public static partial class Compute
+    public static partial class Query
     {
         /*************************************/
-        /**** Public Methods              ****/
+        /**** Public Fields              ****/
         /*************************************/
 
-        public static Tensor DrawDetection(string imagePath, PyObject detection, double minAccuracy=0.8)
+        public static object GetAttribute(this Tensor tensor, string attribute)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("DrawDetection.draw_detection", imagePath, detection, minAccuracy));
+            return tensor.NumpyArray.GetAttr(attribute).IFromPython();
         }
 
         /*************************************/

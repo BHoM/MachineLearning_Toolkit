@@ -20,28 +20,39 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
-from . import LinearRegression
+import numpy as np
+import matplotlib.pyplot as plt
+import skimage.measure
+import skimage.color
+import torch
 
-from .Audio import PlayAudio
-from .Audio import SynthesiseSpeech
-from .Audio import RecogniseSpeech
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
-from .Charts import PlotImage
+def infer(im: np.ndarray, level: int):
+	if torch.is_tensor(im):
+		im = im.detach().cpu().numpy()
 
-from .Preprocessing import MinMaxScaler
-from .Preprocessing import PolynomialFeatures
-from .Preprocessing import StandardScaler
+	im = im.squeeze()
+	ndim = im.ndim
 
-from .Text import Answer
-from .Text import SentimentAnalysis
-from .Text import Summarise
+	if ndim == 2:
+		return skimage.measure.find_contours(im, level)
 
-from .Vision import DetectObjects
-from .Vision import DrawDetection
-from .Vision import FindContours
-from .Vision import RecogniseObject
-from .Vision import SemanticSegmentation
+	if ndim == 3:
+		# case: RGB image, channel first
+		if im.size(0) == 3:
+			im = np.transpose(im, (2, 1, 0))
+			return skimage.measure.find_contours(im, level)
+		# case: RGB image, channel last
+		elif im.size(2) == 3:
+			mask = skimage.color.rgb2gray(im)
+			return skimage.measure.find_contours(im, level)
+		# case: list of grayscale images
+		elif 3 not in im.shape:
+			return [infer(x, level) for x in im]
+
+	if ndim == 4:
+		# the only case is a list of images, rgb or grayscale with channels 1
+		return [infer(x, level) for x in im]
+
+	raise ValueError("I really don't know what you want to do with a tensor {}".format(im.shape))
+	return
