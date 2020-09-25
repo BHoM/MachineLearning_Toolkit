@@ -30,7 +30,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BH.Engine.MachineLearning.Base
+namespace BH.Engine.MachineLearning.Structured
 {
     public static partial class Compute
     {

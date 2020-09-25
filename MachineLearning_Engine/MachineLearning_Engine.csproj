@@ -84,7 +84,7 @@
     <Compile Include="Compute\Preprocessing\PolynomialFeatures.cs" />
     <Compile Include="Compute\Preprocessing\StandardScaler.cs" />
     <Compile Include="Compute\Preprocessing\MinMaxScaler.cs" />
-    <Compile Include="Compute\LinearRegression.cs" />
+    <Compile Include="Compute\Structured\LinearRegression.cs" />
     <Compile Include="Compute\Charts\PlotImage.cs" />
     <Compile Include="Compute\Audio\SynthesiseSpeech.cs" />
     <Compile Include="Compute\Text\Summarise.cs" />
@@ -127,9 +127,10 @@
     <None Include="Compute\Charts\UTCI.py" />
     <None Include="Compute\Preprocessing\__init__.py" />
     <None Include="Compute\Charts\__init__.py" />
-    <None Include="Compute\LinearRegression.py" />
+    <None Include="Compute\Structured\LinearRegression.py" />
     <None Include="Compute\Charts\PlotImage.py" />
     <None Include="Compute\Audio\SynthesiseSpeech.py" />
+    <None Include="Compute\Structured\__init__.py" />
     <None Include="Compute\Text\Summarise.py" />
     <None Include="Compute\Text\Answer.py" />
     <None Include="Compute\Text\SentimentAnalysis.py" />
