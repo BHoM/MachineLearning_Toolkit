@@ -20,32 +20,38 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
-from . import LinearRegression
+from sklearn.svm import SVR
+import numpy as np
 
-from .Audio import PlayAudio
-from .Audio import SynthesiseSpeech
-from .Audio import RecogniseSpeech
 
-from .Charts import Diurnal
-from .Charts import UTCI
-from .Charts import Frequency
-from .Charts import Heatmap
-from .Charts import PlotImage
+def fit(x: np.ndarray, y: np.ndarray):
+	assert len(x) == len(y), "Input data and target data have different length {} and {}".format(
+								len(x), len(y))
+	
+	# instantiace linear regression model
+	model = SVR()
+	
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	if y.ndim == 1:
+		y = y.reshape(-1, 1)
 
-from .Preprocessing import MinMaxScaler
-from .Preprocessing import PolynomialFeatures
-from .Preprocessing import StandardScaler
+	# fit the training data
+	model.fit(x, y)
+	return model
 
-from .Structured import LinearRegression
-from .Structured import SupportVectorRegression
-from .Structured import LogisticRegression
+def infer(model: SVR, x: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	return model.predict(x)
 
-from .Text import Answer
-from .Text import SentimentAnalysis
-from .Text import Summarise
 
-from .Vision import DetectObjects
-from .Vision import DrawDetection
-from .Vision import FindContours
-from .Vision import RecogniseObject
-from .Vision import SemanticSegmentation
+def error(model: SVR, x: np.ndarray, y: np.ndarray):
+	# make sure the input is at least bidimensinal
+	if x.ndim == 1:
+		x = x.reshape(-1, 1)
+	if y.ndim == 1:
+		y = y.reshape(-1, 1)
+	return model.score(x, y)

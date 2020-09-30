@@ -20,38 +20,35 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using BH.Engine.MachineLearning;
 using BH.oM.MachineLearning;
 using BH.oM.Reflection;
 using BH.oM.Reflection.Attributes;
-using BH.Engine.MachineLearning;
+using Python.Runtime;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BH.Engine.MachineLearning
+namespace BH.Engine.MachineLearning.Structured
 {
-    public static partial class Query
+    public static partial class Compute
     {
         /*************************************/
-        /**** Public Fields              ****/
+        /**** Public Methods              ****/
         /*************************************/
 
-        [Description("Finds the The coefficient of determination R^2 of the given regression model.")]
-        [Input("model", "The linear regressor model used for inference.")]
-        [Input("x", "Training data as a list of 2-elements list.")]
-        [Input("y", "Target values as a list of 2-elements list.")]
-        [Output("r2", "The coefficient of determination R^2 of the prediction.")]
-        public static Tensor Error(LinearRegression model, Tensor x, Tensor y)
+        public static SupportVectorRegression SupportVectorRegression(Tensor x, Tensor y)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("LinearRegression.error", model, x, y)); ;
+            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke("SupportVectorRegression.fit", x, y);
+            return new SupportVectorRegression(model);
         }
 
         /*************************************/
 
-        public static Tensor Error(LogisticRegression model, Tensor x, Tensor y)
+        public static Tensor Infer(SupportVectorRegression model, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("LogisticRegression.error", model, x, y)); ;
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("SupportVectorRegression.infer", model, x));
         }
 
         /*************************************/

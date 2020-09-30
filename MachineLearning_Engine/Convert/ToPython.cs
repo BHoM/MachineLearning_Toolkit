@@ -95,6 +95,21 @@ namespace BH.Engine.MachineLearning
         }
 
         /***************************************************/
+
+        public static PyObject ToPython(this SupportVectorRegression regressor)
+        {
+            return regressor.SkLearnModel;
+        }
+
+        /***************************************************/
+
+        public static PyObject ToPython(this LogisticRegression regressor)
+        {
+            return regressor.SkLearnModel;
+        }
+
+
+        /***************************************************/
         /**** Private Methods                           ****/
         /***************************************************/
 

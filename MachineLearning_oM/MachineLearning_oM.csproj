@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogisticRegression.cs" />
+    <Compile Include="SupportVectorRegression.cs" />
     <Compile Include="Vision\Image.cs" />
     <Compile Include="Vision\DetectionResults.cs" />
     <Compile Include="PolynomialFeatures.cs" />
