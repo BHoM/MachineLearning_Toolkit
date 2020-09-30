@@ -21,3 +21,5 @@
 #
 
 from . import LinearRegression
+from . import SupportVectorRegression
+from . import LogisticRegression
