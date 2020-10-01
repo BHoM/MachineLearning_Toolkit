@@ -38,8 +38,6 @@ def infer(wav_file: str, run: bool):
         _download()
         SPEECH_RECOGNITION_MODEL = at16k.api.SpeechToText(os.path.normpath("en_16k"))
 
-
-
     return audio_numpy
 
 
