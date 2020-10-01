@@ -25,6 +25,9 @@ import numpy as np
 
 
 def infer(text: str, gpu: bool):
+    # check if cuda is avaliable
+    gpu = gpu and torch.cuda.is_avaliable()
+
     # accelerate on gpu if possible
     device = "cuda" if gpu else "cpu"
 
