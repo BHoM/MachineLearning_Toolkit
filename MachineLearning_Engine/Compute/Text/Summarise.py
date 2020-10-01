@@ -23,7 +23,7 @@
 from transformers import pipeline
 
 
-def infer(text: str, gpu: bool):
+def infer(text: str):
     global summarisation_pipeline
     if summarisation_pipeline is None:
         summarisation_pipeline = pipeline('summarization')

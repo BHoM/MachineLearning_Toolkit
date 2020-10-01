@@ -20,18 +20,19 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
+import torch
 from transformers import pipeline
 
 
-def infer(text: str, gpu: bool):
-    global sentiment_analysis_pipeline
-    if sentiment_analysis_pipeline is None:
-        sentiment_analysis_pipeline = pipeline('sentiment-analysis')
+def infer(text: str):
+    global SENTIMENT_ANALYSIS_PIPELINE
+    if SENTIMENT_ANALYSIS_PIPELINE is None:
+        SENTIMENT_ANALYSIS_PIPELINE = pipeline('sentiment-analysis')
 
-    output = sentiment_analysis_pipeline(text)[0]
+    output = SENTIMENT_ANALYSIS_PIPELINE(text)[0]
     sentiment = 1 if output.get("label") == "POSITIVE" else -1
     score = output.get("score")
 
     return score * sentiment
 
-sentiment_analysis_pipeline = None
+SENTIMENT_ANALYSIS_PIPELINE = None

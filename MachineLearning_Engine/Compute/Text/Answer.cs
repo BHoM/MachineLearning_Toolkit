@@ -28,9 +28,9 @@ namespace BH.Engine.MachineLearning.Text
         /**** Public Methods              ****/
         /*************************************/
 
-        public static string Answer(string question, string context = "", bool gpu = false)
+        public static string Answer(string question, string context = "")
         {
-            return BH.Engine.MachineLearning.Base.Compute.Invoke("Answer.infer", question, context, gpu).As<string>();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke("Answer.infer", question, context).As<string>();
         }
 
         /*************************************/
