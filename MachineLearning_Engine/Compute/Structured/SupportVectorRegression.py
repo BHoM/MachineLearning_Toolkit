@@ -24,12 +24,12 @@ from sklearn.svm import SVR
 import numpy as np
 
 
-def fit(x: np.ndarray, y: np.ndarray):
+def fit(x: np.ndarray, y: np.ndarray, kernel: str, degree: int, regularisation: float):
 	assert len(x) == len(y), "Input data and target data have different length {} and {}".format(
 								len(x), len(y))
 	
 	# instantiace linear regression model
-	model = SVR()
+	model = SVR(kernel=kernel, degree=degree, C=regularisation)
 	
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
