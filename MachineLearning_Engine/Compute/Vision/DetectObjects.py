@@ -45,5 +45,5 @@ def infer(image_path: str, gpu: bool, score_threshold: float):
 	with torch.no_grad():
 		detection: List[Dict[str, torch.Tensor]] = model(tensor_image.unsqueeze(0))
 	return detection[0]
-		
+
 model = None
