@@ -20,18 +20,21 @@
 # along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 #
 
+import torch
 from transformers import pipeline
 
 
-def infer(question: str, context: str,		gpu: bool):
-    global q_a_pipeline
-    if q_a_pipeline is None:
-        q_a_pipeline = pipeline('question-answering')
+def infer(question: str, context: str):
+    # load model
+    global Q_A_PIPELINE
+    if Q_A_PIPELINE is None:
+        Q_A_PIPELINE = pipeline('question-answering')
 
-    output = q_a_pipeline({
+    output = Q_A_PIPELINE({
         "question": question,
         "context": context
     })[0]
+
     start = output.get("start")
     end = output.get("end")
     score = output.get("score")
@@ -39,4 +42,4 @@ def infer(question: str, context: str,		gpu: bool):
 
     return answer
 
-q_a_pipeline = None
+Q_A_PIPELINE = None
