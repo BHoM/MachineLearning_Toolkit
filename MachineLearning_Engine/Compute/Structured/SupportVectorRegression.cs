@@ -38,9 +38,9 @@ namespace BH.Engine.MachineLearning.Structured
         /**** Public Methods              ****/
         /*************************************/
 
-        public static SupportVectorRegression SupportVectorRegression(Tensor x, Tensor y)
+        public static SupportVectorRegression SupportVectorRegression(Tensor x, Tensor y, string args = "")
         {
-            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke("SupportVectorRegression.fit", x, y);
+            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke("SupportVectorRegression.fit", x, y, args);
             return new SupportVectorRegression(model);
         }
 

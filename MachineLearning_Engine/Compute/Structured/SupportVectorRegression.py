@@ -24,12 +24,18 @@ from sklearn.svm import SVR
 import numpy as np
 
 
-def fit(x: np.ndarray, y: np.ndarray):
+def fit(x: np.ndarray, y: np.ndarray, argString: str):
 	assert len(x) == len(y), "Input data and target data have different length {} and {}".format(
 								len(x), len(y))
 	
+	kwargs = {}
+
+	args = [x.strip() for x in argString.split(',')]
+	for arg in args:
+		kwargs[arg.split('=')[0]] = arg.split('=')[1]
+
 	# instantiace linear regression model
-	model = SVR()
+	model = SVR(**kwargs)
 	
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
