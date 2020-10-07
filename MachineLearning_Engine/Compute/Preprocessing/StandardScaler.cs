@@ -38,7 +38,7 @@ namespace BH.Engine.MachineLearning.Preprocessing
         [Output("scaler", "The estimated scaler for the standard scale transformation.")]
         public static StandardScaler StandardScaler(Tensor x)
         {
-            PyObject scaler = BH.Engine.MachineLearning.Base.Compute.Invoke("StandardScaler.fit", x);
+            PyObject scaler = BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "StandardScaler.fit", x);
             return new StandardScaler(scaler);
         }
 
@@ -50,7 +50,7 @@ namespace BH.Engine.MachineLearning.Preprocessing
         [Output("rescaledX", "The rescaled data after the given standard scale transformation.")]
         public static Tensor Infer(StandardScaler scaler, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("StandardScaler.infer", scaler, x));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "StandardScaler.infer", scaler, x));
         }
 
         /*************************************/
@@ -60,7 +60,7 @@ namespace BH.Engine.MachineLearning.Preprocessing
         [Output("inversedX", "The inverse transformed data using the standard scaler.")]
         public static Tensor InferInverse(StandardScaler scaler, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("StandardScaler.infer_inverse", scaler, x));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "StandardScaler.infer_inverse", scaler, x));
         }
 
         /*************************************/

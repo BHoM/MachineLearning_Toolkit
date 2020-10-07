@@ -33,14 +33,14 @@ namespace BH.Engine.MachineLearning.Charts
 
         public static object PlotImage(Image image, int height, int width, bool grayscale = false)
         {
-            return BH.Engine.MachineLearning.Base.Compute.Invoke("PlotImage.plot_pil_image", image, height, width, grayscale);
+            return BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "PlotImage.plot_pil_image", image, height, width, grayscale);
         }
 
         /*************************************/
 
         public static object PlotImage(Tensor tensor, int height, int width, bool grayscale = false)
         {
-            return BH.Engine.MachineLearning.Base.Compute.Invoke("PlotImage.plot_tensor_image", tensor, height, width, grayscale);
+            return BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "PlotImage.plot_tensor_image", tensor, height, width, grayscale);
         }
 
         /*************************************/

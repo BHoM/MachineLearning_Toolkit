@@ -22,6 +22,7 @@
 
 using Python.Runtime;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BH.Engine.MachineLearning.Base
 {
@@ -31,9 +32,9 @@ namespace BH.Engine.MachineLearning.Base
         /**** Public Methods              ****/
         /*************************************/
 
-        public static PyObject Invoke(string method, params object[] args)
+        public static PyObject Invoke(string nameSpace, string method, params object[] args)
         {
-            PyObject mlComputeModule = Query.Import("MachineLearning_Engine.Compute");
+            PyObject mlComputeModule = Query.Import("MachineLearning_Engine.Compute." + nameSpace.Split('.').Last());
 
             PyObject[] pyargs = new PyObject[args.Length];
             for (int i = 0; i < args.Length; i++)
@@ -44,9 +45,9 @@ namespace BH.Engine.MachineLearning.Base
 
         /*************************************/
 
-        public static PyObject Invoke(string method, Dictionary<string, object> kwargs)
+        public static PyObject Invoke(string nameSpace, string method, Dictionary<string, object> kwargs)
         {
-            PyObject mlComputeModule = Query.Import("MachineLearning_Engine.Compute");
+            PyObject mlComputeModule = Query.Import("MachineLearning_Engine.Compute." + nameSpace.Split('.').Last());
             return BH.Engine.Python.Compute.Invoke(mlComputeModule, method, null, kwargs);
         }
 

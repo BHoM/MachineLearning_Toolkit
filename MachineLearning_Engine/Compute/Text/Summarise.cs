@@ -30,7 +30,7 @@ namespace BH.Engine.MachineLearning.Text
 
         public static string Summarise(string text)
         {
-            return BH.Engine.MachineLearning.Base.Compute.Invoke("Summarise.infer", text).As<string>();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "Summarise.infer", text).As<string>();
         }
 
         /*************************************/

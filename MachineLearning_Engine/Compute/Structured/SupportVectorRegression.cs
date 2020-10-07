@@ -40,7 +40,7 @@ namespace BH.Engine.MachineLearning.Structured
 
         public static SupportVectorRegression SupportVectorRegression(Tensor x, Tensor y, string kernel = "rbf", int degree = 3, double regularisation = 1.0)
         {
-            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke("SupportVectorRegression.fit", x, y, kernel, degree, regularisation);
+            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "SupportVectorRegression.fit", x, y, kernel, degree, regularisation);
             return new SupportVectorRegression(model);
         }
 
@@ -48,7 +48,7 @@ namespace BH.Engine.MachineLearning.Structured
 
         public static Tensor Infer(SupportVectorRegression model, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("SupportVectorRegression.infer", model, x));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "SupportVectorRegression.infer", model, x));
         }
 
         /*************************************/
