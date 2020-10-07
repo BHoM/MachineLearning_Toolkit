@@ -33,7 +33,7 @@ namespace BH.Engine.MachineLearning.Audio
         public static void PlayAudio(Tensor audioTensor, int rate = 22050, bool run = false)
         {
             if (run)
-                BH.Engine.MachineLearning.Base.Compute.Invoke("PlayAudio.play_numpy_audio", audioTensor, rate);
+                BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "PlayAudio.play_numpy_audio", audioTensor, rate);
             return;
         }
 

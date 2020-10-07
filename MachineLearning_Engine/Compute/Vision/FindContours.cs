@@ -38,7 +38,7 @@ namespace BH.Engine.MachineLearning.Vision
         {
             List<Polyline> polylines = new List<Polyline>();
             // returns a list of points as numpy arrays
-            List<object> contours = (BH.Engine.MachineLearning.Base.Compute.Invoke("FindContours.infer", image, level).IFromPython()) as List<object>;
+            List<object> contours = (BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "FindContours.infer", image, level).IFromPython()) as List<object>;
             foreach (List<List<double>> polyline in contours)
             {
                 Polyline bhomPolyline = new Polyline();

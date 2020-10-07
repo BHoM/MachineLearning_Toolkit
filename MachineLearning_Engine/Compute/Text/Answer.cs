@@ -30,7 +30,7 @@ namespace BH.Engine.MachineLearning.Text
 
         public static string Answer(string question, string context = "")
         {
-            return BH.Engine.MachineLearning.Base.Compute.Invoke("Answer.infer", question, context).As<string>();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "Answer.infer", question, context).As<string>();
         }
 
         /*************************************/

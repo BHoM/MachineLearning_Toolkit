@@ -35,7 +35,7 @@ namespace BH.Engine.MachineLearning.Charts
             if (!run)
                 return null;
 
-            return BH.Engine.MachineLearning.Base.Compute.Invoke("Frequency.frequency", values, savePath, title, unit, vRange, bins, color, toneColor, transparency).ToString();
+            return BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "Frequency.frequency", values, savePath, title, unit, vRange, bins, color, toneColor, transparency).ToString();
         }
 
         /*************************************/

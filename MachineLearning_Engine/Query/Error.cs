@@ -44,14 +44,14 @@ namespace BH.Engine.MachineLearning
         [Output("r2", "The coefficient of determination R^2 of the prediction.")]
         public static Tensor Error(LinearRegression model, Tensor x, Tensor y)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("LinearRegression.error", model, x, y)); ;
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "LinearRegression.error", model, x, y)); ;
         }
 
         /*************************************/
 
         public static Tensor Error(LogisticRegression model, Tensor x, Tensor y)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("LogisticRegression.error", model, x, y)); ;
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "LogisticRegression.error", model, x, y)); ;
         }
 
         /*************************************/

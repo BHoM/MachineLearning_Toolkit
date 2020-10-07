@@ -33,7 +33,7 @@ namespace BH.Engine.MachineLearning.Vision
 
         public static Tensor DrawDetection(string imagePath, PyObject detection, double minAccuracy=0.8)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("DrawDetection.draw_detection", imagePath, detection, minAccuracy));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "DrawDetection.draw_detection", imagePath, detection, minAccuracy));
         }
 
         /*************************************/

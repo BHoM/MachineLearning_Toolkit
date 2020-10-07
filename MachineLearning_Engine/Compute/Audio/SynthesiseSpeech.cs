@@ -32,7 +32,7 @@ namespace BH.Engine.MachineLearning.Audio
 
         public static Tensor SynthesiseSpeech(string text, bool gpu = false)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("SynthesiseSpeech.infer", text, gpu));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "SynthesiseSpeech.infer", text, gpu));
         }
 
         /*************************************/

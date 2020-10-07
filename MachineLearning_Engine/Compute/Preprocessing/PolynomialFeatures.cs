@@ -39,7 +39,7 @@ namespace BH.Engine.MachineLearning.Preprocessing
         [Output("transformer", "The transformer for the polynomial and interaction features of the data.")]
         public static PolynomialFeatures PolynomialFeatures(int degree = 2, bool interaction_only = false)
         {
-            PyObject transformer = BH.Engine.MachineLearning.Base.Compute.Invoke("PolynomialFeatures.fit", degree, interaction_only);
+            PyObject transformer = BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "PolynomialFeatures.fit", degree, interaction_only);
             return new PolynomialFeatures(transformer);
         }
 
@@ -51,7 +51,7 @@ namespace BH.Engine.MachineLearning.Preprocessing
         [Output("transformedX", "The polynomial and interaction features of the data.")]
         public static Tensor Infer(PolynomialFeatures transformer, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("PolynomialFeatures.infer", transformer, x));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "PolynomialFeatures.infer", transformer, x));
         }
 
         /*************************************/

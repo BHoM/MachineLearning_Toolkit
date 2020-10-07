@@ -32,7 +32,7 @@ namespace BH.Engine.MachineLearning.Vision
 
         public static Tensor SegmentImage(string imagePath, bool gpu = false)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("SemanticSegmentation.infer", imagePath, gpu));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "SemanticSegmentation.infer", imagePath, gpu));
         }
 
         /*************************************/

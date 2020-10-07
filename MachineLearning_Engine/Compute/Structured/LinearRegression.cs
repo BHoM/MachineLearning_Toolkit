@@ -44,7 +44,7 @@ namespace BH.Engine.MachineLearning.Structured
         [Output("model", "The ordinary least squares linear regression with the given data.")]
         public static LinearRegression LinearRegression(Tensor x, Tensor y)
         {
-            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke("LinearRegression.fit", x, y);
+            PyObject model = BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "LinearRegression.fit", x, y);
             return new LinearRegression(model);
         }
 
@@ -56,7 +56,7 @@ namespace BH.Engine.MachineLearning.Structured
         [Output("y", "The projected output for the given data using the linear model.")]
         public static Tensor Infer(LinearRegression model, Tensor x)
         {
-            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke("LinearRegression.infer", model, x));
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, "LinearRegression.infer", model, x));
         }
 
         /*************************************/
