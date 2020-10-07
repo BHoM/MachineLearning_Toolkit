@@ -23,11 +23,19 @@
 from distutils.core import setup
 
 setup(
-    name='MachineLearning_Engine',
+    name='MachineLearning_Toolkit',
     description='A Machine Learning Framework for the Buildings and Habitats object Model',
     author='Eduardo Pignatelli',
     author_email='info@bhom.xyz',
     license='LGPLv3',
-    packages=["MachineLearning_Engine", "MachineLearning_Engine.Compute"],
-    version="3.1.0.0",
+    packages=["MachineLearning_Engine",
+    "MachineLearning_Engine.Compute",
+    "MachineLearning_Engine.Compute.Audio",
+    "MachineLearning_Engine.Compute.Charts",
+    "MachineLearning_Engine.Compute.Geometry",
+    "MachineLearning_Engine.Compute.Preprocessing",
+    "MachineLearning_Engine.Compute.Structured",
+    "MachineLearning_Engine.Compute.Text",
+    "MachineLearning_Engine.Compute.Vision"],
+    version="4.0.0.0",
     )
