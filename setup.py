@@ -32,7 +32,6 @@ setup(
     "MachineLearning_Engine.Compute",
     "MachineLearning_Engine.Compute.Audio",
     "MachineLearning_Engine.Compute.Charts",
-    "MachineLearning_Engine.Compute.Geometry",
     "MachineLearning_Engine.Compute.Preprocessing",
     "MachineLearning_Engine.Compute.Structured",
     "MachineLearning_Engine.Compute.Text",
