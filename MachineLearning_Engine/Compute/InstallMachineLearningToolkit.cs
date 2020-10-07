@@ -44,31 +44,37 @@ namespace BH.Engine.MachineLearning.Base
         [MultiOutput(1, "packages", "The list of succesfully installed packages")]
         public static Output<bool, List<string>> InstallMachineLearningToolkit(bool run = false, bool force = false)
         {
+            bool success = false;
+            List<string> installedPackages = new List<string>();
+
             if (!run)
-                return new Output<bool, List<string>>();
+                return new Output<bool, List<string>> { Item1 = success, Item2 = installedPackages }; 
 
             // install the python toolkit if necessary
-            BH.Engine.Python.Compute.InstallPythonToolkit(run, force);
+            if (!BH.Engine.Python.Query.IsPythonInstalled()) 
+                BH.Engine.Python.Compute.InstallPythonToolkit(run, force);
 
             // the requirements.txt file is copied to the python home in the postbuil events - we only pick it up now at runtime to install the toolkit lazily
             string requirementsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "BHoM", "Extensions", "Python", "src", "requirements.txt");
-            
+
             // install from requirements.txt file
+            Console.WriteLine("Installing requiremented packages..."); 
             Python.Compute.PipInstall($"-r {requirementsPath} -f https://download.pytorch.org/whl/torch_stable.html");
 
             // check if installed correctly
             string[] packages = File.ReadAllLines(requirementsPath);
-            List<string> installed = packages.Where(x => Python.Query.IsModuleInstalled(x)).ToList();
+            installedPackages = packages.Where(x => Python.Query.IsModuleInstalled(x)).ToList();
 
             // install pyBHoM
-            Console.WriteLine("Installing MachineLearning_Engine...");
-            string module = "MachineLearning_Engine";
-            string mlPath = Path.Combine(Python.Query.EmbeddedPythonHome(), "src", "MachineLearning_Toolkit");
+            Console.WriteLine("Installing MachineLearning_Toolkit...");
+            string module = "MachineLearning_Toolkit";
+            string mlPath = Path.Combine(Python.Query.EmbeddedPythonHome(), "src", module);
             Engine.Python.Compute.PipInstall($"-e {mlPath}", force: force);
             if (Python.Query.IsModuleInstalled(module))
-                installed.Add(module);
+                installedPackages.Add(module);
 
-            return new Output<bool, List<string>>() { Item1 = true, Item2 = installed };
+            success = true; 
+            return new Output<bool, List<string>>() { Item1 = success, Item2 = installedPackages };
         }
 
         /*************************************/
