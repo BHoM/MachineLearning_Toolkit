@@ -39,8 +39,8 @@ namespace BH.Engine.MachineLearning.Datasets
         /*************************************/
 
         [Description("Reads a csv file and loads it into a Tensor primitive.")]
-        [Input("path", "The path to the csv file. If using a relative path, the root will be C:\\ProgramData\\BHoM")]
-        [Input("separator", "The separator character of the csv, e,g, a tsv. Use \t for tabs.")]
+        [Input("path", "The path to the csv file. If using a relative path, the root will be C:/ProgramData/BHoM")]
+        [Input("separator", "The separator character of the csv, e,g, a tsv. Use \\t for tabs.")]
         [Input("hasHeaders", "True if the first line of the csv is a headers line, false otherwise.")]
         [MultiOutput(0, "headers", "A list of headers as string if headers are present in the csv. An empty list otherswise.")]
         [MultiOutput(1, "tensor", "A 2D tensor with dimensions (numberOfRow, numberOfColumns)")]
