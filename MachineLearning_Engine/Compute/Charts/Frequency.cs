@@ -21,6 +21,7 @@
  */
 
 using System.Collections.Generic;
+using BH.oM.Reflection.Attributes;
 
 namespace BH.Engine.MachineLearning.Charts
 {
@@ -30,6 +31,7 @@ namespace BH.Engine.MachineLearning.Charts
         /**** Public Methods              ****/
         /*************************************/
 
+        [PreviousVersion("4.0", "BH.Engine.Python.Charts.Compute.PlotFrequency(System.Collections.Generic.List<System.Double>, System.String, System.String, System.String, System.Collections.Generic.List<System.Double>, System.Int32, System.String, System.String, System.Boolean, System.Boolean)")]
         public static string PlotFrequency(List<double> values, string savePath, string title = null, string unit = null, List<double> vRange = null, int bins = 10, string color = "black", string toneColor = "black", bool transparency = false, bool run = false)
         {
             if (!run)
