@@ -31,7 +31,6 @@ namespace BH.Engine.MachineLearning.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        [PreviousVersion("4.0", "BH.Engine.Python.Charts.Compute.PlotDiurnal(System.Collections.Generic.List<System.Double>, System.String, System.String, System.Collections.Generic.List<System.Int32>, System.String, System.String, System.String, System.String, System.Boolean, System.Boolean)")]
         public static string PlotDiurnal(List<double> annualValues, string savePath, string grouping = "Daily", List<int> months = null, string title = null, string unit = null, string color = "black", string toneColor = "black", bool transparency = false, bool run = false)
         {
             if (!run)
