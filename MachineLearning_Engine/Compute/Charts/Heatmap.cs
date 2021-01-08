@@ -31,7 +31,6 @@ namespace BH.Engine.MachineLearning.Charts
         /**** Public Methods              ****/
         /*************************************/
 
-        [PreviousVersion("4.0", "BH.Engine.Python.Charts.Compute.PlotHeatmap(System.Collections.Generic.List<System.Double>, System.String, System.String, System.String, System.Collections.Generic.List<System.Double>, System.String, System.String, System.Boolean, System.Boolean, System.Boolean)")]
         public static string PlotHeatmap(
             List<double> annualValues, 
             string savePath, 
