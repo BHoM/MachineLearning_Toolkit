@@ -45,7 +45,6 @@ namespace BH.Engine.MachineLearning
                 int size = tensor.Size();
 
                 double[] array = new double[size];
-                Engine.Reflection.Compute.RecordNote(array.Length.ToString());
                 Marshal.Copy(new IntPtr(ptr), array, 0, array.Length);
 
                 return array.ToList();
