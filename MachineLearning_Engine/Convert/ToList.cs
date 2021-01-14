@@ -39,15 +39,23 @@ namespace BH.Engine.MachineLearning
             // TODO: For the moment we only provide data as double back to C#
             // It would be good to find a way to return different types
             // The obstacle is that Marshal.Copy does not work on generic types
-            long ptr = tensor.NumpyArray.GetAttr("ctypes").GetAttr("data").As<long>();
-            int size = tensor.Size();
+            if (tensor.NumpyArray.IsIterable())
+            {
+                long ptr = tensor.NumpyArray.GetAttr("ctypes").GetAttr("data").As<long>();
+                int size = tensor.Size();
 
-            double[] array = new double[size];
-            Marshal.Copy(new IntPtr(ptr), array, 0, array.Length);
+                double[] array = new double[size];
+                Engine.Reflection.Compute.RecordNote(array.Length.ToString());
+                Marshal.Copy(new IntPtr(ptr), array, 0, array.Length);
 
-            return array.ToList();
+                return array.ToList();
+            }
+            else
+            {
+                List<double> list = new List<double> { System.Convert.ToDouble(tensor.NumpyArray.ToString()) };
+                return list;
+            }
         }
-
         /***************************************************/
     }
 }
