@@ -31,7 +31,7 @@ using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning.Structured
 {
-    public static partial class Query
+    public static partial class Compute
     {
         /*************************************/
         /**** Public Fields              ****/
