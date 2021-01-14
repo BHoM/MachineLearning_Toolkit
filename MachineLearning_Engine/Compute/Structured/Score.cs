@@ -31,7 +31,7 @@ using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning.Structured
 {
-    public static partial class Query
+    public static partial class Compute
     {
         /*************************************/
         /**** Public Fields              ****/
@@ -44,7 +44,7 @@ namespace BH.Engine.MachineLearning.Structured
         [Input("x", "Training data as a list of 2-elements list.")]
         [Input("y", "Target values as a list of 2-elements list.")]
         [Output("r2", "The coefficient of determination R^2 of the prediction.")]
-        public static Tensor Score(LinearRegression model, Tensor x, Tensor y)
+        public static Tensor Score(IRegressionModel model, Tensor x, Tensor y)
         {
             return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, model.GetType().Name.ToString() + ".score", model, x, y));
         }
