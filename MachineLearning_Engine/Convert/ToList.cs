@@ -21,10 +21,12 @@
  */
 
 using BH.oM.MachineLearning;
+using BH.oM.Reflection.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
@@ -34,6 +36,9 @@ namespace BH.Engine.MachineLearning
         /**** Public Methods                            ****/
         /***************************************************/
 
+        [Description("Convert a Tensor to a list of data.")]
+        [Input("x", "A Tensor to be converted.")]
+        [Output("data", "A list of data contained in the Tensor.")]
         public static List<double> ToList(this Tensor tensor)
         {
             // TODO: For the moment we only provide data as double back to C#

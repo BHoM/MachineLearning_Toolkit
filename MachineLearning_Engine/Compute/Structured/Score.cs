@@ -37,8 +37,8 @@ namespace BH.Engine.MachineLearning.Structured
         /**** Public Fields              ****/
         /*************************************/
 
-        [PreviousVersion("4.1", "BH.Engine.MachineLearning.Error(BH.oM.MachineLearning.LinearRegression, BH.oM.MachineLearning.Tensor, BH.oM.MachineLearningTensor)")]
-        [PreviousVersion("4.1", "BH.Engine.MachineLearning.Error(BH.oM.MachineLearning.LogisticRegression, BH.oM.MachineLearning.Tensor, BH.oM.MachineLearningTensor)")]
+        [PreviousVersion("4.1", "BH.Engine.MachineLearning.Error(BH.oM.MachineLearning.LinearRegression, BH.oM.MachineLearning.Tensor, BH.oM.MachineLearning.Tensor)")]
+        [PreviousVersion("4.1", "BH.Engine.MachineLearning.Error(BH.oM.MachineLearning.LogisticRegression, BH.oM.MachineLearning.Tensor, BH.oM.MachineLearning.Tensor)")]
         [Description("Finds the The coefficient of determination R^2 of the given regression model.")]
         [Input("model", "The regression model used for inference.")]
         [Input("x", "Training data as a list of 2-elements list.")]
