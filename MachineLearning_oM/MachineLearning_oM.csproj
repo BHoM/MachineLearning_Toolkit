@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IScaler.cs" />
     <Compile Include="ITransformer.cs" />
     <Compile Include="LogisticRegression.cs" />
     <Compile Include="SupportVectorRegression.cs" />
