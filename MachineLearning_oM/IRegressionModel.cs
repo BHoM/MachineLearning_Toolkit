@@ -20,31 +20,8 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.oM.Base;
-using Python.Runtime;
-
 namespace BH.oM.MachineLearning
 {
-    public class StandardScaler : BHoMObject, ITransformer, IImmutable
-    {
-        /***************************************************/
-        /**** Properties                                ****/
-        /***************************************************/
-
-        public virtual PyObject SkLearnScaler { get; } = null;
-
-
-        /***************************************************/
-        /**** Constructors                              ****/
-        /***************************************************/
-
-        public StandardScaler(PyObject skLearnScaler)
-        {
-            SkLearnScaler = skLearnScaler;
-        }
-
-
-        /***************************************************/
-    }
+    public interface IRegressionModel { }
 }
 

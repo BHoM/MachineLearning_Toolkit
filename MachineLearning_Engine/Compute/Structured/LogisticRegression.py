@@ -47,7 +47,7 @@ def infer(model: LogisticRegression, x: np.ndarray):
 		x = x.reshape(-1, 1)
 	return model.predict(x)
 
-def error(model: LogisticRegression, x: np.ndarray, y: np.ndarray):
+def score(model: LogisticRegression, x: np.ndarray, y: np.ndarray):
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
 		x = x.reshape(-1, 1)

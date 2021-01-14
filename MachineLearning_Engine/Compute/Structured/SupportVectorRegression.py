@@ -48,7 +48,7 @@ def infer(model: SVR, x: np.ndarray):
 	return model.predict(x)
 
 
-def error(model: SVR, x: np.ndarray, y: np.ndarray):
+def score(model: SVR, x: np.ndarray, y: np.ndarray):
 	# make sure the input is at least bidimensinal
 	if x.ndim == 1:
 		x = x.reshape(-1, 1)

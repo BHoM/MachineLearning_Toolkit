@@ -25,7 +25,7 @@ using Python.Runtime;
 
 namespace BH.oM.MachineLearning
 {
-    public class PolynomialFeatures : BHoMObject, IModel, IImmutable
+    public class PolynomialFeatures : BHoMObject, ITransformer, IImmutable
     {
         /***************************************************/
         /**** Properties                                ****/

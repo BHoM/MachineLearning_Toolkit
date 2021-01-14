@@ -25,7 +25,7 @@ using Python.Runtime;
 
 namespace BH.oM.MachineLearning
 {
-    public class LinearRegression : BHoMObject, IModel, IImmutable
+    public class LinearRegression : BHoMObject, IRegressionModel, IImmutable
     {
         /***************************************************/
         /**** Properties                                ****/

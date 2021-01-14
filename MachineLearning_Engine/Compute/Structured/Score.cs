@@ -29,7 +29,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BH.Engine.MachineLearning
+namespace BH.Engine.MachineLearning.Structured
 {
     public static partial class Query
     {
@@ -37,18 +37,15 @@ namespace BH.Engine.MachineLearning
         /**** Public Fields              ****/
         /*************************************/
 
-        [Description("Expose the attributes for the given regression model.")]
-        [Input("model", "The linear regressor model used for inference.")]
-        [MultiOutput(0, "coefficients", "Estimated coefficients for the linear regression model. This is a 1D array of double.")]
-        [MultiOutput(1, "intercept", "The independent term in the linear model.")]
-        public static Output<Tensor, Tensor> Coefficients(LinearRegression model)
+        [Description("Finds the The coefficient of determination R^2 of the given regression model.")]
+        [Input("model", "The regression model used for inference.")]
+        [Input("x", "Training data as a list of 2-elements list.")]
+        [Input("y", "Target values as a list of 2-elements list.")]
+        [Output("r2", "The coefficient of determination R^2 of the prediction.")]
+        public static Tensor Score(LinearRegression model, Tensor x, Tensor y)
         {
-            Tensor coefficients = new Tensor(model.SkLearnModel.GetAttr("coef_"));
-            Tensor intercept = new Tensor(model.SkLearnModel.GetAttr("intercept_")); 
-            return new Output<Tensor, Tensor> { Item1 = coefficients, Item2 = intercept };
+            return new Tensor(BH.Engine.MachineLearning.Base.Compute.Invoke(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace, model.GetType().Name.ToString() + ".score", model, x, y));
         }
-
-        /*************************************/
     }
 }
 
