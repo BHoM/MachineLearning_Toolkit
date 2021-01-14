@@ -25,7 +25,7 @@ using Python.Runtime;
 
 namespace BH.oM.MachineLearning
 {
-    public class MinMaxScaler : BHoMObject, ITransformer, IImmutable
+    public class MinMaxScaler : BHoMObject, IScaler, IImmutable
     {
         /***************************************************/
         /**** Properties                                ****/
