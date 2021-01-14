@@ -37,7 +37,7 @@ namespace BH.Engine.MachineLearning
         /***************************************************/
 
         [Description("Convert a Tensor to a list of data.")]
-        [Input("x", "A Tensor to be converted.")]
+        [Input("tensor", "A Tensor to be converted.")]
         [Output("data", "A list of data contained in the Tensor.")]
         public static List<double> ToList(this Tensor tensor)
         {
