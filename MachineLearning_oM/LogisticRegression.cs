@@ -25,7 +25,7 @@ using Python.Runtime;
 
 namespace BH.oM.MachineLearning
 {
-    public class LogisticRegression : BHoMObject, IModel, IImmutable
+    public class LogisticRegression : BHoMObject, IRegressionModel, IImmutable
     {
         /***************************************************/
         /**** Properties                                ****/

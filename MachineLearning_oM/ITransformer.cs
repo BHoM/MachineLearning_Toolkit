@@ -22,6 +22,6 @@
 
 namespace BH.oM.MachineLearning
 {
-    public interface IModel { }
+    public interface ITransformer { }
 }
 
