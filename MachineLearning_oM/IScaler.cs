@@ -22,6 +22,8 @@
 
 namespace BH.oM.MachineLearning
 {
-    public interface IScaler { }
+    public interface IScaler 
+    {
+    }
 }
 

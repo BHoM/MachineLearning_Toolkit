@@ -20,8 +20,17 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using Python.Runtime;
+
 namespace BH.oM.MachineLearning
 {
-    public interface IRegressionModel { }
+    public interface IRegressionModel
+    {
+        /***************************************************/
+        /**** Properties                                ****/
+        /***************************************************/
+
+        PyObject SkLearnModel { get; }
+    }
 }
 
