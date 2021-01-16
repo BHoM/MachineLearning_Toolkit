@@ -39,26 +39,74 @@ namespace BH.Engine.MachineLearning
         [Description("Convert a Tensor to a list of data.")]
         [Input("tensor", "A Tensor to be converted.")]
         [Output("data", "A list of data contained in the Tensor.")]
-        public static List<double> ToList(this Tensor tensor)
+        public static List<object> ToList(this Tensor tensor)
         {
-            // TODO: For the moment we only provide data as double back to C#
+            // TODO: For the moment we only provide data as double or int back to C#
             // It would be good to find a way to return different types
             // The obstacle is that Marshal.Copy does not work on generic types
             if (tensor.NumpyArray.IsIterable())
             {
-                long ptr = tensor.NumpyArray.GetAttr("ctypes").GetAttr("data").As<long>();
-                int size = tensor.Size();
-
-                double[] array = new double[size];
-                Marshal.Copy(new IntPtr(ptr), array, 0, array.Length);
-
-                return array.ToList();
+                if (Query.DType(tensor) == typeof(int))
+                    return ToListInt(tensor).Cast<object>().ToList();
+                if (Query.DType(tensor) == typeof(double))
+                    return ToListDouble(tensor).Cast<object>().ToList();
             }
             else
             {
-                List<double> list = new List<double> { System.Convert.ToDouble(tensor.NumpyArray.ToString()) };
-                return list;
+                if (Query.DType(tensor) == typeof(int))
+                    return new List<object> { ToInt(tensor) };
+                if (Query.DType(tensor) == typeof(double))
+                    return new List<object> { ToDouble(tensor) };
             }
+            return null;
+        }
+        /***************************************************/
+        /***************************************************/
+        /**** Private Methods                           ****/
+        /***************************************************/
+
+        [Description("Convert a Tensor to a list of data.")]
+        [Input("tensor", "A Tensor to be converted.")]
+        [Output("data", "A list of data contained in the Tensor.")]
+        private static List<double> ToListDouble(this Tensor tensor)
+        {
+            long ptr = tensor.NumpyArray.GetAttr("ctypes").GetAttr("data").As<long>();
+            int size = tensor.Size();
+
+            double[] array = new double[size];
+            Marshal.Copy(new IntPtr(ptr), array, 0, array.Length);
+
+            return array.ToList();
+        }
+
+        [Description("Convert a Tensor to a list of data.")]
+        [Input("tensor", "A Tensor to be converted.")]
+        [Output("data", "A list of data contained in the Tensor.")]
+        private static List<int> ToListInt(this Tensor tensor)
+        {
+            long ptr = tensor.NumpyArray.GetAttr("ctypes").GetAttr("data").As<long>();
+            int size = tensor.Size();
+
+            int[] array = new int[size];
+            Marshal.Copy(new IntPtr(ptr), array, 0, array.Length);
+
+            return array.ToList();
+        }
+
+        [Description("Convert a Tensor to a list of data.")]
+        [Input("tensor", "A Tensor to be converted.")]
+        [Output("data", "A list of data contained in the Tensor.")]
+        private static int ToInt(this Tensor tensor)
+        {
+            return System.Convert.ToInt32(tensor.NumpyArray.ToString());
+        }
+
+        [Description("Convert a Tensor to a list of data.")]
+        [Input("tensor", "A Tensor to be converted.")]
+        [Output("data", "A list of data contained in the Tensor.")]
+        private static double ToDouble(this Tensor tensor)
+        {
+            return System.Convert.ToDouble(tensor.NumpyArray.ToString());
         }
         /***************************************************/
     }
