@@ -37,11 +37,12 @@ namespace BH.Engine.MachineLearning.Structured
         /**** Public Fields              ****/
         /*************************************/
 
+        [PreviousVersion("4.1", "BH.Engine.MachineLearning.Query.Coefficients(BH.oM.MachineLearning.LinearRegression)")]
         [Description("Expose the attributes for the given regression model.")]
         [Input("model", "The regression model used for inference.")]
         [MultiOutput(0, "coefficients", "Estimated coefficients for the regression model. This is a 1D array of double.")]
         [MultiOutput(1, "intercept", "The independent term in the model.")]
-        public static Output<Tensor, Tensor> Coefficients(LinearRegression model)
+        public static Output<Tensor, Tensor> Coefficients(IRegressionModel model)
         {
             Tensor coefficients = new Tensor(model.SkLearnModel.GetAttr("coef_"));
             Tensor intercept = new Tensor(model.SkLearnModel.GetAttr("intercept_")); 
