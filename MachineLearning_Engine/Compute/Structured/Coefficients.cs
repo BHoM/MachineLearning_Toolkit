@@ -37,7 +37,6 @@ namespace BH.Engine.MachineLearning.Structured
         /**** Public Fields              ****/
         /*************************************/
 
-        [PreviousVersion("4.1", "BH.Engine.MachineLearning.Query.Coefficients(BH.oM.MachineLearning.LinearRegression)")]
         [Description("Expose the attributes for the given regression model.")]
         [Input("model", "The regression model used for inference.")]
         [MultiOutput(0, "coefficients", "Estimated coefficients for the regression model. This is a 1D array of double.")]
