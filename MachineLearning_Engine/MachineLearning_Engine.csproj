@@ -151,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Compute\Geometry\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Compute\Preprocessing\MinMaxScaler.py" />
@@ -161,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Compute\Preprocessing\PolynomialFeatures.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Extensions\script.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
