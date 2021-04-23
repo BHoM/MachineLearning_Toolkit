@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Compute\Geometry\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Compute\Preprocessing\MinMaxScaler.py" />
@@ -166,6 +167,6 @@
     <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
 xcopy "$(SolutionDir)*.py" "C:\\ProgramData\\BHoM\\Extensions\\Python\\src\\$(SolutionName)\" /Y /I /S /F
 xcopy "$(SolutionDir)requirements.txt" "C:\\ProgramData\\BHoM\\Extensions\\Python\\src\\" /Y /I /S /F
-</PostBuildEvent>
+xcopy /E /Y  /I "$(ProjectDir)Extensions" "C:\\ProgramData\\BHoM\\Extensions\MachineLearning"</PostBuildEvent>
   </PropertyGroup>
 </Project>
