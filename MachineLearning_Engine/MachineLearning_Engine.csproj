@@ -1,168 +1,167 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTarget="" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-<PropertyGroup>
-  <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-  <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-  <ProjectGuid>{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}</ProjectGuid>
-  <OutputType>Library</OutputType>
-  <AppDesignerFolder>Properties</AppDesignerFolder>
-  <RootNamespace>BH.Engine.MachineLearning</RootNamespace>
-  <AssemblyName>MachineLearning_Engine</AssemblyName>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BH.Engine.MachineLearning</RootNamespace>
+    <AssemblyName>MachineLearning_Engine</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-  <FileAlignment>512</FileAlignment>
-</PropertyGroup>
-<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-  <DebugSymbols>true</DebugSymbols>
-  <DebugType>full</DebugType>
-  <Optimize>false</Optimize>
-  <OutputPath>..\Build\</OutputPath>
-  <DefineConstants>DEBUG;TRACE</DefineConstants>
-  <ErrorReport>prompt</ErrorReport>
-  <WarningLevel>4</WarningLevel>
-</PropertyGroup>
-<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-  <DebugType>pdbonly</DebugType>
-  <Optimize>true</Optimize>
-  <OutputPath>..\Build\</OutputPath>
-  <DefineConstants>TRACE</DefineConstants>
-  <ErrorReport>prompt</ErrorReport>
-  <WarningLevel>4</WarningLevel>
-</PropertyGroup>
-<ItemGroup>
-  <Reference Include="BHoM">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
-    <Private>False</Private>
-  </Reference>
-  <Reference Include="DeepLearning_oM">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
-    <Private>False</Private>
-  </Reference>
-  <Reference Include="Geometry_oM">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
-    <Private>False</Private>
-    <SpecificVersion>False</SpecificVersion>
-  </Reference>
-  <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\Python.Runtime.dll</HintPath>
-    <Private>False</Private>
-    <SpecificVersion>False</SpecificVersion>
-  </Reference>
-  <Reference Include="Python_Engine">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
-    <Private>False</Private>
-  </Reference>
-  <Reference Include="Reflection_Engine">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
-    <Private>False</Private>
-  </Reference>
-  <Reference Include="Reflection_oM">
-    <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
-    <Private>False</Private>
-  </Reference>
-  <Reference Include="System" />
-  <Reference Include="System.Core" />
-  <Reference Include="System.Drawing" />
-  <Reference Include="System.Windows.Forms" />
-  <Reference Include="System.Xml.Linq" />
-  <Reference Include="System.Data.DataSetExtensions" />
-  <Reference Include="Microsoft.CSharp" />
-  <Reference Include="System.Data" />
-  <Reference Include="System.Net.Http" />
-  <Reference Include="System.Xml" />
-</ItemGroup>
-<ItemGroup>
-  <Compile Include="Compute\Audio\PlayAudio.cs" />
-  <Compile Include="Compute\Audio\RecogniseSpeech.cs" />
-  <Compile Include="Compute\Charts\Diurnal.cs" />
-  <Compile Include="Compute\Charts\Frequency.cs" />
-  <Compile Include="Compute\Charts\Heatmap.cs" />
-  <Compile Include="Compute\Charts\UTCI.cs" />
-  <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
-  <Compile Include="Compute\Datasets\LoadCsv.cs" />
-  <Compile Include="Compute\Preprocessing\PolynomialFeatures.cs" />
-  <Compile Include="Compute\Preprocessing\StandardScaler.cs" />
-  <Compile Include="Compute\Preprocessing\MinMaxScaler.cs" />
-  <Compile Include="Compute\Structured\LogisticRegression.cs" />
-  <Compile Include="Compute\Structured\SupportVectorRegression.cs" />
-  <Compile Include="Compute\Structured\LinearRegression.cs" />
-  <Compile Include="Compute\Charts\PlotImage.cs" />
-  <Compile Include="Compute\Audio\SynthesiseSpeech.cs" />
-  <Compile Include="Compute\Text\Summarise.cs" />
-  <Compile Include="Compute\Text\Answer.cs" />
-  <Compile Include="Compute\Text\SentimentAnalysis.cs" />
-  <Compile Include="Compute\Vision\FindContours.cs" />
-  <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
-  <Compile Include="Compute\Vision\RecogniseObject.cs" />
-  <Compile Include="Compute\Vision\DetectObjects.cs" />
-  <Compile Include="Compute\Vision\DrawDetection.cs" />
-  <Compile Include="Compute\Invoke.cs" />
-  <Compile Include="Convert\FromDType.cs" />
-  <Compile Include="Modify\AsType.cs" />
-  <Compile Include="Compute\Structured\Score.cs" />
-  <Compile Include="Query\DType.cs" />
-  <Compile Include="Convert\ToPython.cs" />
-  <Compile Include="Create\Tensor.cs" />
-  <Compile Include="Properties\AssemblyInfo.cs" />
-  <Compile Include="Convert\ToList.cs" />
-  <Compile Include="Convert\ToDType.cs" />
-  <Compile Include="Compute\Structured\Coefficients.cs" />
-  <Compile Include="Query\Import.cs" />
-  <Compile Include="Query\GetAttribute.cs" />
-  <Compile Include="Query\Shape.cs" />
-  <Compile Include="Query\Size.cs" />
-</ItemGroup>
-<ItemGroup>
-  <ProjectReference Include="..\MachineLearning_oM\MachineLearning_oM.csproj">
-    <Project>{C3F87EBB-3F93-4069-A17F-D55868056ED2}</Project>
-    <Name>MachineLearning_oM</Name>
-  </ProjectReference>
-</ItemGroup>
-<ItemGroup>
-  <None Include="Compute\Audio\PlayAudio.py" />
-  <None Include="Compute\Audio\RecogniseSpeech.py" />
-  <None Include="Compute\Charts\Diurnal.py" />
-  <None Include="Compute\Charts\Frequency.py" />
-  <None Include="Compute\Charts\Heatmap.py" />
-  <None Include="Compute\Charts\UTCI.py" />
-  <None Include="Compute\Preprocessing\__init__.py" />
-  <None Include="Compute\Charts\__init__.py" />
-  <None Include="Compute\Structured\LogisticRegression.py" />
-  <None Include="Compute\Structured\SupportVectorRegression.py" />
-  <None Include="Compute\Structured\LinearRegression.py" />
-  <None Include="Compute\Charts\PlotImage.py" />
-  <None Include="Compute\Audio\SynthesiseSpeech.py" />
-  <None Include="Compute\Structured\__init__.py" />
-  <None Include="Compute\Text\Summarise.py" />
-  <None Include="Compute\Text\Answer.py" />
-  <None Include="Compute\Text\SentimentAnalysis.py" />
-  <None Include="Compute\Vision\FindContours.py" />
-  <None Include="Compute\Vision\SemanticSegmentation.py" />
-  <None Include="Compute\Vision\RecogniseObject.py" />
-  <None Include="Compute\Vision\DrawDetection.py" />
-  <None Include="Compute\Vision\DetectObjects.py" />
-  <None Include="Compute\Audio\__init__ .py" />
-  <None Include="Compute\Text\__init__.py" />
-  <None Include="Compute\Vision\__init__.py" />
-  <None Include="Compute\__init__.py" />
-  <None Include="__init__.py" />
-</ItemGroup>
-<ItemGroup />
-<ItemGroup>
-  <None Include="Compute\Preprocessing\MinMaxScaler.py" />
-</ItemGroup>
-<ItemGroup>
-  <None Include="Compute\Preprocessing\StandardScaler.py" />
-</ItemGroup>
-<ItemGroup>
-  <None Include="Compute\Preprocessing\PolynomialFeatures.py" />
-</ItemGroup>
-<ItemGroup />
-<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="" />
-<PropertyGroup>
-  <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BHoM">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DeepLearning_oM">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Geometry_oM">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Python.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Python_Engine">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Reflection_Engine">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Reflection_oM">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compute\Audio\PlayAudio.cs" />
+    <Compile Include="Compute\Audio\RecogniseSpeech.cs" />
+    <Compile Include="Compute\Charts\Diurnal.cs" />
+    <Compile Include="Compute\Charts\Frequency.cs" />
+    <Compile Include="Compute\Charts\Heatmap.cs" />
+    <Compile Include="Compute\Charts\UTCI.cs" />
+    <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
+    <Compile Include="Compute\Datasets\LoadCsv.cs" />
+    <Compile Include="Compute\Preprocessing\PolynomialFeatures.cs" />
+    <Compile Include="Compute\Preprocessing\StandardScaler.cs" />
+    <Compile Include="Compute\Preprocessing\MinMaxScaler.cs" />
+    <Compile Include="Compute\Structured\LogisticRegression.cs" />
+    <Compile Include="Compute\Structured\SupportVectorRegression.cs" />
+    <Compile Include="Compute\Structured\LinearRegression.cs" />
+    <Compile Include="Compute\Charts\PlotImage.cs" />
+    <Compile Include="Compute\Audio\SynthesiseSpeech.cs" />
+    <Compile Include="Compute\Text\Summarise.cs" />
+    <Compile Include="Compute\Text\Answer.cs" />
+    <Compile Include="Compute\Text\SentimentAnalysis.cs" />
+    <Compile Include="Compute\Vision\FindContours.cs" />
+    <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
+    <Compile Include="Compute\Vision\RecogniseObject.cs" />
+    <Compile Include="Compute\Vision\DetectObjects.cs" />
+    <Compile Include="Compute\Vision\DrawDetection.cs" />
+    <Compile Include="Compute\Invoke.cs" />
+    <Compile Include="Convert\FromDType.cs" />
+    <Compile Include="Modify\AsType.cs" />
+    <Compile Include="Compute\Structured\Score.cs" />
+    <Compile Include="Query\DType.cs" />
+    <Compile Include="Convert\ToPython.cs" />
+    <Compile Include="Create\Tensor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Convert\ToList.cs" />
+    <Compile Include="Convert\ToDType.cs" />
+    <Compile Include="Compute\Structured\Coefficients.cs" />
+    <Compile Include="Query\Import.cs" />
+    <Compile Include="Query\GetAttribute.cs" />
+    <Compile Include="Query\Shape.cs" />
+    <Compile Include="Query\Size.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MachineLearning_oM\MachineLearning_oM.csproj">
+      <Project>{C3F87EBB-3F93-4069-A17F-D55868056ED2}</Project>
+      <Name>MachineLearning_oM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compute\Audio\PlayAudio.py" />
+    <None Include="Compute\Audio\RecogniseSpeech.py" />
+    <None Include="Compute\Charts\Diurnal.py" />
+    <None Include="Compute\Charts\Frequency.py" />
+    <None Include="Compute\Charts\Heatmap.py" />
+    <None Include="Compute\Charts\UTCI.py" />
+    <None Include="Compute\Preprocessing\__init__.py" />
+    <None Include="Compute\Charts\__init__.py" />
+    <None Include="Compute\Structured\LogisticRegression.py" />
+    <None Include="Compute\Structured\SupportVectorRegression.py" />
+    <None Include="Compute\Structured\LinearRegression.py" />
+    <None Include="Compute\Charts\PlotImage.py" />
+    <None Include="Compute\Audio\SynthesiseSpeech.py" />
+    <None Include="Compute\Structured\__init__.py" />
+    <None Include="Compute\Text\Summarise.py" />
+    <None Include="Compute\Text\Answer.py" />
+    <None Include="Compute\Text\SentimentAnalysis.py" />
+    <None Include="Compute\Vision\FindContours.py" />
+    <None Include="Compute\Vision\SemanticSegmentation.py" />
+    <None Include="Compute\Vision\RecogniseObject.py" />
+    <None Include="Compute\Vision\DrawDetection.py" />
+    <None Include="Compute\Vision\DetectObjects.py" />
+    <None Include="Compute\Audio\__init__ .py" />
+    <None Include="Compute\Text\__init__.py" />
+    <None Include="Compute\Vision\__init__.py" />
+    <None Include="Compute\__init__.py" />
+    <None Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Compute\Preprocessing\MinMaxScaler.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compute\Preprocessing\StandardScaler.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compute\Preprocessing\PolynomialFeatures.py" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
 xcopy "$(SolutionDir)*.py" "C:\\ProgramData\\BHoM\\Extensions\\Python\\src\\$(SolutionName)\" /Y /I /S /F
 xcopy "$(SolutionDir)requirements.txt" "C:\\ProgramData\\BHoM\\Extensions\\Python\\src\\" /Y /I /S /F
 xcopy /E /Y  /I "$(ProjectDir)Extensions" "C:\\ProgramData\\BHoM\\Extensions\MachineLearning"</PostBuildEvent>
-</PropertyGroup>
+  </PropertyGroup>
 </Project>
