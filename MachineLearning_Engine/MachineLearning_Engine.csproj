@@ -34,6 +34,10 @@
       <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="BHoM_Engine">
+      <HintPath>..\..\..\..\..\..\..\ProgramData\BHoM\Assemblies\BHoM_Engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DeepLearning_oM">
       <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
       <Private>False</Private>
@@ -53,10 +57,6 @@
     </Reference>
     <Reference Include="Reflection_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Reflection_oM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
