@@ -20,10 +20,36 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-namespace BH.oM.MachineLearning
+using System;
+using System.Collections.Generic;
+using BH.Engine.Python;
+using BH.oM.Python;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+
+using BH.oM.Base.Attributes;
+
+namespace BH.Engine.CFD
 {
-    public interface IScaler 
+    public static partial class Compute
     {
+        [Description("MachineLearning_Toolkit\nMethod used to create the Python environment used to run all Python scripts within this toolkit.")]
+        [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
+        [Output("pythonEnvironment", "The MachineLearning_Toolkit Python environment.")]
+        public static PythonEnvironment MachineLearningToolkitPythonEnvironment(bool run = false)
+        {
+            if (run)
+            {
+                return BH.Engine.Python.Compute.InstallVirtualenv(
+                    name: Query.ToolkitName(),
+                    BH.oM.Python.Enums.PythonVersion.v3_7_9,
+                    localPackage: $@"C:\ProgramData\BHoM\Extensions\PythonCode\{Query.ToolkitName()}",
+                    run: run
+                );
+            }
+            return null;
+        }
     }
 }
 

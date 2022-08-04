@@ -42,9 +42,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Python.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Reflection_oM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,19 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScaler.cs" />
-    <Compile Include="ITransformer.cs" />
-    <Compile Include="LogisticRegression.cs" />
-    <Compile Include="SupportVectorRegression.cs" />
-    <Compile Include="Vision\Image.cs" />
-    <Compile Include="Vision\DetectionResults.cs" />
-    <Compile Include="PolynomialFeatures.cs" />
-    <Compile Include="StandardScaler.cs" />
-    <Compile Include="MinMaxScaler.cs" />
-    <Compile Include="LinearRegression.cs" />
-    <Compile Include="IRegressionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tensor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
