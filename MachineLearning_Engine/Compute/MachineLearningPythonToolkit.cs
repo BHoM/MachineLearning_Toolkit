@@ -20,17 +20,13 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using System;
-using System.Collections.Generic;
-using BH.Engine.Python;
+
 using BH.oM.Python;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 
 using BH.oM.Base.Attributes;
 
-namespace BH.Engine.CFD
+namespace BH.Engine.MachineLearning
 {
     public static partial class Compute
     {
@@ -52,5 +48,3 @@ namespace BH.Engine.CFD
         }
     }
 }
-
-
