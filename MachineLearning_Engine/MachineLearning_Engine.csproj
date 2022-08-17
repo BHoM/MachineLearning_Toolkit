@@ -34,25 +34,17 @@
       <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DeepLearning_oM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Geometry_oM">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\Python.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Python_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Python_oM">
-      <HintPath>..\..\..\..\..\..\..\ProgramData\BHoM\Assemblies\Python_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Python_oM.dll</HintPath>
     </Reference>
     <Reference Include="Reflection_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
@@ -82,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Python\README.md" />
+    <None Include="Versioning_53.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Python\requirements.txt" />
@@ -97,7 +90,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "C:\\ProgramData\\BHoM\\Assemblies" /Y
-xcopy "$(TargetDir)Python.Runtime.dll"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
 
 :: create infrastructure necessary to support Python environments
 if not exist "C:\ProgramData\BHoM\Extensions\PythonEnvironments" mkdir "C:\ProgramData\BHoM\Extensions\PythonEnvironments"
