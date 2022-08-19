@@ -35,16 +35,18 @@ namespace BH.Engine.MachineLearning
         [Output("pythonEnvironment", "The MachineLearning_Toolkit Python environment.")]
         public static PythonEnvironment MachineLearningToolkitPythonEnvironment(bool run = false)
         {
-            if (run)
+            if (!run)
             {
-                return BH.Engine.Python.Compute.InstallVirtualenv(
-                    name: Query.ToolkitName(),
-                    BH.oM.Python.Enums.PythonVersion.v3_7_9,
-                    localPackage: $@"C:\ProgramData\BHoM\Extensions\PythonCode\{Query.ToolkitName()}",
-                    run: run
-                );
+                BH.Engine.Base.Compute.RecordWarning($"Please toggle `{nameof(run)}` to true.");
+                return null;
             }
-            return null;
+
+            return BH.Engine.Python.Compute.InstallVirtualenv(
+                name: Query.ToolkitName(),
+                BH.oM.Python.Enums.PythonVersion.v3_7_9,
+                localPackage: $@"C:\ProgramData\BHoM\Extensions\PythonCode\{Query.ToolkitName()}",
+                run: run
+            );
         }
     }
 }
