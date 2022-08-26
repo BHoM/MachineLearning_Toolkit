@@ -1,10 +1,10 @@
 ﻿{
   "Namespace": {
     "ToNew": {
-      "BH.Engine.MachineLearning.Base.Compute.InstallMachineLearningToolkit": "BH.Engine.MachineLearning.Compute.MachineLearningPythonToolkit"
+        "BH.Engine.MachineLearning.Base.Compute.InstallMachineLearningToolkit": "BH.Engine.MachineLearning.Compute.InstallPythonEnv_ML"
     },
     "ToOld": {
-      "BH.Engine.MachineLearning.Compute.MachineLearningPythonToolkit": "BH.Engine.MachineLearning.Base.Compute.InstallMachineLearningToolkit"
+        "BH.Engine.MachineLearning.Compute.InstallPythonEnv_ML": "BH.Engine.MachineLearning.Base.Compute.InstallMachineLearningToolkit"
     }
   },
   "Type": {
