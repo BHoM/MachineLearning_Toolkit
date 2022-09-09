@@ -41,11 +41,6 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-    <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\Python.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,19 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScaler.cs" />
-    <Compile Include="ITransformer.cs" />
-    <Compile Include="LogisticRegression.cs" />
-    <Compile Include="SupportVectorRegression.cs" />
-    <Compile Include="Vision\Image.cs" />
-    <Compile Include="Vision\DetectionResults.cs" />
-    <Compile Include="PolynomialFeatures.cs" />
-    <Compile Include="StandardScaler.cs" />
-    <Compile Include="MinMaxScaler.cs" />
-    <Compile Include="LinearRegression.cs" />
-    <Compile Include="IRegressionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tensor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Versioning_53.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,0 +1,29 @@
+﻿{
+  "Namespace": {
+    "ToNew": {},
+    "ToOld": {}
+  },
+  "Type": {
+    "ToNew": {},
+    "ToOld": {}
+  },
+  "Property": {
+    "ToNew": {},
+    "ToOld": {}
+  },
+  "MessageForDeleted": {
+    "BH.oM.MachineLearning.IRegressionModel": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.IScaler": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.ITransformer": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.LinearRegression": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.LogisticRegression": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.MinMaxScaler": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.PolynomialFeatures": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.StandardScaler": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.SupportVectorRegression": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.Tensor": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.Vision.DetectionResults": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues.",
+    "BH.oM.MachineLearning.Vision.Image": "This method was originally included in BHoM to enable the use of Python.NET. This workflow has been removed in favour of use of Python virtual environments managed via BHoM in order to simplify the passing of data between the two languages. If further assistance is needed, please raise an issue on https://github.com/BHoM/MachineLearning_Toolkit/issues."
+  },
+  "MessageForNoUpgrade": {}
+}

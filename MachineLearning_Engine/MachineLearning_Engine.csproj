@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTarget="" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -40,24 +40,20 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DeepLearning_oM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\DeepLearning_oM.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="Geometry_oM">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Python.Runtime, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\Python.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Python_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Python_oM">
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Python_oM.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Reflection_Engine">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
@@ -76,45 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compute\Audio\PlayAudio.cs" />
-    <Compile Include="Compute\Audio\RecogniseSpeech.cs" />
-    <Compile Include="Compute\Charts\Diurnal.cs" />
-    <Compile Include="Compute\Charts\Frequency.cs" />
-    <Compile Include="Compute\Charts\Heatmap.cs" />
-    <Compile Include="Compute\Charts\UTCI.cs" />
-    <Compile Include="Compute\InstallMachineLearningToolkit.cs" />
-    <Compile Include="Compute\Datasets\LoadCsv.cs" />
-    <Compile Include="Compute\Preprocessing\PolynomialFeatures.cs" />
-    <Compile Include="Compute\Preprocessing\StandardScaler.cs" />
-    <Compile Include="Compute\Preprocessing\MinMaxScaler.cs" />
-    <Compile Include="Compute\Structured\LogisticRegression.cs" />
-    <Compile Include="Compute\Structured\SupportVectorRegression.cs" />
-    <Compile Include="Compute\Structured\LinearRegression.cs" />
-    <Compile Include="Compute\Charts\PlotImage.cs" />
-    <Compile Include="Compute\Audio\SynthesiseSpeech.cs" />
-    <Compile Include="Compute\Text\Summarise.cs" />
-    <Compile Include="Compute\Text\Answer.cs" />
-    <Compile Include="Compute\Text\SentimentAnalysis.cs" />
-    <Compile Include="Compute\Vision\FindContours.cs" />
-    <Compile Include="Compute\Vision\SemanticSegmentation.cs" />
-    <Compile Include="Compute\Vision\RecogniseObject.cs" />
-    <Compile Include="Compute\Vision\DetectObjects.cs" />
-    <Compile Include="Compute\Vision\DrawDetection.cs" />
-    <Compile Include="Compute\Invoke.cs" />
-    <Compile Include="Convert\FromDType.cs" />
-    <Compile Include="Modify\AsType.cs" />
-    <Compile Include="Compute\Structured\Score.cs" />
-    <Compile Include="Query\DType.cs" />
-    <Compile Include="Convert\ToPython.cs" />
-    <Compile Include="Create\Tensor.cs" />
+    <Compile Include="Compute\InstallPythonEnv_ML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Convert\ToList.cs" />
-    <Compile Include="Convert\ToDType.cs" />
-    <Compile Include="Compute\Structured\Coefficients.cs" />
-    <Compile Include="Query\Import.cs" />
-    <Compile Include="Query\GetAttribute.cs" />
-    <Compile Include="Query\Shape.cs" />
-    <Compile Include="Query\Size.cs" />
+    <Compile Include="Query\ToolkitName.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MachineLearning_oM\MachineLearning_oM.csproj">
@@ -123,50 +83,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\Audio\PlayAudio.py" />
-    <None Include="Compute\Audio\RecogniseSpeech.py" />
-    <None Include="Compute\Charts\Diurnal.py" />
-    <None Include="Compute\Charts\Frequency.py" />
-    <None Include="Compute\Charts\Heatmap.py" />
-    <None Include="Compute\Charts\UTCI.py" />
-    <None Include="Compute\Preprocessing\__init__.py" />
-    <None Include="Compute\Charts\__init__.py" />
-    <None Include="Compute\Structured\LogisticRegression.py" />
-    <None Include="Compute\Structured\SupportVectorRegression.py" />
-    <None Include="Compute\Structured\LinearRegression.py" />
-    <None Include="Compute\Charts\PlotImage.py" />
-    <None Include="Compute\Audio\SynthesiseSpeech.py" />
-    <None Include="Compute\Structured\__init__.py" />
-    <None Include="Compute\Text\Summarise.py" />
-    <None Include="Compute\Text\Answer.py" />
-    <None Include="Compute\Text\SentimentAnalysis.py" />
-    <None Include="Compute\Vision\FindContours.py" />
-    <None Include="Compute\Vision\SemanticSegmentation.py" />
-    <None Include="Compute\Vision\RecogniseObject.py" />
-    <None Include="Compute\Vision\DrawDetection.py" />
-    <None Include="Compute\Vision\DetectObjects.py" />
-    <None Include="Compute\Audio\__init__ .py" />
-    <None Include="Compute\Text\__init__.py" />
-    <None Include="Compute\Vision\__init__.py" />
-    <None Include="Compute\__init__.py" />
-    <None Include="__init__.py" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="Compute\Preprocessing\MinMaxScaler.py" />
+    <None Include="Python\README.md" />
+    <None Include="Versioning_53.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\Preprocessing\StandardScaler.py" />
+    <Content Include="Python\requirements.txt" />
+    <Content Include="Python\setup.py" />
+    <Content Include="Python\src\machinelearning_toolkit\__init__.py" />
+    <Content Include="Python\src\__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Compute\Preprocessing\PolynomialFeatures.py" />
+    <Folder Include="Convert\" />
+    <Folder Include="Create\" />
+    <Folder Include="Modify\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)"  "C:\\ProgramData\\BHoM\\Assemblies" /Y
-xcopy "$(SolutionDir)*.py" "C:\\ProgramData\\BHoM\\Extensions\\Python\\src\\$(SolutionName)\" /Y /I /S /F
-xcopy "$(SolutionDir)requirements.txt" "C:\\ProgramData\\BHoM\\Extensions\\Python\\src\\" /Y /I /S /F
-xcopy /E /Y  /I "$(ProjectDir)Extensions" "C:\\ProgramData\\BHoM\\Extensions\MachineLearning"</PostBuildEvent>
+    <PostBuildEvent>
+      xcopy "$(TargetDir)$(TargetFileName)" "C:\\ProgramData\\BHoM\\Assemblies" /Y
+
+      :: create infrastructure necessary to support Python environments
+      if not exist "C:\ProgramData\BHoM\Extensions\PythonEnvironments" mkdir "C:\ProgramData\BHoM\Extensions\PythonEnvironments"
+      if not exist "C:\ProgramData\BHoM\Extensions\PythonCode" mkdir "C:\ProgramData\BHoM\Extensions\PythonCode"
+
+      :: remove any old versions within target directory for current toolkits Python code
+      if exist "C:\ProgramData\BHoM\Extensions\PythonCode\$(SolutionName)" rmdir "C:\ProgramData\BHoM\Extensions\PythonCode\$(SolutionName)" /S /Q
+
+      :: move Python code over to toolkit extensions folder, redirecting output to temp log file to silence it
+      robocopy "$(ProjectDir)Python" "C:\ProgramData\BHoM\Extensions\PythonCode\$(SolutionName)" /s /purge /xf "*.pyc" "*.ipynb" /xd "\__pycache__\" &gt; output.log
+
+      :: remove temporary log file
+      del output.log
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
