@@ -50,7 +50,7 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Python_oM, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Python_oM">
       <HintPath>C:\ProgramData\BHoM\Assemblies\Python_oM.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
