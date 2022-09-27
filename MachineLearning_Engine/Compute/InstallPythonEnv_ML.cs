@@ -33,7 +33,6 @@ namespace BH.Engine.MachineLearning
         [Description("MachineLearning_Toolkit\nMethod used to create the Python environment used to run all Python scripts within this toolkit.")]
         [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
         [Output("pythonEnvironment", "The MachineLearning_Toolkit Python environment.")]
-        [PreviousVersion("5.3", "BH.Engine.MachineLearning.Base.Compute.InstallMachineLearningToolkit(System.Boolean, System.Boolean)")]
         public static PythonEnvironment InstallPythonEnv_ML(bool run = false)
         {
             return BH.Engine.Python.Compute.InstallVirtualenv(
