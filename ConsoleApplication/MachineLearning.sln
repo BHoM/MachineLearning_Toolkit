@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearningConsole", "MachineLearningConsole.csproj", "{0429F49F-3CE7-459E-ADB9-B3B5D8473670}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x86 = Release|x86
+		Test|Any CPU = Test|Any CPU
+		Test|ARM = Test|ARM
+		Test|ARM64 = Test|ARM64
+		Test|x86 = Test|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Debug|x86.Build.0 = Debug|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|ARM.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|ARM64.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|x86.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Release|x86.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|Any CPU.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|ARM.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|ARM.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|ARM64.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|ARM64.Build.0 = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|x86.ActiveCfg = Release|Any CPU
+		{0429F49F-3CE7-459E-ADB9-B3B5D8473670}.Test|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A92FBE9-0FB1-48F6-9D03-20053785814C}
+	EndGlobalSection
+EndGlobal
