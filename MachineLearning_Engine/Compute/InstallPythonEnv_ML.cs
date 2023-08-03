@@ -25,6 +25,9 @@ using BH.oM.Python;
 using System.ComponentModel;
 
 using BH.oM.Base.Attributes;
+using BH.Engine.Python;
+using BH.oM.Python.Enums;
+using System.IO;
 
 namespace BH.Engine.MachineLearning
 {
@@ -32,15 +35,37 @@ namespace BH.Engine.MachineLearning
     {
         [Description("MachineLearning_Toolkit\nMethod used to create the Python environment used to run all Python scripts within this toolkit.")]
         [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
+        [Input("reinstall", "Reinstalls the toolkit if true.")]
         [Output("pythonEnvironment", "The MachineLearning_Toolkit Python environment.")]
-        public static PythonEnvironment InstallPythonEnv_ML(bool run = false)
+        public static PythonEnvironment InstallPythonEnv_ML(bool run = false, bool reinstall = false)
         {
-            return BH.Engine.Python.Compute.InstallVirtualenv(
-                name: Query.ToolkitName(),
-                BH.oM.Python.Enums.PythonVersion.v3_7_9,
-                localPackage: $@"C:\ProgramData\BHoM\Extensions\PythonCode\{Query.ToolkitName()}",
-                run: run
-            );
+            if (!run)
+                return null;
+
+            // find out whether this environment already exists
+            bool exists = Python.Query.VirtualEnvironmentExists(Query.ToolkitName());
+
+            if (reinstall)
+                Python.Compute.RemoveVirtualEnvironment(Query.ToolkitName());
+
+            // obtain python version
+            PythonVersion pythonVersion = PythonVersion.v3_7_9;
+
+            // create virtualenvironment
+            PythonEnvironment env = Python.Compute.VirtualEnvironment(version: pythonVersion, name: Query.ToolkitName(), reload: true);
+
+            // return null if environment could not be created/loaded
+            if (env == null)
+                return null;
+
+            // install packages if this is a reinstall, or the environment did not originally exist
+            if (reinstall || !exists)
+            {
+                // install local package
+                env.InstallPackageLocal(Path.Combine(Python.Query.DirectoryCode(), Query.ToolkitName()));
+            }
+
+            return env;
         }
     }
 }
