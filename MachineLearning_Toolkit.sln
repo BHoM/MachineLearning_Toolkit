@@ -3,24 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning_Engine", "MachineLearning_Engine\MachineLearning_Engine.csproj", "{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning_Engine", "MachineLearning_Engine\MachineLearning_Engine.csproj", "{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning_oM", "MachineLearning_oM\MachineLearning_oM.csproj", "{C3F87EBB-3F93-4069-A17F-D55868056ED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning_oM", "MachineLearning_oM\MachineLearning_oM.csproj", "{C3F87EBB-3F93-4069-A17F-D55868056ED2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}.Test|Any CPU.Build.0 = Test|Any CPU
 		{C3F87EBB-3F93-4069-A17F-D55868056ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3F87EBB-3F93-4069-A17F-D55868056ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3F87EBB-3F93-4069-A17F-D55868056ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3F87EBB-3F93-4069-A17F-D55868056ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F87EBB-3F93-4069-A17F-D55868056ED2}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{C3F87EBB-3F93-4069-A17F-D55868056ED2}.Test|Any CPU.Build.0 = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

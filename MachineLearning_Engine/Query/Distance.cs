@@ -1,6 +1,6 @@
 /*
  * This file is part of the Buildings and Habitats object Model (BHoM)
- * Copyright (c) 2015 - 2024, the respective contributors. All rights reserved.
+ * Copyright (c) 2015 - 2026, the respective contributors. All rights reserved.
  *
  * Each contributor holds copyright over their respective contributions.
  * The project versioning (Git) records all such contribution source information.
@@ -20,22 +20,29 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-
 using BH.oM.Base.Attributes;
-
+using System;
 using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
     public static partial class Query
     {
-        [Description("Get the name of the current toolkit.")]
-        [Output("name", "The name of the current toolkit.")]
-        public static string ToolkitName()
+        /***************************************************/
+        /**** Internal Methods                          ****/
+        /***************************************************/
+
+        [Description("Euclidean distance between one row of a matrix and one row of another: the square root of SquaredDistance.")]
+        [Input("a", "The first matrix, one row per sample.")]
+        [Input("rowA", "The row of the first matrix.")]
+        [Input("b", "The second matrix, with at least as many columns as the first. May be the first matrix again.")]
+        [Input("rowB", "The row of the second matrix.")]
+        [Output("distance", "The straight-line distance between the two rows.")]
+        internal static double Distance(double[,] a, int rowA, double[,] b, int rowB)
         {
-            return "MachineLearning_Toolkit";
+            return Math.Sqrt(SquaredDistance(a, rowA, b, rowB));
         }
+
+        /***************************************************/
     }
 }
-
-

@@ -1,119 +1,52 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTarget="" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{61DCF1F4-D6DD-4512-8905-58D1868DA9DB}</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.3</LangVersion>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BH.Engine.MachineLearning</RootNamespace>
     <AssemblyName>MachineLearning_Engine</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <RootNamespace>BH.Engine.MachineLearning</RootNamespace>
+    <AssemblyVersion>10.0.0.0</AssemblyVersion>
+    <FileVersion>10.0.0.0</FileVersion>
+    <Description>https://github.com/BHoM/MachineLearning_Toolkit</Description>
+    <Authors>BHoM</Authors>
+    <Copyright>Copyright © https://github.com/BHoM</Copyright>
+    <Configurations>Debug;Release;Test</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+
+  <PropertyGroup>
     <OutputPath>..\Build\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\Build\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="BHoM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\BHoM.dll</HintPath>
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="BHoM_Engine">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM_Engine.dll</HintPath>
+      <HintPath>$(ProgramData)\BHoM\Assemblies\BHoM_Engine.dll</HintPath>
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Geometry_oM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Python_Engine">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Python_Engine.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Python_oM">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Python_oM.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Reflection_Engine">
-      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_Engine.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Compute\InstallPythonEnv_ML.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query\ToolkitName.cs" />
-  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\MachineLearning_oM\MachineLearning_oM.csproj">
-      <Project>{C3F87EBB-3F93-4069-A17F-D55868056ED2}</Project>
-      <Name>MachineLearning_oM</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Python\README.md" />
-    <None Include="Versioning_53.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Python\requirements.txt" />
-    <Content Include="Python\setup.py" />
-    <Content Include="Python\src\machinelearning_toolkit\__init__.py" />
-    <Content Include="Python\src\__init__.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Convert\" />
-    <Folder Include="Create\" />
-    <Folder Include="Modify\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="" />
-  <PropertyGroup>
-    <PostBuildEvent>
-      xcopy "$(TargetDir)$(TargetFileName)" "C:\\ProgramData\\BHoM\\Assemblies" /Y
 
-      :: create infrastructure necessary to support Python environments
-      if not exist "C:\ProgramData\BHoM\Extensions\PythonEnvironments" mkdir "C:\ProgramData\BHoM\Extensions\PythonEnvironments"
-      if not exist "C:\ProgramData\BHoM\Extensions\PythonCode" mkdir "C:\ProgramData\BHoM\Extensions\PythonCode"
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not &quot;$(ConfigurationName)&quot; == &quot;Test&quot; (xcopy &quot;$(TargetDir)$(TargetFileName)&quot;  &quot;$(ProgramData)\BHoM\Assemblies&quot; /Y)" />
+  </Target>
 
-      :: remove any old versions within target directory for current toolkits Python code
-      if exist "C:\ProgramData\BHoM\Extensions\PythonCode\$(SolutionName)" rmdir "C:\ProgramData\BHoM\Extensions\PythonCode\$(SolutionName)" /S /Q
-
-      :: move Python code over to toolkit extensions folder, redirecting output to temp log file to silence it
-      robocopy "$(ProjectDir)Python" "C:\ProgramData\BHoM\Extensions\PythonCode\$(SolutionName)" /s /purge /xf "*.pyc" "*.ipynb" /xd "\__pycache__\" &gt; output.log
-
-      :: remove temporary log file
-      del output.log
-    </PostBuildEvent>
-  </PropertyGroup>
 </Project>
