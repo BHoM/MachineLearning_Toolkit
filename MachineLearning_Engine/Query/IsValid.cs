@@ -183,5 +183,60 @@ namespace BH.Engine.MachineLearning
         }
 
         /***************************************************/
+
+        [Description("Checks that a principal component analysis can be applied: a unique name and a finite mean for every fitted feature, at least one component with one finite loading per feature, and one finite, non-negative variance per component, positive when whitening.\n" +
+                     "Records an error saying what is wrong when it cannot be used.")]
+        [Input("principalComponents", "The principal component analysis to check.")]
+        [Output("isValid", "True if the analysis can be applied; false otherwise.")]
+        public static bool IsValid(this PrincipalComponents principalComponents)
+        {
+            if (principalComponents == null)
+            {
+                Engine.Base.Compute.RecordError("Cannot check a null principal component analysis.");
+                return false;
+            }
+
+            List<string> names = principalComponents.FeatureNames;
+            if (names == null || names.Count == 0 || names.Any(n => string.IsNullOrWhiteSpace(n)) || names.Distinct().Count() != names.Count)
+            {
+                Engine.Base.Compute.RecordError("The analysis needs a unique, non-empty name for every feature it was fitted on.");
+                return false;
+            }
+
+            int d = names.Count;
+            List<double> mean = principalComponents.Mean;
+            if (mean == null || mean.Count != d || mean.Any(m => double.IsNaN(m) || double.IsInfinity(m)))
+            {
+                Engine.Base.Compute.RecordError($"The analysis needs one finite mean for each of its {d} features.");
+                return false;
+            }
+
+            List<List<double>> components = principalComponents.Components;
+            List<double> variance = principalComponents.ExplainedVariance;
+            if (components == null || components.Count == 0 || variance == null || variance.Count != components.Count)
+            {
+                Engine.Base.Compute.RecordError("The analysis needs at least one component, and one explained variance per component.");
+                return false;
+            }
+
+            for (int c = 0; c < components.Count; c++)
+            {
+                if (components[c] == null || components[c].Count != d || components[c].Any(v => double.IsNaN(v) || double.IsInfinity(v)))
+                {
+                    Engine.Base.Compute.RecordError($"Component {c + 1} needs one finite loading for each of the {d} features.");
+                    return false;
+                }
+
+                if (double.IsNaN(variance[c]) || double.IsInfinity(variance[c]) || variance[c] < 0 || (principalComponents.Whiten && variance[c] == 0))
+                {
+                    Engine.Base.Compute.RecordError($"Component {c + 1} has an unusable variance ({variance[c]}). Variances must be finite and not negative, and above zero when whitening.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /***************************************************/
     }
 }
