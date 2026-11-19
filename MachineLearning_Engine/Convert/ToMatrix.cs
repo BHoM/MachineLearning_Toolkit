@@ -1,6 +1,6 @@
 /*
  * This file is part of the Buildings and Habitats object Model (BHoM)
- * Copyright (c) 2015 - 2024, the respective contributors. All rights reserved.
+ * Copyright (c) 2015 - 2026, the respective contributors. All rights reserved.
  *
  * Each contributor holds copyright over their respective contributions.
  * The project versioning (Git) records all such contribution source information.
@@ -20,29 +20,35 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-
-using BH.oM.Python;
-using System.ComponentModel;
-
 using BH.oM.Base.Attributes;
+using BH.oM.MachineLearning;
+using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Compute
+    public static partial class Convert
     {
-        [Description("MachineLearning_Toolkit\nMethod used to create the Python environment used to run all Python scripts within this toolkit.")]
-        [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
-        [Output("pythonEnvironment", "The MachineLearning_Toolkit Python environment.")]
-        public static PythonEnvironment InstallPythonEnv_ML(bool run = false)
+        /***************************************************/
+        /**** Internal Methods                          ****/
+        /***************************************************/
+
+        [Description("Copies the samples of a FeatureTable into a rectangular array, one row per sample and one column per feature, for the numerical methods to work on.\n" +
+                     "The FeatureTable must already have passed Query.IsValid.")]
+        [Input("featureTable", "A valid FeatureTable.")]
+        [Output("matrix", "The samples as an array of samples by features.")]
+        internal static double[,] ToMatrix(this FeatureTable featureTable)
         {
-            return BH.Engine.Python.Compute.InstallVirtualenv(
-                name: Query.ToolkitName(),
-                BH.oM.Python.Enums.PythonVersion.v3_7_9,
-                localPackage: $@"C:\ProgramData\BHoM\Extensions\PythonCode\{Query.ToolkitName()}",
-                run: run
-            );
+            int rows = featureTable.Samples.Count;
+            int columns = featureTable.FeatureNames.Count;
+
+            double[,] matrix = new double[rows, columns];
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < columns; j++)
+                    matrix[i, j] = featureTable.Samples[i][j];
+
+            return matrix;
         }
+
+        /***************************************************/
     }
 }
-
-
