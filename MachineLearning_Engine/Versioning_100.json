@@ -1,0 +1,6 @@
+{
+  "MessageForDeleted": {
+    "BH.Engine.MachineLearning.Compute.InstallPythonEnv_ML(System.Boolean)": "This method was removed because the MachineLearning_Toolkit no longer uses Python: its machine learning methods now run in C# with nothing to install. Remove this component from your script. For questions, see https://github.com/BHoM/MachineLearning_Toolkit/issues/127",
+    "BH.Engine.MachineLearning.Query.ToolkitName()": "This method was removed with the toolkit's Python environment, which was its only user. If you need the toolkit's name, use the text \"MachineLearning_Toolkit\". For questions, see https://github.com/BHoM/MachineLearning_Toolkit/issues/127"
+  }
+}
