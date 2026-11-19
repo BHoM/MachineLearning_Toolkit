@@ -117,5 +117,71 @@ namespace BH.Engine.MachineLearning
         }
 
         /***************************************************/
+
+        [Description("Checks that a FeatureScaling can be applied: a unique name for every fitted feature, one finite centre, positive scale and non-negative weight per feature, and at least one kept feature, each of them one of the fitted features.\n" +
+                     "Records an error saying what is wrong when it cannot be used.")]
+        [Input("scaling", "The FeatureScaling to check.")]
+        [Output("isValid", "True if the FeatureScaling can be applied; false otherwise.")]
+        public static bool IsValid(this FeatureScaling scaling)
+        {
+            if (scaling == null)
+            {
+                Engine.Base.Compute.RecordError("Cannot check a null FeatureScaling.");
+                return false;
+            }
+
+            List<string> names = scaling.FeatureNames;
+            if (names == null || names.Count == 0 || names.Any(n => string.IsNullOrWhiteSpace(n)) || names.Distinct().Count() != names.Count)
+            {
+                Engine.Base.Compute.RecordError("The FeatureScaling needs a unique, non-empty name for every feature it was fitted on.");
+                return false;
+            }
+
+            int d = names.Count;
+            if (scaling.Centre == null || scaling.Scale == null || scaling.Weights == null
+                || scaling.Centre.Count != d || scaling.Scale.Count != d || scaling.Weights.Count != d)
+            {
+                Engine.Base.Compute.RecordError($"The FeatureScaling needs one centre, one scale and one weight for each of its {d} features.");
+                return false;
+            }
+
+            for (int j = 0; j < d; j++)
+            {
+                if (double.IsNaN(scaling.Centre[j]) || double.IsInfinity(scaling.Centre[j])
+                    || double.IsNaN(scaling.Scale[j]) || double.IsInfinity(scaling.Scale[j]) || scaling.Scale[j] < 0
+                    || double.IsNaN(scaling.Weights[j]) || double.IsInfinity(scaling.Weights[j]) || scaling.Weights[j] < 0)
+                {
+                    Engine.Base.Compute.RecordError($"Feature '{names[j]}' has an unusable centre, scale or weight. Centres must be finite, and scales and weights finite and not negative.");
+                    return false;
+                }
+            }
+
+            List<string> kept = scaling.KeptFeatures;
+            if (kept == null || kept.Count == 0)
+            {
+                Engine.Base.Compute.RecordError("The FeatureScaling keeps no features, so there is nothing to scale.");
+                return false;
+            }
+
+            List<string> unknown = kept.Where(k => !names.Contains(k)).ToList();
+            if (unknown.Count > 0 || kept.Distinct().Count() != kept.Count)
+            {
+                Engine.Base.Compute.RecordError("Every kept feature must be one of the fitted features, listed once" + (unknown.Count > 0 ? $"; these are not: {string.Join(", ", unknown)}." : "."));
+                return false;
+            }
+
+            foreach (int j in scaling.KeptColumns())
+            {
+                if ((scaling.Standardise && scaling.Scale[j] == 0) || scaling.Weights[j] == 0)
+                {
+                    Engine.Base.Compute.RecordError($"Feature '{names[j]}' is kept but has a scale or weight of zero, which would divide by zero or erase it.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /***************************************************/
     }
 }
