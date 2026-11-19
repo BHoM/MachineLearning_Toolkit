@@ -22,10 +22,12 @@
 
 using BH.oM.Base;
 using BH.oM.Base.Attributes;
+using BH.oM.Data.Collections;
 using BH.oM.MachineLearning;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 
@@ -147,6 +149,98 @@ namespace BH.Engine.MachineLearning
             }
 
             return FeatureTable(samples, propertyNames, ids, groups);
+        }
+
+        /***************************************************/
+
+        [Description("Creates a FeatureTable from a BHoM Table, such as one built from data read with the Excel or CSV adapters. Each row becomes a sample.")]
+        [Input("table", "The table to read, one row per sample.")]
+        [Input("featureColumns", "Optional columns to read as features, in column order. When left empty, every column whose cells are all numbers is used, except the id and group columns.")]
+        [Input("idColumn", "Optional column holding each sample's identifier. Leave empty for no ids.")]
+        [Input("groupColumn", "Optional column holding each sample's group, such as the project or model it came from. Leave empty for no groups.")]
+        [Output("featureTable", "The FeatureTable, or null if a feature column is missing or holds a cell that is not a number, which the error names.")]
+        public static FeatureTable FeatureTable(Table table, List<string> featureColumns = null, string idColumn = "", string groupColumn = "")
+        {
+            if (table == null || table.Data == null)
+            {
+                Engine.Base.Compute.RecordError("Cannot create a FeatureTable from a null table.");
+                return null;
+            }
+
+            DataTable data = table.Data;
+            if (data.Rows.Count == 0)
+            {
+                Engine.Base.Compute.RecordError("Cannot create a FeatureTable from a table with no rows.");
+                return null;
+            }
+
+            foreach (string column in new[] { idColumn, groupColumn }.Where(c => !string.IsNullOrWhiteSpace(c)))
+            {
+                if (!data.Columns.Contains(column))
+                {
+                    Engine.Base.Compute.RecordError($"The table has no column '{column}'.");
+                    return null;
+                }
+            }
+
+            List<string> columns;
+            if (featureColumns == null || featureColumns.Count == 0)
+            {
+                List<string> candidates = data.Columns.Cast<DataColumn>().Select(c => c.ColumnName)
+                    .Where(c => c != idColumn && c != groupColumn).ToList();
+                columns = candidates.Where(c => data.Rows.Cast<DataRow>().All(r => TryToNumber(r[c], out double _))).ToList();
+
+                List<string> skipped = candidates.Except(columns).ToList();
+                if (columns.Count == 0)
+                {
+                    Engine.Base.Compute.RecordError("No column of the table holds only numbers, so there is nothing to use as a feature.");
+                    return null;
+                }
+                if (skipped.Count > 0)
+                    Engine.Base.Compute.RecordNote($"These columns hold cells that are not numbers and were left out: {string.Join(", ", skipped)}.");
+            }
+            else
+            {
+                List<string> missing = featureColumns.Where(c => c == null || !data.Columns.Contains(c)).ToList();
+                if (missing.Count > 0)
+                {
+                    Engine.Base.Compute.RecordError($"The table has no column for these features: {string.Join(", ", missing.Select(c => c ?? "(null)"))}.");
+                    return null;
+                }
+                columns = featureColumns.ToList();
+            }
+
+            List<List<double>> samples = new List<List<double>>();
+            List<string> ids = new List<string>();
+            List<string> groups = new List<string>();
+
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                DataRow row = data.Rows[i];
+                List<double> sample = new List<double>();
+                foreach (string column in columns)
+                {
+                    double number;
+                    if (!TryToNumber(row[column], out number))
+                    {
+                        Engine.Base.Compute.RecordError($"Row {i} of column '{column}' is {Describe(row[column])}. Every feature cell must be a number.");
+                        return null;
+                    }
+                    sample.Add(number);
+                }
+                samples.Add(sample);
+
+                if (!string.IsNullOrWhiteSpace(idColumn))
+                    ids.Add(System.Convert.ToString(row[idColumn], CultureInfo.InvariantCulture));
+                if (!string.IsNullOrWhiteSpace(groupColumn))
+                    groups.Add(System.Convert.ToString(row[groupColumn], CultureInfo.InvariantCulture));
+            }
+
+            FeatureTable featureTable = FeatureTable(samples, columns, ids, groups);
+            if (featureTable != null)
+                featureTable.Name = table.Name;
+
+            return featureTable;
         }
 
         /***************************************************/

@@ -37,6 +37,11 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Data_oM">
+      <HintPath>$(ProgramData)\BHoM\Assemblies\Data_oM.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

@@ -27,7 +27,7 @@ using System.ComponentModel;
 namespace BH.oM.MachineLearning
 {
     [Description("A table of numbers for machine learning: one row per sample and one column per feature, with an optional id and group for each sample.\n" +
-                 "Every method in the MachineLearning toolkit takes its data as a FeatureTable. Build one with Create.FeatureTable from numbers or from BHoM objects and their property names.")]
+                 "Every method in the MachineLearning toolkit takes its data as a FeatureTable. Build one with Create.FeatureTable from numbers, from BHoM objects and their property names, or from a BHoM Table.")]
     public class FeatureTable : BHoMObject
     {
         /***************************************************/
