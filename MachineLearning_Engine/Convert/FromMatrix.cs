@@ -1,6 +1,6 @@
 /*
  * This file is part of the Buildings and Habitats object Model (BHoM)
- * Copyright (c) 2015 - 2024, the respective contributors. All rights reserved.
+ * Copyright (c) 2015 - 2026, the respective contributors. All rights reserved.
  *
  * Each contributor holds copyright over their respective contributions.
  * The project versioning (Git) records all such contribution source information.
@@ -20,29 +20,38 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-
-using BH.oM.Python;
-using System.ComponentModel;
-
 using BH.oM.Base.Attributes;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BH.Engine.MachineLearning
 {
-    public static partial class Compute
+    public static partial class Convert
     {
-        [Description("MachineLearning_Toolkit\nMethod used to create the Python environment used to run all Python scripts within this toolkit.")]
-        [Input("run", "Starts the installation of the toolkit if true. Stays idle otherwise.")]
-        [Output("pythonEnvironment", "The MachineLearning_Toolkit Python environment.")]
-        public static PythonEnvironment InstallPythonEnv_ML(bool run = false)
+        /***************************************************/
+        /**** Internal Methods                          ****/
+        /***************************************************/
+
+        [Description("Copies a rectangular array back into one list per row, the shape the oM classes hold numbers in.")]
+        [Input("matrix", "An array of rows by columns.")]
+        [Output("rows", "One list of numbers per row of the array.")]
+        internal static List<List<double>> FromMatrix(double[,] matrix)
         {
-            return BH.Engine.Python.Compute.InstallVirtualenv(
-                name: Query.ToolkitName(),
-                BH.oM.Python.Enums.PythonVersion.v3_7_9,
-                localPackage: $@"C:\ProgramData\BHoM\Extensions\PythonCode\{Query.ToolkitName()}",
-                run: run
-            );
+            int rows = matrix.GetLength(0);
+            int columns = matrix.GetLength(1);
+
+            List<List<double>> result = new List<List<double>>(rows);
+            for (int i = 0; i < rows; i++)
+            {
+                List<double> row = new List<double>(columns);
+                for (int j = 0; j < columns; j++)
+                    row.Add(matrix[i, j]);
+                result.Add(row);
+            }
+
+            return result;
         }
+
+        /***************************************************/
     }
 }
-
-
